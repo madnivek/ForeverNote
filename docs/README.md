@@ -20,7 +20,7 @@ ForeverNote is a web application inspired by Evernote. It will be built using Ru
 * [DB schema][schema]
 * [Sample State][sample-state]
 
-[wireframes]: wirefames/png
+[wireframes]: wireframes/png
 [components]: component-hierarchy.md
 [api-endpoints]: api-endpoints.md
 [schema]: schema.md
