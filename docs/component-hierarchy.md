@@ -37,7 +37,7 @@
 
 **TagIndexContainer**
   - TagSearch
-  - TagIndexContainer
+  - TagIndex
     - TagIndexItem
 
 ## Notebook Form (Show/Edit View)
@@ -49,7 +49,7 @@
 
 **NotebookContainer**
   - NotebookSearch
-  - NotebookIndexContainer
+  - NotebookIndex
     - NotebookIndexItem
 
 ## Search

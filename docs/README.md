@@ -2,7 +2,7 @@
 
 ## Minimum Viable Product
 
-ForeverNote is a web application inspired by Evernote. It will be built using Ruby on Rails and React/Redux. By the end of week 9, the app will exhibit several features, all of which will function smoothly and with bug-free navigation, sufficient css styling, and adequate seed data.
+LeatherNote is a web application inspired by Evernote. It will be built using Ruby on Rails and React/Redux. By the end of week 9, the app will exhibit several features, all of which will function smoothly and with bug-free navigation, sufficient css styling, and adequate seed data for a working demo.
 
 - [ ] Hosting on Heroku
 - [ ] Frontend authentication - account creation/login/logout with a demo user
@@ -26,7 +26,32 @@ ForeverNote is a web application inspired by Evernote. It will be built using Ru
 [schema]: docs/schema.md
 [sample-state]: docs/sample_state.md
 
-### Bonus features
+## Implementation Timeline
+
+### Phase 1: Backend and Frontend Authentication (1.5 Days - April 19th)
+**Objective:** Create a functioning rails app with backend and frontend auth
+
+### Phase 2: Note CRUD (2 Days April 21th)
+
+**Objective:** Add notes feature. Initially, they a note index will be displayed alongside a note show component.
+
+### Phase 3: Notebook CRUD (2 Days - April 23th)
+
+**Objective:** Add notebooks feature. Notebooks will contain notes. Notebooks can be selected from a notebook index, and the corresponding notes in that notebook will be displayed.
+
+### Phase 4: Implement Tags with Search (2 Days - April 25th)
+
+**Objective:** Add tag feature. You can add tags to notes which can be used to filter and display notes. When a tag is selected, it will display all notes with that tag. There will also be a search bar above the tags index which will allow filtering by tag name.
+
+### Phase 5: Implement Search From Note Body (2 Days - April 27th)
+
+**Objective:** Add search feature. This will add a search bar above the notes index component that will search the title and body of all notes and display all matches.
+
+### Phase 6: CSS Styling (1.5 Days - April 28th)
+
+**Objective:** Add CSS styling. Make pixel-perfect CSS styles.
+
+## Bonus features
 
 - [ ] Search notes by content
 - [ ] Set Reminders on Notes
