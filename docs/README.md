@@ -5,7 +5,7 @@
 ForeverNote is a web application inspired by Evernote. It will be built using Ruby on Rails and React/Redux. By the end of week 9, the app will exhibit several features, all of which will function smoothly and with bug-free navigation, sufficient css styling, and adequate seed data for a working demo.
 
 - [ ] Hosting on Heroku
-- [ ] Frontend authentication - account creation/login/logout with a demo user
+- [ ] Frontend/Backend Authentication
 - [ ] Notes - create/edit
 - [ ] Notebooks for note management
 - [ ] Searchable Tagging System
@@ -24,7 +24,7 @@ ForeverNote is a web application inspired by Evernote. It will be built using Ru
 [components]: component-hierarchy.md
 [api-endpoints]: api-endpoints.md
 [schema]: schema.md
-[sample-state]: sample_state.md
+[sample-state]: sample_state.js
 
 ## Implementation Timeline
 
