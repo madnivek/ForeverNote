@@ -9,6 +9,5 @@ window.logout = logout;
 
 document.addEventListener('DOMContentLoaded', () => {
   // const store = configureStore();
-  debugger
   ReactDOM.render(<h1>myApp</h1>, document.getElementById('root'));
 });
