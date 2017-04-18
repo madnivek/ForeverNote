@@ -81,5 +81,5 @@
 | "/main/tag/:tagId/note/:noteId"           | NoteFormContainer          |
 | "/main/tag/search                         | TagSearch                  |
 | "/new-note                                | NoteFormContainer          |
-| "/new-notebook                            | NotebookFormContainer      |
-| "/new-tag                                 | TagFormContainer           |
+| "/notebook/new                            | NotebookFormContainer      |
+| "/tag/new                                 | TagFormContainer           |

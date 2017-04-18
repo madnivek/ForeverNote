@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  entry: './frontend/forevernote.jsx',
+  entry: './frontend/forever_note.jsx',
   output: {
     filename: './bundle.js',
   },
