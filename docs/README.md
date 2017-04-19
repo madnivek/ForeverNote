@@ -1,6 +1,8 @@
 # ForeverNote
 
-* [Heroku]['https://forever-note.herokuapp.com/']
+* [Heroku][heroku-link]
+
+[heroku-link]: 'https://forever-note.herokuapp.com/'
 
 ## Minimum Viable Product
 
