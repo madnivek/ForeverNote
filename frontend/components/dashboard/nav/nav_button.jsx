@@ -8,13 +8,13 @@ const NavButton = props => {
     props.logout().
       then(() => hashHistory.push('/login'));
   };
-
+  
   return(
     <li className="nav-bar">
       <div onClick={ handleLogout }
         className = "logout-button" >
 
-        <img src={ window.images.logout } />
+        <img src={ window.images["LOGOUT"] } />
         <p>LOGOUT</p>
 
       </div>
