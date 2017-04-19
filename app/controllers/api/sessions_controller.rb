@@ -8,7 +8,7 @@ class Api::SessionsController < ApplicationController
 
     if @user
       login(@user)
-      render "api/users/show"
+      render "api/users/user"
     else
       render json: ["Invalid username or password!"], status: 401
     end
@@ -19,7 +19,7 @@ class Api::SessionsController < ApplicationController
     @user = current_user
     if @user
       logout
-      render "api/users/show"
+      render "api/users/user"
     else
       render json: ["No user signed in"], status: 404
     end
