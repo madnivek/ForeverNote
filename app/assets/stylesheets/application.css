@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+body, div, ul, form, h1, header{
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  line-height: 1;
+
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/*GREY BACKGROUND*/
+body {
+  background: #f3f3f3;
+}
+
+/*LOGIN TEXT*/
+h1 {
+  position: relative;
+  font-size: 35px;
+  text-align: center;
+  margin-top: 5%;
+  position: relative;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}

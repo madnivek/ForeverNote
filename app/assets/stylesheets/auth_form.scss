@@ -1,0 +1,55 @@
+.video-bg{
+  margin: auto;
+  position: absolute;
+  height: 400px;
+}
+
+.top-line {
+  background: #2dbe60;
+  height: 5px;
+  position: relative;
+}
+
+.splash-video {
+  width: 100%;
+}
+
+h1 {
+  position: relative;
+  font-size: 25px;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+
+.auth-form {
+  position: relative;
+  margin: 50px auto;
+  text-align: center;
+  align-items: center;
+  padding-bottom: 20px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 1px;
+  border: 1px solid #dedede;
+}
+
+.auth-form input {
+  margin-top: 30px;
+  border-radius: 3px;
+  width: 70%;
+  padding: 7.5px;
+  font-size: 18px;
+}
+
+.auth-form input:last-child {
+  background-color: #2dbe60;
+  border:none;
+  box-shadow: 1px 1px 1px black;
+  width: 75%;
+  box-sizing: border-box;
+  font-weight: bold;
+  color: white;
+}
