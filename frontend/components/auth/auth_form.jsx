@@ -1,11 +1,13 @@
 import React from 'react';
-import { hashHistory } from 'react-router';
+import { hashHistory, Link } from 'react-router';
 
 class AuthForm extends React.Component{
   constructor(props){
     super(props);
-    this.state = { username: "", password: "", email: ""};
+    this.default = { username: "", password: "", email: ""};
+    this.state = this.default
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   update(field){
@@ -14,28 +16,50 @@ class AuthForm extends React.Component{
     };
   }
 
+  renderErrors() {
+    return(
+      <ul>
+        {
+          this.props.errors.map( (error, i) => {
+            return <li key={error}> { error }</li>
+          })
+        }
+      </ul>
+    );
+  }
+
   componentWillReceiveProps(newProps){
-    if(this.props.location.pathname !== newProps.location.pathname){
-      this.setState({ username: "", password: "", email: ""})
+    if (this.props.location.pathname !== newProps.location.pathname){
+      this.props.clearErrors();
+      this.setState(this.default);
     }
   }
 
   handleSubmit(e){
-    debugger
     e.preventDefault();
     this.props.processForm(this.state)
-      .then(() => hashHistory.push('/'));
+      .then(
+        () => hashHistory.push('/'),
+        this.setState(this.default)
+      );
   }
 
   render(){
-    const formTitle = this.props.formType === "login" ? "Login" : "Create User"
-    let emailInput = "";
-    if(formTitle === 'Create User'){
-      emailInput = <input
-        onChange={ this.update('email') }
-        type="input"
-        placeholder="Email"
-        value={ this.state.email } />
+    let formTitle = "Create User";
+    let altPath = '/login';
+    let altPathText = 'Have an account? Click here to login.';
+    let emailInput = <input
+      onChange={ this.update('email') }
+      type="input"
+      placeholder="Email"
+      value={ this.state.email } />;
+
+
+    if(this.props.formType === "login"){
+      formTitle = "Login";
+      altPath = '/signup';
+      altPathText = 'Create Account';
+      emailInput = "";
     }
 
     return(
@@ -50,8 +74,10 @@ class AuthForm extends React.Component{
         <header className="top-line"></header>
 
         <h1>{ formTitle }</h1>
-        
+
         <form className="auth-form" onSubmit={ this.handleSubmit }>
+
+          { this.renderErrors() }
 
           { emailInput }
 
@@ -67,7 +93,9 @@ class AuthForm extends React.Component{
             placeholder="Password"
             onChange={ this.update('password') } />
 
-          <input type="submit" value={formTitle} />
+          <input type="submit" value={formTitle} className='submit-button' />
+
+          <Link to={ altPath } className='alt-path-link'>{ altPathText }</Link>
 
         </form>
       </div>

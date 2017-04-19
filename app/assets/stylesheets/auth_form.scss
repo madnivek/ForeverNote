@@ -36,7 +36,7 @@ h1 {
   margin: 50px auto;
   text-align: center;
   align-items: center;
-  padding: 30px 30px;
+  padding: 40px 30px;
   width: 300px;
   display: flex;
   flex-direction: column;
@@ -53,7 +53,7 @@ h1 {
   font-size: 18px;
 }
 
-.auth-form input:last-child {
+.submit-button {
   background-color: #2dbe60;
   border:none;
   width: 95%;
@@ -61,4 +61,13 @@ h1 {
   box-sizing: border-box;
   font-weight: bold;
   color: white;
+}
+
+.alt-path-link {
+  padding-top: 30px;
+  color: black;
+}
+
+.alt-path-link:hover {
+  color: #2dbe60;
 }

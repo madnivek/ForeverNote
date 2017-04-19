@@ -26,12 +26,16 @@ export const receiveErrors = (errors) => {
 
 export const login = user => dispatch => {
   return SessionAPIUtil.login(user)
-    .then( user => dispatch(receiveCurrentUser(user)));
+    .then( user => dispatch(receiveCurrentUser(user)),
+      err => dispatch(receiveErrors(err.responseJSON))
+    );
 };
 
 export const signup = user => dispatch => {
   return SessionAPIUtil.signup(user)
-    .then( user => dispatch(receiveCurrentUser(user)));
+    .then( user => dispatch(receiveCurrentUser(user)),
+      err => dispatch(receiveErrors(err.responseJSON))
+    );
 };
 
 export const logout = () => dispatch => {

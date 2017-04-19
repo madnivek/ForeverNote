@@ -7,9 +7,9 @@ import AuthFormContainer from './auth/auth_form_container';
 const Root = ({ store }) => (
   <Provider store={ store }>
     <Router history={ hashHistory }>
+      <Route path="/login" component={ AuthFormContainer } />
+      <Route path="/signup" component={ AuthFormContainer } />
       <Route path="/" component={ App }>
-        <Route path="/login" component={ AuthFormContainer } />
-        <Route path="/signup" component={ AuthFormContainer } />
       </Route>
     </Router>
   </Provider>
