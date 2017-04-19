@@ -2,7 +2,7 @@
 
 * [Heroku][heroku-link]
 
-[heroku-link]: 'https://forever-note.herokuapp.com/'
+[heroku-link]: https://forever-note.herokuapp.com/
 
 ## Minimum Viable Product
 
