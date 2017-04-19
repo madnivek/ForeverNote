@@ -8,6 +8,7 @@ class AuthForm extends React.Component{
     this.state = this.default;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
   update(field){
@@ -44,6 +45,15 @@ class AuthForm extends React.Component{
       );
   }
 
+  handleDemoLogin(e) {
+    e.preventDefault();
+    this.props.processForm({username: "demo", password: "demodemo"})
+      .then(
+        () => hashHistory.push('/'),
+        this.setState(this.default)
+      );
+  }
+
   render(){
     let formTitle = "Create User";
     let altPath = '/login';
@@ -62,7 +72,7 @@ class AuthForm extends React.Component{
       altPathText = 'Create Account';
       emailInput = "";
 
-      // demoUserButton = <button onClick={ handleDemoLogin }>Demo User Login!</button>
+      demoUserButton = <button className="demo-login-button" onClick={ this.handleDemoLogin }>Demo User Login!</button>
 
     }
 
@@ -97,11 +107,12 @@ class AuthForm extends React.Component{
             placeholder="Password"
             onChange={ this.update('password') } />
 
-          { demoUserButton }
 
           <input type="submit" value={formTitle} className='submit-button' />
 
           <Link to={ altPath } className='alt-path-link'>{ altPathText }</Link>
+
+          { demoUserButton }
 
         </form>
       </div>

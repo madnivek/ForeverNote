@@ -45,15 +45,7 @@ h1 {
   border: 1px solid #dedede;
 }
 
-.auth-form input {
-  margin-top: 30px;
-  border-radius: 3px;
-  width: 90%;
-  padding: 7.5px;
-  font-size: 18px;
-}
-
-.submit-button {
+.submit-button, .demo-login-button {
   background-color: #2dbe60;
   border:none;
   width: 95%;
@@ -61,6 +53,18 @@ h1 {
   box-sizing: border-box;
   font-weight: bold;
   color: white;
+}
+.auth-form input, .demo-login-button{
+  margin-top: 30px;
+  border-radius: 3px;
+  width: 80%;
+  padding: 7.5px;
+  font-size: 18px;
+}
+
+
+.demo-login-button {
+
 }
 
 .alt-path-link {

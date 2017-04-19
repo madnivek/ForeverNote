@@ -6,7 +6,7 @@ const NavButton = props => {
   const handleLogout = e => {
     e.preventDefault();
     props.logout().
-      then(hashHistory.push('/login'));
+      then(() => hashHistory.push('/login'));
   };
 
   return(
