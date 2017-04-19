@@ -1,5 +1,6 @@
-import { combineReducers } from 'react-redux';
+import { combineReducers } from 'redux';
+import SessionReducer from './session_reducer';
 
 export default combineReducers({
-  session: SessionsReducer
+  session: SessionReducer
 });

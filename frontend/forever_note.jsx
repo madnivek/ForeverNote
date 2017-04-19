@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import Root from './reducers/root_reducer';
-import { signup, login, logout } from './util/session_api_util';
+import Root from './components/root';
+// import { signup, login, logout } from './util/session_api_util';
+import configureStore from './store/store';
 
-window.signup = signup;
-window.login = login;
-window.logout = logout;
 
 document.addEventListener('DOMContentLoaded', () => {
-  // const store = configureStore();
-  ReactDOM.render(<h1>myApp</h1>, document.getElementById('root'));
+  const store = configureStore();
+  window.store = store;
+  ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 });
