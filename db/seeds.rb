@@ -25,3 +25,9 @@ ron_weasley = User.create!(
   email: "ronbweasley@hogwards.edu",
   password: "iloveronweasley"
 )
+
+demouser = User.create!(
+  username: "demo",
+  email: "demo@gmail.com",
+  password: "demodemo"
+)

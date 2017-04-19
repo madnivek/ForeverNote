@@ -5,7 +5,7 @@ class AuthForm extends React.Component{
   constructor(props){
     super(props);
     this.default = { username: "", password: "", email: ""};
-    this.state = this.default
+    this.state = this.default;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
   }
@@ -18,10 +18,10 @@ class AuthForm extends React.Component{
 
   renderErrors() {
     return(
-      <ul>
+      <ul className="error-list">
         {
           this.props.errors.map( (error, i) => {
-            return <li key={error}> { error }</li>
+            return <li key={error}> { error }</li>;
           })
         }
       </ul>

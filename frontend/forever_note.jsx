@@ -4,9 +4,6 @@ import Root from './components/root';
 // import { signup, login, logout } from './util/session_api_util';
 import configureStore from './store/store';
 
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser){
@@ -15,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
-
   window.store = store;
   ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 });

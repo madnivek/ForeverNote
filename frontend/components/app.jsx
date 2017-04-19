@@ -1,6 +1,6 @@
 import React from 'react';
 
-const App = (state, {children}) => (
+const App = ({children}) => (
   <div>
     { children }
   </div>

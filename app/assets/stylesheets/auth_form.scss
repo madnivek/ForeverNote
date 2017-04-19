@@ -71,3 +71,12 @@ h1 {
 .alt-path-link:hover {
   color: #2dbe60;
 }
+
+.error-list {
+  list-style: none;
+  color: red;
+}
+
+.error-list li{
+  padding-left: 0px;
+}
