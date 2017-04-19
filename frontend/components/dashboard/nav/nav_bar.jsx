@@ -1,11 +1,11 @@
 import React from 'react';
+import NavButton from './nav_button';
 
 class NavBar extends React.Component {
+
   render(){
     return(
-      <div className="nav_bar">
-        HELLO
-      </div>
+      <NavButton logout={this.props.logout} />
     );
   }
 }

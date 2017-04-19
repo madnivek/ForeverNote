@@ -48,6 +48,7 @@ class AuthForm extends React.Component{
     let formTitle = "Create User";
     let altPath = '/login';
     let altPathText = 'Have an account? Click here to login.';
+    let demoUserButton = ""
     let emailInput = <input
       onChange={ this.update('email') }
       type="input"
@@ -60,6 +61,9 @@ class AuthForm extends React.Component{
       altPath = '/signup';
       altPathText = 'Create Account';
       emailInput = "";
+
+      // demoUserButton = <button onClick={ handleDemoLogin }>Demo User Login!</button>
+
     }
 
     return(
@@ -92,6 +96,8 @@ class AuthForm extends React.Component{
             value={this.state.password}
             placeholder="Password"
             onChange={ this.update('password') } />
+
+          { demoUserButton }
 
           <input type="submit" value={formTitle} className='submit-button' />
 

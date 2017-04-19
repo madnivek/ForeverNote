@@ -1,7 +1,10 @@
 import React from 'react';
+import NavBarContainer from './dashboard/nav/nav_bar_container';
+
 
 const App = ({children}) => (
-  <div>
+  <div className="app-container">
+    <NavBarContainer />
     { children }
   </div>
 );

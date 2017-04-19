@@ -1,0 +1,41 @@
+.app-container {
+  position: fixed;
+  top:0;
+  left:0;
+  height:100%;
+  width: 100%;
+  background: white;;
+}
+
+.nav-bar {
+  position: fixed;
+  height: 100%;
+  width: 70px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f3f3f3;
+}
+
+
+
+.logout-button {
+  margin-top: auto;
+  padding-bottom: 20px;
+
+}
+
+.logout-button p {
+  display: none;
+  background: rgba(0, 0, 0, .5);
+  padding: 2.5px;
+  color: white;
+  border-radius: 2px;
+}
+
+.logout-button:hover p {
+  position: absolute;
+  bottom: 15px;
+  left: 60px;
+  display: block;
+}
