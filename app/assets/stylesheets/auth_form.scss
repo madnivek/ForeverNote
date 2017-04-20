@@ -53,6 +53,7 @@ h1 {
   box-sizing: border-box;
   font-weight: bold;
   color: white;
+  cursor: pointer;
 }
 .auth-form input, .demo-login-button{
   margin-top: 30px;
@@ -60,11 +61,6 @@ h1 {
   width: 80%;
   padding: 7.5px;
   font-size: 18px;
-}
-
-
-.demo-login-button {
-
 }
 
 .alt-path-link {

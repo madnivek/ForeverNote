@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+Note.destroy_all
+
+# USERS
 
 harry_potter = User.create!(
   username: "boy_who_lived",
@@ -27,7 +30,25 @@ ron_weasley = User.create!(
 )
 
 demouser = User.create!(
-  username: "demo",
-  email: "demo@gmail.com",
-  password: "demodemo"
+  username: "harry",
+  email: "harry@gmail.com",
+  password: "potter"
 )
+#NOTES
+
+def fake_title
+  Faker::HarryPotter.quote
+end
+
+def fake_body
+  array = []
+  8.times do
+    array.push(Faker::HarryPotter.quote)
+  end
+
+  array.join(". ")
+end
+
+8.times do
+  Note.create!(author_id: demouser.id, notebook_id: 1, title: fake_title, body: fake_body)
+end

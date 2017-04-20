@@ -47,7 +47,7 @@ class AuthForm extends React.Component{
 
   handleDemoLogin(e) {
     e.preventDefault();
-    this.props.processForm({username: "demo", password: "demodemo"})
+    this.props.processForm({username: "harry", password: "potter"})
       .then(
         () => hashHistory.push('/'),
         this.setState(this.default)
