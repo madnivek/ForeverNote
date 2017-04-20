@@ -1,9 +1,3 @@
-// login(user) (thunk action creator)
-// logout() (thunk action creator)
-// signup(user) (thunk action creator)
-// receiveCurrentUser(currentUser) (regular action creator)
-// receiveErrors(errors) (regular action creator)
-
 import React from 'react';
 import * as SessionAPIUtil from '../util/session_api_util';
 
