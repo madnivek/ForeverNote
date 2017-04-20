@@ -46,6 +46,12 @@ def fake_body
     array.push(Faker::HarryPotter.quote)
   end
 
+  array.push("\n")
+
+  8.times do
+    array.push(Faker::HarryPotter.quote)
+  end
+
   array.join(". ")
 end
 
