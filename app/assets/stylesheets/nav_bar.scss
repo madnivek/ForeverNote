@@ -1,41 +1,69 @@
 .app-container {
-  position: fixed;
-  top:0;
-  left:0;
-  height:100%;
-  width: 100%;
-  background: white;;
+  display: flex;
+  background: white;
 }
-
-.nav-bar {
-  position: fixed;
-  height: 100%;
-  width: 70px;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
+.nav-bar-ul {
+  z-index:1000;
+  height: 1080px;
   background: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  width: 70px;
+  text-align: center;
 }
 
-
-
-.logout-button {
-  margin-top: auto;
-  padding-bottom: 20px;
-  cursor: pointer;
+.nav-bar-ul li {
+  position: relative;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
-.logout-button p {
+.pop-up-text {
   display: none;
-  background: rgba(0, 0, 0, .5);
-  padding: 2.5px;
-  color: white;
-  border-radius: 2px;
-}
-
-.logout-button:hover p {
   position: absolute;
-  bottom: 15px;
-  left: 60px;
+  left: 59px;
+  top: 5px;
+  background: rgba(0,0,0,0.7);
+  padding: 3.5px;
+  border-radius: 5px;
+  color: white;
+}
+.nav-bar-ul div:hover .pop-up-text {
   display: block;
 }
+//
+// .nav-bar {
+//   position: fixed;
+//   height: 100%;
+//   width: 70px;
+//   display:flex;
+//   flex-direction: column;
+//   align-items: center;
+//   background: #f3f3f3;
+// }
+//
+//
+//
+// .logout-button {
+//   margin-top: auto;
+//   padding-bottom: 20px;
+//   cursor: pointer;
+// }
+//
+// .logout-button p {
+//   display: none;
+//   background: black;
+//   padding: 3.5px;
+//   color: white;
+//   border-radius: 2px;
+//   border-right: 1px solid lightgrey;
+//   font-weight: bold;
+// }
+//
+// .logout-button:hover p {
+//   position: absolute;
+//   bottom: 15px;
+//   left: 60px;
+//   display: block;
+// }

@@ -1,0 +1,102 @@
+// OUTERMOST SECTION
+$ever-green: #2dbe60;
+$ever-grey: #dedede;
+
+.note-index-section {
+  position: absolute;
+  left: 70px;
+  display: flex;
+  flex-direction: column;
+  height:1080px;
+  width: 350px;
+  border-right: 1px solid lightgrey;
+}
+
+// PAD THE LEFT OF THE INDEX
+.note-index-section h2, .note-index-section li {
+  padding-left: 15px;
+}
+
+// "NOTES" header
+.note-index-header{
+  font-size: 25px;
+  position: relative;
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid $ever-grey;
+  color: grey;
+}
+
+// UL that holds the index items
+.note-index-list {
+  overflow-y: scroll;
+  height:100%
+}
+
+//Lis that hold the notes
+.note-index-item {
+  position:relative;
+  display: flex;
+}
+
+.note-index-item p:after{
+  content : "";
+  position: absolute;
+  left    : 15px;
+  bottom  : 0;
+  height  : 1px;
+  width   : 85%;  /* or 100px */
+  margin: auto;
+  border-bottom:1px solid $ever-grey;
+}
+
+.note-index-item h3{
+  white-space: nowrap;
+  height: 20px;
+  width: 280px;
+  padding-top: 10px;
+  font-weight: normal;
+}
+
+.note-index-item p{
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  max-width: 400px;
+  height: 12*1*4; /* Fallback for non-webkit */
+  margin: 0 auto;
+  font-size: 12;
+  line-height: 1;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  color: grey;
+}
+
+.note-index-item h3, .note-index-item p{
+  margin-bottom: 10px;
+  margin-right: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-item-nav {
+  position: absolute;
+  display: none;
+  right: 18px;
+  top: 5px;
+  height: 30px;
+  width: 60%;
+}
+
+.note-index-item:hover .note-item-nav {
+  display: flex;
+  flex-direction:row-reverse;
+}
+
+.note-index-item:hover {
+  background: $ever-green;
+  color: white;
+  p {
+    color: white;
+  }
+}

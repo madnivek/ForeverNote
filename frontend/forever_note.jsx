@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
-// import { signup, login, logout } from './util/session_api_util';
+import { fetchNotes, fetchNote, deleteNote, updateNote } from './util/notes_api_util';
 import configureStore from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
+
   window.store = store;
   ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 });

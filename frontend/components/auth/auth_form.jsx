@@ -18,15 +18,17 @@ class AuthForm extends React.Component{
   }
 
   renderErrors() {
-    return(
-      <ul className="error-list">
-        {
-          this.props.errors.map( (error, i) => {
-            return <li key={error}> { error }</li>;
-          })
-        }
-      </ul>
-    );
+    if(this.props.errors){
+      return(
+        <ul className="error-list">
+          {
+            this.props.errors.map( (error, i) => {
+              return <li key={error}> { error }</li>;
+              })
+            }
+          </ul>
+        );      
+    }
   }
 
   componentWillReceiveProps(newProps){
@@ -87,7 +89,7 @@ class AuthForm extends React.Component{
 
         <header className="top-line"></header>
 
-        <h1>{ formTitle }</h1>
+        <h1 className="form-title">{ formTitle }</h1>
 
         <form className="auth-form" onSubmit={ this.handleSubmit }>
 
@@ -110,9 +112,10 @@ class AuthForm extends React.Component{
 
           <input type="submit" value={formTitle} className='submit-button' />
 
+          { demoUserButton }
+
           <Link to={ altPath } className='alt-path-link'>{ altPathText }</Link>
 
-          { demoUserButton }
 
         </form>
       </div>

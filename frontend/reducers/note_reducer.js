@@ -1,5 +1,5 @@
 import { RECEIVE_NOTE, RECEIVE_NOTES, RECEIVE_ERRORS, REMOVE_NOTE} from
-  '../actions/notes_actions';
+  '../actions/note_actions';
 
 import merge from 'lodash/merge';
 
@@ -9,13 +9,16 @@ const _defaultState = {
 };
 
 const NoteReducer = (oldState = _defaultState, action) => {
+  Object.freeze(oldState);
   switch(action.type){
     case RECEIVE_NOTES: {
-      return merge({}, { notes: action.notes} );
+      return { notes: action.notes, errors: []};
     }
 
     case RECEIVE_NOTE: {
-      return merge({}, oldState, { notes: action.note } );
+      const newState = merge({}, oldState);
+      newState.notes[action.note.id] = action.note;
+      return newState;
     }
 
     case REMOVE_NOTE: {
@@ -27,6 +30,13 @@ const NoteReducer = (oldState = _defaultState, action) => {
     case RECEIVE_ERRORS: {
       const newState = merge({}, oldState);
       newState.errors = action.errors;
+      return newState;
+    }
+
+    default: {
+      return oldState;
     }
   }
-}
+};
+
+export default NoteReducer;

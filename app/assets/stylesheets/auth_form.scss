@@ -1,3 +1,6 @@
+$ever-green: #2dbe60;
+$ever-grey: #dedede;
+
 .video-bg{
   position: absolute;
   top: -50%;
@@ -7,7 +10,7 @@
 }
 
 .top-line {
-  background: #2dbe60;
+  background: $ever-green;
   height: 5px;
   position: relative;
 }
@@ -23,9 +26,11 @@
   min-width: 50%;
 }
 
-h1 {
+.form-title {
+  text-align: center;
   position: relative;
-  font-size: 25px;
+  margin-top: 5%;
+  font-size: 35px;
   color: white;
   text-shadow: 1px 1px 1px black;
 }
@@ -42,11 +47,11 @@ h1 {
   flex-direction: column;
   background: rgba(255, 255, 255, 0.7);
   border-radius: 2px;
-  border: 1px solid #dedede;
+  border: 1px solid $ever-grey;
 }
 
 .submit-button, .demo-login-button {
-  background-color: #2dbe60;
+  background-color: $ever-green;
   border:none;
   width: 95%;
   box-shadow: 1px 1px 1px black;
@@ -57,10 +62,11 @@ h1 {
 }
 .auth-form input, .demo-login-button{
   margin-top: 30px;
-  border-radius: 3px;
+  border-radius: 5px;
   width: 80%;
   padding: 7.5px;
   font-size: 18px;
+  font-size: 15px;
 }
 
 .alt-path-link {
@@ -69,7 +75,7 @@ h1 {
 }
 
 .alt-path-link:hover {
-  color: #2dbe60;
+  color: $ever-green;
 }
 
 .error-list {
