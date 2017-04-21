@@ -27,7 +27,7 @@ class AuthForm extends React.Component{
               })
             }
           </ul>
-        );      
+        );
     }
   }
 
@@ -57,9 +57,14 @@ class AuthForm extends React.Component{
   }
 
   render(){
-    let formTitle = "Create User";
-    let altPath = '/login';
-    let altPathText = 'Have an account? Click here to login.';
+    let formTitle = "Sign Up";
+
+    let altLink =
+    <p>Have an account?
+      <br/><br/>
+      <Link to='/login' className='alt-path-link'>Click here to login.</Link>
+    </p>
+
     let demoUserButton = ""
     let emailInput = <input
       onChange={ this.update('email') }
@@ -70,9 +75,9 @@ class AuthForm extends React.Component{
 
     if(this.props.formType === "login"){
       formTitle = "Login";
-      altPath = '/signup';
-      altPathText = 'Create Account';
       emailInput = "";
+
+      altLink = <p><Link to='/signup' className='alt-path-link'>Create Account</Link></p>
 
       demoUserButton = <button className="demo-login-button" onClick={ this.handleDemoLogin }>Demo User Login!</button>
 
@@ -80,44 +85,48 @@ class AuthForm extends React.Component{
 
     return(
       <div className="auth-form-parent">
+        <header className="top-line"></header>
         <div className="video-bg">
           <video className="splash-video" loop="loop" autoPlay="autoplay">
             <source className="webm" type="video/webm" src="https://cdn1.evernote.com/evernote.com/video/homepage/homepage-hero-video.webm"/>
             <source className="mp4" type="video/mp4" src="https://cdn1.evernote.com/evernote.com/video/homepage/homepage-hero-video.mp4"/>
           </video>
+
+          <img className="auth-logo" src={ window.images.LOGO_LARGE }></img>
+
+          <h1 className="form-title">{ formTitle }</h1>
+
+
+          <form className="auth-form" onSubmit={ this.handleSubmit }>
+
+            { this.renderErrors() }
+
+            { emailInput }
+
+            <input
+              type="text"
+              value={this.state.username}
+              placeholder="Username"
+              onChange={ this.update('username') } />
+
+            <input
+              type="password"
+              value={this.state.password}
+              placeholder="Password"
+              onChange={ this.update('password') } />
+
+
+            <input type="submit" value={formTitle} className='submit-button' />
+
+            { demoUserButton }
+
+            { altLink }
+
+
+          </form>
         </div>
 
-        <header className="top-line"></header>
 
-        <h1 className="form-title">{ formTitle }</h1>
-
-        <form className="auth-form" onSubmit={ this.handleSubmit }>
-
-          { this.renderErrors() }
-
-          { emailInput }
-
-          <input
-            type="text"
-            value={this.state.username}
-            placeholder="Username"
-            onChange={ this.update('username') } />
-
-          <input
-            type="password"
-            value={this.state.password}
-            placeholder="Password"
-            onChange={ this.update('password') } />
-
-
-          <input type="submit" value={formTitle} className='submit-button' />
-
-          { demoUserButton }
-
-          <Link to={ altPath } className='alt-path-link'>{ altPathText }</Link>
-
-
-        </form>
       </div>
     );
   }
