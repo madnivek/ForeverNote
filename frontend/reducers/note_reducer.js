@@ -13,27 +13,29 @@ const NoteReducer = (oldState = _defaultState, action) => {
   Object.freeze(oldState);
   switch(action.type){
     case RECEIVE_NOTES: {
-      return { notes: action.notes, errors: []};
+      const rNotesNewState = merge({}, oldState);
+      rNotesNewState.notes = action.notes;
+      rNotesNewState.errors = [];
+      return rNotesNewState;
     }
 
     case RECEIVE_NOTE: {
-      const newState = merge({}, oldState);
-      newState.notes[action.note.id] = action.note;
-      newState.currentNote = action.note;
-      debugger
-      return newState;
+      const rNoteNewState = Object.assign({}, oldState);
+      rNoteNewState.notes[action.note.id] = action.note;
+      rNoteNewState.currentNote = action.note;
+      return rNoteNewState;
     }
 
     case REMOVE_NOTE: {
-      const newState = merge({}, oldState);
-      delete newState.notes[action.note.id];
-      return newState;
+      const rmNoteNewState = merge({}, oldState);
+      delete rmNoteNewState.notes[action.note.id];
+      return rmNoteNewState;
     }
 
     case RECEIVE_ERRORS: {
-      const newState = merge({}, oldState);
-      newState.errors = action.errors;
-      return newState;
+      const rErrNewState = merge({}, oldState);
+      rErrNewState.errors = action.errors;
+      return rErrNewState;
     }
 
     default: {

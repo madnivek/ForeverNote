@@ -1,11 +1,11 @@
 import React from 'react';
-import { convertFromRaw, convertToRaw, Editor, EditorState } from 'draft-js';
+import { convertFromRaw, convertToRaw, Editor} from 'draft-js';
 import { hashHistory } from 'react-router';
 
 class NewNote extends React.Component{
   constructor(props){
     super(props);
-    this.state = {  title: "", editorState: EditorState.createEmpty()};
+    this.state = this.props.currentNoteRaw;
     this.onChange = (editorState) => this.setState({editorState});
     this.submitNote = this.submitNote.bind(this);
     this.update = this.update.bind(this);
@@ -16,15 +16,36 @@ class NewNote extends React.Component{
     hashHistory.push('/');
   }
 
+  componentWillReceiveProps(newProps){
+    debugger
+    if(this.props.location.pathname !== newProps.location.pathname){
+      debugger
+      this.props.fetchNote(newProps.params.noteId);
+    }
+  }
+
+  _convertFromRaw(rawContentString){
+    return JSON.parse(rawContentString)
+  }
+
   submitNote(e){
     e.preventDefault();
+    let { id, title, author_id, notebook_id } = this.state;
+
+    if(this.props.formType === 'new') {
+      author_id = this.props.currentUserId,
+      notebook_id = 1
+    }
+
     const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
     const rawContentString = JSON.stringify(rawContent);
-    const newNote = {  title: this.state.title,
-                          author_id: this.props.currentUserId,
-                          notebook_id: 1,
-                          body: rawContentString };
-    this.props.createNote(newNote).then(() => hashHistory.push('/'))
+    const note = { id, title, author_id, notebook_id, body: rawContentString }
+    this.props.processForm(note)
+      .then( () => {
+        if(this.props.formType === 'new'){
+          hashHistory.push(`/notes/${id}`)
+        }
+      });
   }
 
   update(e){
@@ -57,7 +78,7 @@ class NewNote extends React.Component{
             className="new-form-title"
             placeholder="Title your note"
             onChange={ this.update }
-            type="text"></input>
+            type="text" value={this.state.title}/>
 
 
           <div className="draft-editor">

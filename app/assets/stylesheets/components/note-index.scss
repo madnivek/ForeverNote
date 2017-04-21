@@ -2,13 +2,16 @@
 $ever-green: #2dbe60;
 $ever-grey: #dedede;
 
+.main-container {
+  display: flex;
+  width:100%;
+}
+
 .note-index-section {
-  position: absolute;
-  left: 70px;
   display: flex;
   flex-direction: column;
-  height:1080px;
-  width: 350px;
+  min-width: 350px;
+  max-width: 350px;
   border-right: 1px solid lightgrey;
 }
 

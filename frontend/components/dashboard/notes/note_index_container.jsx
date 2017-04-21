@@ -6,14 +6,15 @@ import { deleteNote, fetchNotes, fetchNote } from '../../../actions/note_actions
 
 const mapStateToProps = ({ notes_slice }) => {
   return {
-    notes: Object.values( notes_slice.notes )
+    notes: Object.values(notes_slice.notes).reverse()
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchNotes: () => dispatch(fetchNotes()),
-    deleteNote: id => dispatch(deleteNote(id))
+    deleteNote: id => dispatch(deleteNote(id)),
+    fetchNote: id => dispatch(fetchNote(id))
   };
 };
 

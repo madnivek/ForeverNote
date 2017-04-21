@@ -1,5 +1,7 @@
 import React from 'react';
 import * as NotesAPIUtil from '../util/notes_api_util';
+import { hashHistory } from 'react-router';
+
 
 export const RECEIVE_NOTE = 'RECEIVE_NOTE';
 export const RECEIVE_NOTES = 'RECEIVE_NOTES';
@@ -45,8 +47,8 @@ export const fetchNotes = () => dispatch => {
 export const fetchNote = (id) => dispatch => {
   return NotesAPIUtil.fetchNote(id)
     .then( note => dispatch(receiveNote(note)),
-      err => dispatch(receiveErrors(err))
-  );
+      err => dispatch(receiveErrors(err)))
+        .then( () => hashHistory.push(`/notes/${id}`));
 };
 
 export const createNote = (note) => dispatch => {

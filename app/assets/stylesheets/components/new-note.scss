@@ -3,7 +3,9 @@ $ever-grey: #dedede;
 
 .form-parent-container {
   background: white;
-  margin: auto;
+  margin: 0 auto;
+  padding-left: 30px;
+  padding-right: 30px;
   width:90%;
 }
 
@@ -35,7 +37,7 @@ $ever-grey: #dedede;
 }
 
 .draft-editor {
-  height:500px;
+  height:800px;
   margin-left: 10px;
 }
 

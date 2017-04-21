@@ -5,18 +5,18 @@ $ever-grey: #dedede;
   display: flex;
   background: white;
 }
-.nav-bar-ul {
-  z-index:1000;
+.nav-bar {
+  min-width: 70px;
   height: 1080px;
+  z-index:1000;
   background: #f3f3f3;
   display: flex;
   flex-direction: column;
   list-style: none;
-  width: 70px;
   text-align: center;
 }
 
-.nav-bar-ul li {
+.nav-bar li {
   position: relative;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -32,6 +32,6 @@ $ever-grey: #dedede;
   border-radius: 5px;
   color: white;
 }
-.nav-bar-ul div:hover .pop-up-text {
+.nav-bar div:hover .pop-up-text {
   display: block;
 }

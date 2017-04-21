@@ -17,32 +17,6 @@ const NavButton = props => {
   let button = "";
 
   const buttonAction = props.buttonName === "LOGOUT" ? handleLogout : handleRedirect;
-  //
-  // if(props.buttonName === "LOGOUT"){
-  //   button =
-  //     <li className="nav-bar">
-  //       <div onClick={ handleRedirect }
-  //         className ={props.buttonName}>
-  //
-  //         <img src={ window.images[props.buttonName] } />
-  //         <p>{props.buttonName}</p>
-  //
-  //       </div>
-  //     </li>
-  // } else {
-  //   button =
-  //   <li className="nav-bar">
-  //     <div onClick={ handleLogout }
-  //       className = "logout-button" >
-  //
-  //       <img src={ window.images[props.buttonName] } />
-  //       <p>LOGOUT</p>
-  //
-  //     </div>
-  //   </li>
-  // }
-  //
-  // debugger
 
   return (
     <li>
