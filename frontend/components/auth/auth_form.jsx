@@ -18,15 +18,17 @@ class AuthForm extends React.Component{
   }
 
   renderErrors() {
-    return(
-      <ul className="error-list">
-        {
-          this.props.errors.map( (error, i) => {
-            return <li key={error}> { error }</li>;
-          })
-        }
-      </ul>
-    );
+    if(this.props.errors){
+      return(
+        <ul className="error-list">
+          {
+            this.props.errors.map( (error, i) => {
+              return <li key={error}> { error }</li>;
+              })
+            }
+          </ul>
+        );      
+    }
   }
 
   componentWillReceiveProps(newProps){

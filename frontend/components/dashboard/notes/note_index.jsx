@@ -23,7 +23,7 @@ class NoteIndex extends React.Component {
 
     return(
       <section className="note-index-section">
-        <h2 className="note-index-header">Notes</h2>
+        <h2 className="note-index-header">NOTES</h2>
         <ul className="note-index-list">
           { notes }
         </ul>
