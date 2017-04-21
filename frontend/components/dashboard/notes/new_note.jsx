@@ -19,8 +19,7 @@ class NewNote extends React.Component{
                           author_id: this.props.currentUserId,
                           notebook_id: 1,
                           body: rawContentString };
-    debugger
-    this.props.createNote(newNote)
+    this.props.createNote(newNote).then(() => hashHistory.push('/'))
   }
 
   update(e){

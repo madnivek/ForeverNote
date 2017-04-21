@@ -12,7 +12,6 @@ class NoteIndex extends React.Component {
 
 
   render(){
-    debugger
     const notes = this.props.notes.map ( note => {
       return(
         <NoteIndexItem
