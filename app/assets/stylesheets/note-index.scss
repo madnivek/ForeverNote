@@ -1,0 +1,86 @@
+
+.note-index-section {
+  position: absolute;
+  left: 85px;
+  display: flex;
+  flex-direction: column;
+  height:100%;
+  width: 350px;
+  border-right: 1px solid lightgrey;
+}
+
+.note-index-header{
+  font-size: 25px;
+  position: relative;
+  display: block;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+.note-index-header:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  height: 1px;
+  width: 70%;
+  border-bottom:1px solid lightgrey;
+  margin: auto;
+}
+
+.note-index-list {
+  overflow-y: scroll;
+  margin-top: 15px;
+}
+
+.note-index-item {
+  position:relative;
+  display: flex;
+  border-bottom: 1px solid grey;
+}
+
+.note-index-item h3{
+  white-space: nowrap;
+  height: 20px;
+  width: 280px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.note-index-item p{
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  max-width: 400px;
+  height: 12*1*4; /* Fallback for non-webkit */
+  margin: 0 auto;
+  font-size: 12;
+  line-height: 1;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  color: grey;
+}
+
+.note-index-item h3, .note-index-item p{
+  margin-bottom: 10px;
+  margin-right: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-index-item h3 {
+  border-bottom: 1px dashed lightgrey;
+}
+
+.note-item-nav {
+  position: absolute;
+  display: none;
+  right: 18px;
+  top: 5px;
+  height: 30px;
+  width: 60%;
+}
+
+.note-index-item:hover .note-item-nav {
+  display: flex;
+  flex-direction:row-reverse;
+}

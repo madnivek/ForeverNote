@@ -23,9 +23,11 @@
   min-width: 50%;
 }
 
-h1 {
+.form-title {
+  text-align: center;
   position: relative;
-  font-size: 25px;
+  margin-top: 5%;
+  font-size: 35px;
   color: white;
   text-shadow: 1px 1px 1px black;
 }
@@ -57,10 +59,11 @@ h1 {
 }
 .auth-form input, .demo-login-button{
   margin-top: 30px;
-  border-radius: 3px;
+  border-radius: 5px;
   width: 80%;
   padding: 7.5px;
   font-size: 18px;
+  font-size: 15px;
 }
 
 .alt-path-link {

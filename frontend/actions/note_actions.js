@@ -41,8 +41,16 @@ export const fetchNotes = () => dispatch => {
   );
 };
 
+
 export const fetchNote = (id) => dispatch => {
   return NotesAPIUtil.fetchNote(id)
+    .then( note => dispatch(receiveNote(note)),
+      err => dispatch(receiveErrors(err))
+  );
+};
+
+export const createNote = (note) => dispatch => {
+  return NotesAPIUtil.createNote(note)
     .then( note => dispatch(receiveNote(note)),
       err => dispatch(receiveErrors(err))
   );

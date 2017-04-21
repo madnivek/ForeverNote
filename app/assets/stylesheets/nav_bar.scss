@@ -27,10 +27,12 @@
 
 .logout-button p {
   display: none;
-  background: rgba(0, 0, 0, .5);
-  padding: 2.5px;
+  background: black;
+  padding: 3.5px;
   color: white;
   border-radius: 2px;
+  border-right: 1px solid lightgrey;
+  font-weight: bold;
 }
 
 .logout-button:hover p {
