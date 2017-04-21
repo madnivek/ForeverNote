@@ -1,59 +1,60 @@
 $ever-green: #2dbe60;
 $ever-grey: #dedede;
 
-.video-bg{
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-}
-
-.top-line {
-  background: $ever-green;
-  height: 5px;
-  position: relative;
+.video-bg {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .splash-video {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: auto;
-  min-height: 50%;
-  min-width: 50%;
+  width: 100%;
 }
 
-.form-title {
-  text-align: center;
+.top-line {
   position: relative;
-  margin-top: 5%;
+  width:100%;
+  top:0px;
+  left: 0px;
+  background: $ever-green;
+  height: 5px;
+}
+
+
+.form-title {
+  position: relative;
+  margin: 20px auto;
   font-size: 35px;
   color: white;
   text-shadow: 1px 1px 1px black;
 }
 
+.auth-logo {
+  opacity: 0.7;
+  position: relative;
+  padding-top: 15px;
+  width: 100px;
+  height: 100px;
+}
+
 
 .auth-form {
   position: relative;
-  margin: 50px auto;
-  text-align: center;
   align-items: center;
-  padding: 40px 30px;
-  width: 300px;
+  padding: 15px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.7);
   border-radius: 2px;
   border: 1px solid $ever-grey;
+  text-align: center;
 }
 
 .submit-button, .demo-login-button {
   background-color: $ever-green;
   border:none;
-  width: 95%;
   box-shadow: 1px 1px 1px black;
   box-sizing: border-box;
   font-weight: bold;
@@ -70,7 +71,8 @@ $ever-grey: #dedede;
 }
 
 .alt-path-link {
-  padding-top: 30px;
+  text-align: center;
+  margin-top: 30px;
   color: black;
 }
 
