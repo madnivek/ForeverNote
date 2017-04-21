@@ -11,7 +11,7 @@ const NavButton = props => {
 
   const handleRedirect = e => {
     e.preventDefault();
-    hashHistory.push(props.redirectLink)
+    hashHistory.push('/notes/new')
   }
 
   let button = "";

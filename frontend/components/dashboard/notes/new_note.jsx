@@ -11,6 +11,11 @@ class NewNote extends React.Component{
     this.update = this.update.bind(this);
   }
 
+  redirectToIndex(e){
+    e.preventDefault();
+    hashHistory.push('/');
+  }
+
   submitNote(e){
     e.preventDefault();
     const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
@@ -39,7 +44,7 @@ class NewNote extends React.Component{
         </div>
 
         <input type="submit" value="Submit" />
-
+        <button onClick={ this.redirectToIndex }>Back</button>
       </form>
     );
   }

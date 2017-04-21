@@ -27,6 +27,9 @@ class NavBar extends React.Component {
 
     return(
       <ul className="nav-bar-ul">
+        <li>
+          <img src={window.images.LOGO}></img>
+        </li>
         { buttons }
       </ul>
     );
