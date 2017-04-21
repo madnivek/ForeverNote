@@ -14,7 +14,10 @@
  *= require_self
  */
 
-body, div, ul, form, h1, h2, h3, header, nav, section, li{
+ $ever-green: #2dbe60;
+ $ever-grey: #dedede;
+
+body, div, ul, form, h1, h2, h3, header, nav, section, li, main{
   margin: 0;
   padding: 0;
   background: transparent;
@@ -26,5 +29,14 @@ body, div, ul, form, h1, h2, h3, header, nav, section, li{
 
 /*GREY BACKGROUND*/
 body {
-  background: #f3f3f3;
+  background: white;
+}
+
+.button {
+  background-color: $ever-green;
+  border:none;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
 }

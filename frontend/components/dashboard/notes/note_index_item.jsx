@@ -13,7 +13,7 @@ const NoteIndexItem = props => {
         <p className="note-item-body">{ convertedBody }</p>
       </div>
       <nav className="note-item-nav">
-        <button onClick={ () => props.deleteNote(props.note.id) }>DELETE</button>
+        <button className="inverse-button" onClick={ () => props.deleteNote(props.note.id) }>DELETE</button>
       </nav>
     </li>
   );

@@ -33,6 +33,7 @@ const Root = ({ store }) => {
         <Route path="/" component={ App } onEnter={ _ensureLoggedIn }>
           <IndexRedirect to="/notes" />
           <Route path="/notes" component={ NoteIndexContainer } onEnter={ _ensureLoggedIn } />
+          <Route path="/notes/:noteId" component={ NewNoteContainer } onEnter={ _ensureLoggedIn } />
         </Route>
       </Router>
     </Provider>

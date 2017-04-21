@@ -100,3 +100,13 @@ $ever-grey: #dedede;
     color: white;
   }
 }
+
+.inverse-button {
+  background-color: white ;
+  border:none;
+  box-shadow: 1px 1px 1px black;
+  box-sizing: border-box;
+  font-weight: bold;
+  color: $ever-green;
+  cursor: pointer;
+}

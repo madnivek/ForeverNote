@@ -79,17 +79,23 @@ class AuthForm extends React.Component{
 
       altLink = <p><Link to='/signup' className='alt-path-link'>Create Account</Link></p>
 
-      demoUserButton = <button className="demo-login-button" onClick={ this.handleDemoLogin }>Demo User Login!</button>
+      demoUserButton = <button className="button demo-login-button" onClick={ this.handleDemoLogin }>Demo User Login!</button>
 
     }
+
+    // <video className="splash-video" loop="loop" autoPlay="autoplay">
+    //   <source className="webm" type="video/webm" src="https://cdn1.evernote.com/evernote.com/video/homepage/homepage-hero-video.webm"/>
+    //   <source className="mp4" type="video/mp4" src="https://cdn1.evernote.com/evernote.com/video/homepage/homepage-hero-video.mp4"/>
+    // </video>
 
     return(
       <div className="auth-form-parent">
         <header className="top-line"></header>
         <div className="video-bg">
+
           <video className="splash-video" loop="loop" autoPlay="autoplay">
-            <source className="webm" type="video/webm" src="https://cdn1.evernote.com/evernote.com/video/homepage/homepage-hero-video.webm"/>
-            <source className="mp4" type="video/mp4" src="https://cdn1.evernote.com/evernote.com/video/homepage/homepage-hero-video.mp4"/>
+            <source type="video/mp4" src="//ak4.picdn.net/shutterstock/videos/2739824/preview/stock-footage-old-yellow-colored-turtle-slowly-moving-through-the-scene-on-green-grass-shot-during-hot-sunny-day.mp4"/>
+            <source type="video/webm" src="//ak4.picdn.net/shutterstock/videos/2739824/preview/stock-footage-old-yellow-colored-turtle-slowly-moving-through-the-scene-on-green-grass-shot-during-hot-sunny-day.webm"/>
           </video>
 
           <img className="auth-logo" src={ window.images.LOGO_LARGE }></img>
@@ -116,7 +122,7 @@ class AuthForm extends React.Component{
               onChange={ this.update('password') } />
 
 
-            <input type="submit" value={formTitle} className='submit-button' />
+            <input type="submit" value={formTitle} className='button submit-button' />
 
             { demoUserButton }
 

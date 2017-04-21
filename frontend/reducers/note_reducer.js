@@ -5,6 +5,7 @@ import merge from 'lodash/merge';
 
 const _defaultState = {
   notes: {},
+  currentNote: {},
   errors: []
 };
 
@@ -18,6 +19,8 @@ const NoteReducer = (oldState = _defaultState, action) => {
     case RECEIVE_NOTE: {
       const newState = merge({}, oldState);
       newState.notes[action.note.id] = action.note;
+      newState.currentNote = action.note;
+      debugger
       return newState;
     }
 

@@ -1,0 +1,63 @@
+$ever-green: #2dbe60;
+$ever-grey: #dedede;
+
+.form-parent-container {
+  background: white;
+  margin: auto;
+  width:90%;
+}
+
+.form-parent-container * {
+  margin-bottom: 10px;
+}
+
+.form-parent-container .button {
+  margin: 0 10px;
+  padding: 5px 10px;
+}
+
+.rich-text-nav .button {
+  margin:0px;
+}
+
+.cancel-back {
+  display: flex;
+  justify-content: flex-end;
+  margin: 25px 0px 0px 10px;
+  padding-bottom: 0px;
+}
+
+.rich-text-nav {
+  display: flex;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border-bottom: 1px solid $ever-grey;
+}
+
+.draft-editor {
+  height:500px;
+  margin-left: 10px;
+}
+
+
+.rich-text-nav button {
+  color: black;
+  background: white;
+}
+
+.new-form-title {
+  margin-left: 10px;
+  border: none;
+  width:100%;
+  color: $ever-green;
+  font-size: 20px;
+}
+
+.new-form-title::-webkit-input-placeholder  { /* Chrome */
+  color: $ever-green;
+}
+
+.new-form-title:focus {
+  border: none;
+  padding: 5px;
+}

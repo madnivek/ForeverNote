@@ -1,0 +1,37 @@
+$ever-green: #2dbe60;
+$ever-grey: #dedede;
+
+.app-container {
+  display: flex;
+  background: white;
+}
+.nav-bar-ul {
+  z-index:1000;
+  height: 1080px;
+  background: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  width: 70px;
+  text-align: center;
+}
+
+.nav-bar-ul li {
+  position: relative;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.pop-up-text {
+  display: none;
+  position: absolute;
+  left: 59px;
+  top: 5px;
+  background: rgba(0,0,0,0.7);
+  padding: 3.5px;
+  border-radius: 5px;
+  color: white;
+}
+.nav-bar-ul div:hover .pop-up-text {
+  display: block;
+}

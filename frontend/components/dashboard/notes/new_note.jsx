@@ -1,6 +1,6 @@
 import React from 'react';
 import { convertFromRaw, convertToRaw, Editor, EditorState } from 'draft-js';
-import { hashHistory } from 'react-router';;
+import { hashHistory } from 'react-router';
 
 class NewNote extends React.Component{
   constructor(props){
@@ -33,19 +33,42 @@ class NewNote extends React.Component{
 
   render() {
     return(
-      <form onSubmit={ this.submitNote }>
+      <div className='form-parent-container'>
 
-        <label>Title:
-          <input onChange={ this.update } type="text"></input>
-        </label>
 
-        <div className="draft-editor">
-          <Editor editorState={this.state.editorState} onChange={this.onChange} />
-        </div>
+        <form onSubmit={ this.submitNote }>
+          <div className="cancel-back">
 
-        <input type="submit" value="Submit" />
-        <button onClick={ this.redirectToIndex }>Back</button>
-      </form>
+            <button className="button"
+              onClick={ this.redirectToIndex }>Cancel</button>
+
+            <input className="button" type="submit" value="Submit" />
+
+          </div>
+
+          <nav className="rich-text-nav">
+            <button className="button">B</button>
+            <button className="button">I</button>
+            <button className="button">U</button>
+          </nav>
+
+
+          <input
+            className="new-form-title"
+            placeholder="Title your note"
+            onChange={ this.update }
+            type="text"></input>
+
+
+          <div className="draft-editor">
+            <Editor
+              height="500"
+              editorState={this.state.editorState}
+              onChange={this.onChange} />
+          </div>
+
+        </form>
+      </div>
     );
   }
 }
