@@ -42,6 +42,7 @@ $ever-grey: #dedede;
 
 .form-title {
   margin: 20px auto;
+  margin-top: 15px;
   font-size: 35px;
   color: white;
   text-shadow: 1px 1px 1px black;
@@ -49,7 +50,7 @@ $ever-grey: #dedede;
 
 .auth-logo {
   opacity: 0.7;
-  padding-top: 100px;
+  padding-top: 80px;
   width: 100px;
   height: 100px;
 }
@@ -60,29 +61,28 @@ $ever-grey: #dedede;
   align-items: center;
   padding: 15px;
   width: 250px;
+  height: 300px;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.7);
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 2px;
   border: 1px solid $ever-grey;
-  text-align: center;
 }
 
-.auth-form input, .demo-login-button{
+.form-text-input, .submit-button, .demo-login-button{
+  background: white;
   border:none;
-  margin-top: 30px;
   border-radius: 5px;
   width: 80%;
   padding: 7.5px;
   font-size: 18px;
   font-size: 15px;
+  text-align: center;
 }
-
-
 
 .alt-path-link {
   text-align: center;
-  margin-top: 30px;
   color: black;
 }
 

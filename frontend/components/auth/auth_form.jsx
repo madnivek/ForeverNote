@@ -67,6 +67,7 @@ class AuthForm extends React.Component{
 
     let demoUserButton = ""
     let emailInput = <input
+      className="form-text-input"
       onChange={ this.update('email') }
       type="input"
       placeholder="Email"
@@ -113,12 +114,14 @@ class AuthForm extends React.Component{
               { emailInput }
 
               <input
+                className="form-text-input"
                 type="text"
                 value={this.state.username}
                 placeholder="Username"
                 onChange={ this.update('username') } />
 
               <input
+                className="form-text-input"
                 type="password"
                 value={this.state.password}
                 placeholder="Password"
