@@ -1,7 +1,11 @@
 class Api::NotesController < ApplicationController
-  before_action :require_logged_in
+  before_action :require_logged_in, except: [:index]
   def index
-    @notes = Note.where(author_id: current_user.id)
+    if(logged_in?)
+      @notes = Note.where(author_id: current_user.id) if logged_in?
+    else
+      @notes = [];
+    end
     render :index
   end
 

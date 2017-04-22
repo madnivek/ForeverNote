@@ -5,11 +5,14 @@ $ever-grey: #dedede;
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: flex-end;
 }
 
 .splash-video {
   position: absolute;
-  height: 115%;
+  bottom: -30px;
+  width: 1150px;
+  height: 1000px;
 }
 
 .top-line {
