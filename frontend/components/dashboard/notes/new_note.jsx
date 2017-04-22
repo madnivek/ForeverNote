@@ -42,7 +42,6 @@ class NewNote extends React.Component{
     e.preventDefault();
     let { id, title, author_id, notebook_id } = this.state;
 
-    debugger
     if(this.props.formType === 'new') {
       author_id = this.props.currentUser.id;
       notebook_id = 1
