@@ -12,12 +12,18 @@ const _convertFromRaw = (rawContentString) => {
 const mapStateToProps = ({ session, notes_slice }, ownProps) => {
   let currentNoteRaw = {  title: "", editorState: EditorState.createEmpty()};
 
-  let formType = ownProps.location.pathname === '/notes/new' ? "new" : "edit"
+  let formType = ownProps.location.pathname === '/notes/new' ? "new" : "edit";
+
+  let note = notes_slice.notes[ownProps.params.noteId];
+  
+  if(!note) {
+    note = notes_slice.currentNote
+  }
 
   if(formType === "edit"){
-    const contentState = _convertFromRaw(notes_slice.currentNote.body.trim());
-    currentNoteRaw.id = notes_slice.currentNote.id
-    currentNoteRaw.title = notes_slice.currentNote.title
+    const contentState = _convertFromRaw(note.body.trim());
+    currentNoteRaw.id = note.id;
+    currentNoteRaw.title = note.title;
     currentNoteRaw.editorState = EditorState.createWithContent(contentState);
   }
 

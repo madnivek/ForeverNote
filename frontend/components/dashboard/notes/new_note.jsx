@@ -64,9 +64,14 @@ class NewNote extends React.Component{
           </div>
 
           <nav className="rich-text-nav">
-            <button className="button">B</button>
-            <button className="button">I</button>
-            <button className="button">U</button>
+            <button className="button"><i className="fa fa-bold" aria-hidden="true"></i></button>
+            <button className="button"><i className="fa fa-italic" aria-hidden="true"></i></button>
+            <button className="button"><i className="fa fa-underline" aria-hidden="true"></i></button>
+            <button className="button"><i className="fa fa-strikethrough" aria-hidden="true"></i></button>
+            <button className="button"><i className="fa fa-align-left" aria-hidden="true"></i></button>
+            <button className="button"><i className="fa fa-align-center" aria-hidden="true"></i></button>
+            <button className="button"><i className="fa fa-align-right" aria-hidden="true"></i></button>
+            <button className="button"><i className="fa fa-align-justify" aria-hidden="true"></i></button>
           </nav>
 
 
