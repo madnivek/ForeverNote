@@ -1,6 +1,6 @@
 class Note < ApplicationRecord
   #ADD AUTHOR AND NOTEBOOK LATER
-  validates :title, :body, :author, presence: true
+  validates :body, :author, presence: true
 
 
   belongs_to(
