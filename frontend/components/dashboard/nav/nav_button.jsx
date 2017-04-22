@@ -31,7 +31,8 @@ class NavButton extends React.Component {
   };
 
   handleRedirect(e) {
-
+    e.preventDefault();
+    hashHistory.push('/notes/new');
   }
 
   render(){
