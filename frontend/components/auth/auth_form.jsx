@@ -93,43 +93,46 @@ class AuthForm extends React.Component{
         <header className="top-line"></header>
         <div className="video-bg">
 
-          <video className="splash-video" loop="loop" autoPlay="autoplay">
-            <source type="video/mp4" src="//ak4.picdn.net/shutterstock/videos/2739824/preview/stock-footage-old-yellow-colored-turtle-slowly-moving-through-the-scene-on-green-grass-shot-during-hot-sunny-day.mp4"/>
-            <source type="video/webm" src="//ak4.picdn.net/shutterstock/videos/2739824/preview/stock-footage-old-yellow-colored-turtle-slowly-moving-through-the-scene-on-green-grass-shot-during-hot-sunny-day.webm"/>
-          </video>
+          <div className="splash-video">
+            <video loop="loop" autoPlay="autoplay">
+              <source type="video/mp4" src="//ak4.picdn.net/shutterstock/videos/2739824/preview/stock-footage-old-yellow-colored-turtle-slowly-moving-through-the-scene-on-green-grass-shot-during-hot-sunny-day.mp4"/>
+              <source type="video/webm" src="//ak4.picdn.net/shutterstock/videos/2739824/preview/stock-footage-old-yellow-colored-turtle-slowly-moving-through-the-scene-on-green-grass-shot-during-hot-sunny-day.webm"/>
+            </video>
+          </div>
 
-          <img className="auth-logo" src={ window.images.LOGO_LARGE }></img>
+          <div className="form-content">
+            <img className="auth-logo" src={ window.images.LOGO_LARGE }></img>
 
-          <h1 className="form-title">{ formTitle }</h1>
-
-
-          <form className="auth-form" onSubmit={ this.handleSubmit }>
-
-            { this.renderErrors() }
-
-            { emailInput }
-
-            <input
-              type="text"
-              value={this.state.username}
-              placeholder="Username"
-              onChange={ this.update('username') } />
-
-            <input
-              type="password"
-              value={this.state.password}
-              placeholder="Password"
-              onChange={ this.update('password') } />
+            <h1 className="form-title">{ formTitle }</h1>
 
 
-            <input type="submit" value={formTitle} className='button submit-button' />
+            <form className="auth-form" onSubmit={ this.handleSubmit }>
 
-            { demoUserButton }
+              { this.renderErrors() }
 
-            { altLink }
+              { emailInput }
+
+              <input
+                type="text"
+                value={this.state.username}
+                placeholder="Username"
+                onChange={ this.update('username') } />
+
+              <input
+                type="password"
+                value={this.state.password}
+                placeholder="Password"
+                onChange={ this.update('password') } />
 
 
-          </form>
+              <input type="submit" value={formTitle} className='button submit-button' />
+
+              { demoUserButton }
+
+              { altLink }
+
+            </form>
+          </div>
         </div>
 
 
