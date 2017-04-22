@@ -14,15 +14,12 @@ const mapStateToProps = ({ session, notes_slice }, ownProps) => {
 
   let formType = ownProps.location.pathname === '/notes/new' ? "new" : "edit"
 
-  debugger
-  if(formType === "edit" || ownProps.params.noteId){
+  if(formType === "edit"){
     const contentState = _convertFromRaw(notes_slice.currentNote.body.trim());
     currentNoteRaw.id = notes_slice.currentNote.id
     currentNoteRaw.title = notes_slice.currentNote.title
     currentNoteRaw.editorState = EditorState.createWithContent(contentState);
   }
-  debugger
-
 
   return {
     currentUserId: session.currentUser.id,

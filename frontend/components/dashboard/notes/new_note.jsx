@@ -16,16 +16,12 @@ class NewNote extends React.Component{
     hashHistory.push('/');
   }
 
-  componentWillReceiveProps(newProps){
-    debugger
-    if(this.props.location.pathname !== newProps.location.pathname){
-      debugger
-      this.props.fetchNote(newProps.params.noteId);
-    }
-  }
-
   _convertFromRaw(rawContentString){
     return JSON.parse(rawContentString)
+  }
+
+  componentWillReceiveProps(newProps){
+      this.setState(newProps.currentNoteRaw);
   }
 
   submitNote(e){
