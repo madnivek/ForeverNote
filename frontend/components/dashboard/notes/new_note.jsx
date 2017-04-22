@@ -1,5 +1,5 @@
 import React from 'react';
-import { convertFromRaw, convertToRaw, Editor} from 'draft-js';
+import { convertFromRaw, convertToRaw, Editor, RichUtils } from 'draft-js';
 import { hashHistory } from 'react-router';
 
 class NewNote extends React.Component{
@@ -9,6 +9,7 @@ class NewNote extends React.Component{
     this.onChange = (editorState) => this.setState({editorState});
     this.submitNote = this.submitNote.bind(this);
     this.update = this.update.bind(this);
+    this._toggleInlineStyle = this._toggleInlineStyle.bind(this)
   }
 
   redirectToIndex(e){
@@ -22,6 +23,18 @@ class NewNote extends React.Component{
 
   componentWillReceiveProps(newProps){
       this.setState(newProps.currentNoteRaw);
+  }
+
+  _toggleInlineStyle(inlineStyle) {
+    return (e) => {
+      e.preventDefault();
+      this.onChange(
+        RichUtils.toggleInlineStyle(
+          this.state.editorState,
+          inlineStyle
+        )
+      );
+    };
   }
 
   submitNote(e){
@@ -64,14 +77,14 @@ class NewNote extends React.Component{
           </div>
 
           <nav className="rich-text-nav">
-            <button className="button"><i className="fa fa-bold" aria-hidden="true"></i></button>
-            <button className="button"><i className="fa fa-italic" aria-hidden="true"></i></button>
-            <button className="button"><i className="fa fa-underline" aria-hidden="true"></i></button>
-            <button className="button"><i className="fa fa-strikethrough" aria-hidden="true"></i></button>
-            <button className="button"><i className="fa fa-align-left" aria-hidden="true"></i></button>
-            <button className="button"><i className="fa fa-align-center" aria-hidden="true"></i></button>
-            <button className="button"><i className="fa fa-align-right" aria-hidden="true"></i></button>
-            <button className="button"><i className="fa fa-align-justify" aria-hidden="true"></i></button>
+            <span onMouseDown={ this._toggleInlineStyle("BOLD") } className="button"><i className="fa fa-bold" aria-hidden="true"></i></span>
+            <span onMouseDown={ this._toggleInlineStyle("ITALIC") } className="button"><i className="fa fa-italic" aria-hidden="true"></i></span>
+            <span onMouseDown={ this._toggleInlineStyle("UNDERLINE") } className="button"><i className="fa fa-underline" aria-hidden="true"></i></span>
+            <span onMouseDown={ this._toggleInlineStyle("STRIKETHROUGH") } className="button"><i className="fa fa-strikethrough" aria-hidden="true"></i></span>
+            <span onMouseDown={ this._toggleInlineStyle("CODE") } className="button"><i className="fa fa-align-left" aria-hidden="true"></i></span>
+            <span className="button"><i className="fa fa-align-center" aria-hidden="true"></i></span>
+            <span className="button"><i className="fa fa-align-right" aria-hidden="true"></i></span>
+            <span className="button"><i className="fa fa-align-justify" aria-hidden="true"></i></span>
           </nav>
 
 

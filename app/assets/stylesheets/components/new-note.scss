@@ -20,6 +20,13 @@ $ever-grey: #dedede;
 
 .rich-text-nav .button {
   margin:0px;
+  background-color: white;
+  color: black;
+  font-size: 14px;
+}
+
+.rich-text-nav span:hover {
+  color: $ever-green;
 }
 
 .cancel-back {
