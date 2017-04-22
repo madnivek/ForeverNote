@@ -73,7 +73,7 @@ class NewNote extends React.Component{
             <button className="button"
               onClick={ this.redirectToIndex }>Cancel</button>
 
-            <input className="button" type="submit" value="Submit" />
+            <input className="button" type="submit" value="Save Note" />
 
           </div>
 
