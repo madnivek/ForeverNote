@@ -75,6 +75,10 @@ $ever-grey: #dedede;
   color: grey;
 }
 
+.note-index-item:hover {
+  cursor: pointer;
+}
+
 .note-index-item h3, .note-index-item p{
   margin-bottom: 10px;
   margin-right: 10px;
@@ -105,11 +109,9 @@ $ever-grey: #dedede;
 }
 
 .inverse-button {
-  background-color: white ;
+  color: white ;
   border:none;
-  box-shadow: 1px 1px 1px black;
-  box-sizing: border-box;
-  font-weight: bold;
-  color: $ever-green;
+  background: transparent;
   cursor: pointer;
+  font-size: 18px;
 }

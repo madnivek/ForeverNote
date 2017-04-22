@@ -1,33 +1,55 @@
 import React from 'react';
 import { hashHistory } from 'react-router';
 
-const NavButton = props => {
+class NavButton extends React.Component {
 
-  const handleLogout = e => {
+  constructor(props){
+    super(props);
+    this.state = { imgSrc: window.images[this.props.buttonName] }
+    this.handleLogout = this.handleLogout.bind(this);
+    this.handleRedirect = this.handleRedirect.bind(this);
+    this.handleMouseOver = this.handleMouseOver.bind(this);
+    this.handleMouseOut = this.handleMouseOut.bind(this);
+  }
+
+  handleMouseOver() {
+    this.setState({
+      imgSrc: window.images[this.props.buttonNameHov]
+    });
+  }
+
+  handleMouseOut() {
+    this.setState({
+      imgSrc: window.images[this.props.buttonName]
+    });
+  }
+
+  handleLogout(e) {
     e.preventDefault();
-    props.logout().
+    this.props.logout().
       then( () => hashHistory.push('/login'));
   };
 
-  const handleRedirect = e => {
+  handleRedirect(e) {
     e.preventDefault();
     hashHistory.push('/notes/new')
   }
 
-  let button = "";
+  render(){
+    let button = "";
+    const buttonAction = this.props.buttonName === "LOGOUT" ? this.handleLogout : this.handleRedirect;
 
-  const buttonAction = props.buttonName === "LOGOUT" ? handleLogout : handleRedirect;
+    return (
+      <li>
+        <div className="nav-bar-button" onClick={ buttonAction } onMouseOver={ this.handleMouseOver } onMouseOut={ this.handleMouseOut } >
 
-  return (
-    <li>
-      <div onClick={ buttonAction }>
+          <img  src={ this.state.imgSrc }  />
+          <p className="pop-up-text">{this.props.buttonName}</p>
 
-        <img src={ window.images[props.buttonName] } />
-        <p className="pop-up-text">{props.buttonName}</p>
-
-      </div>
-    </li>
-  );
-};
+        </div>
+      </li>
+    );
+  }
+}
 
 export default NavButton;

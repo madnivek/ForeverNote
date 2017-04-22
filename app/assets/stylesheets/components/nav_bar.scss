@@ -32,6 +32,8 @@ $ever-grey: #dedede;
   border-radius: 5px;
   color: white;
 }
-.nav-bar div:hover .pop-up-text {
+
+.nav-bar-button:hover .pop-up-text, .nav-bar-button{
   display: block;
+  cursor:pointer;
 }
