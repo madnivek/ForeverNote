@@ -31,12 +31,11 @@ class NavButton extends React.Component {
   };
 
   handleRedirect(e) {
-    e.preventDefault();
-    hashHistory.push('/notes/new')
+
   }
 
   render(){
-    let button = "";
+
     const buttonAction = this.props.buttonName === "LOGOUT" ? this.handleLogout : this.handleRedirect;
 
     return (

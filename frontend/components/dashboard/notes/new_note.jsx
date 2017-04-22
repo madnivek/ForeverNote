@@ -39,7 +39,7 @@ class NewNote extends React.Component{
 
   submitNote(e){
     e.preventDefault();
-    let { id, title, author_id, notebook_id } = this.state;
+    let { currentUser, title, author_id, notebook_id } = this.state;
 
     if(this.props.formType === 'new') {
       author_id = this.props.currentUserId,
@@ -48,7 +48,7 @@ class NewNote extends React.Component{
 
     const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
     const rawContentString = JSON.stringify(rawContent);
-    const note = { id, title, author_id, notebook_id, body: rawContentString }
+    const note = { id: currentUser.id , title, author_id, notebook_id, body: rawContentString }
     this.props.processForm(note)
       .then( () => {
         if(this.props.formType === 'new'){
