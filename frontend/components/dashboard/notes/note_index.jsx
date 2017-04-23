@@ -7,10 +7,6 @@ class NoteIndex extends React.Component {
     super(props);
   }
 
-  componentWillMount(){
-    this.props.fetchNotes();
-  }
-
   render(){
     const notes = this.props.notes.map ( note => {
       return(

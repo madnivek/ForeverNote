@@ -8,6 +8,7 @@
 
 User.destroy_all
 Note.destroy_all
+Notebook.destroy_all
 
 # USERS
 

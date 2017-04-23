@@ -1,5 +1,5 @@
 import React from 'react';
-import { convertFromRaw, convertToRaw, Editor, RichUtils } from 'draft-js';
+import { convertFromRaw, convertToRaw, Editor, RichUtils, Draft} from 'draft-js';
 import { hashHistory } from 'react-router';
 
 class NewNote extends React.Component{
@@ -10,7 +10,9 @@ class NewNote extends React.Component{
     this.submitNote = this.submitNote.bind(this);
     this.update = this.update.bind(this);
     this._toggleInlineStyle = this._toggleInlineStyle.bind(this)
+    this.focus = () => this.refs.editor.focus();
   }
+
 
   redirectToIndex(e){
     e.preventDefault();
@@ -64,7 +66,7 @@ class NewNote extends React.Component{
 
   render() {
     return(
-      <div className='form-parent-container'>
+      <div className='form-parent-container' onClick={ this.focus }>
 
 
         <form onSubmit={ this.submitNote }>
@@ -82,10 +84,6 @@ class NewNote extends React.Component{
             <span onMouseDown={ this._toggleInlineStyle("ITALIC") } className="button"><i className="fa fa-italic" aria-hidden="true"></i></span>
             <span onMouseDown={ this._toggleInlineStyle("UNDERLINE") } className="button"><i className="fa fa-underline" aria-hidden="true"></i></span>
             <span onMouseDown={ this._toggleInlineStyle("STRIKETHROUGH") } className="button"><i className="fa fa-strikethrough" aria-hidden="true"></i></span>
-            <span onMouseDown={ this._toggleInlineStyle("CODE") } className="button"><i className="fa fa-align-left" aria-hidden="true"></i></span>
-            <span className="button"><i className="fa fa-align-center" aria-hidden="true"></i></span>
-            <span className="button"><i className="fa fa-align-right" aria-hidden="true"></i></span>
-            <span className="button"><i className="fa fa-align-justify" aria-hidden="true"></i></span>
           </nav>
 
 
@@ -99,6 +97,9 @@ class NewNote extends React.Component{
           <div className="draft-editor">
             <Editor
               height="500"
+              spellCheck={true}
+              ref="editor"
+              placeholder="Just start typing..."
               editorState={this.state.editorState}
               onChange={this.onChange} />
           </div>
@@ -110,3 +111,7 @@ class NewNote extends React.Component{
 }
 
 export default NewNote;
+
+// <span className="button"><i className="fa fa-align-center" aria-hidden="true"></i></span>
+// <span className="button"><i className="fa fa-align-right" aria-hidden="true"></i></span>
+// <span className="button"><i className="fa fa-align-justify" aria-hidden="true"></i></span>

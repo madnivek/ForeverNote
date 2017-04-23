@@ -8,7 +8,7 @@ const NoteIndexItem = props => {
   const convertedBody = convertFromRaw(JSON.parse(props.note.body)).getPlainText();
 
   const getNote = id => {
-    props.fetchNote(id);
+    hashHistory.push(`/notes/${id}`)
   };
 
   const handleDelete = id => e => {

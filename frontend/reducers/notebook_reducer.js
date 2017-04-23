@@ -1,4 +1,4 @@
-import { RECEIVE_NOTE, RECEIVE_NOTES, RECEIVE_ERRORS, REMOVE_NOTE} from
+import { RECEIVE_NOTEBOOK, RECEIVE_NOTEBOOKS, RECEIVE_ERRORS, REMOVE_NOTEBOOK} from
   '../actions/note_actions';
 
 import merge from 'lodash/merge';
@@ -10,33 +10,33 @@ const _defaultState = {
   errors: []
 };
 
-const NoteReducer = (oldState = _defaultState, action) => {
+const NotebookReducer = (oldState = _defaultState, action) => {
   Object.freeze(oldState);
   switch(action.type){
-    case RECEIVE_NOTES: {
-      const rNotesNewState = merge({}, oldState);
-      rNotesNewState.notes = action.notes;
-      rNotesNewState.errors = [];
-      return rNotesNewState;
+    case RECEIVE_NOTEBOOKS: {
+      const newState1 = merge({}, oldState);
+      newState1.notes = action.notebooks;
+      newState1.errors = [];
+      return newState1;
     }
 
-    case RECEIVE_NOTE: {
-      const rNoteNewState = Object.assign({}, oldState);
-      rNoteNewState.notes[action.note.id] = action.note;
-      rNoteNewState.currentNote = action.note;
-      return rNoteNewState;
+    case RECEIVE_NOTEBOOK: {
+      const newState2 = Object.assign({}, oldState);
+      newState2.notes[action.note.id] = action.notebook;
+      newState2.currentNote = action.notebook;
+      return newState2;
     }
 
-    case REMOVE_NOTE: {
-      const rmNoteNewState = merge({}, oldState);
-      delete rmNoteNewState.notes[action.note.id];
-      return rmNoteNewState;
+    case REMOVE_NOTEBOOK: {
+      const newState3 = merge({}, oldState);
+      delete newState3.notes[action.notebook.id];
+      return newState3;
     }
 
     case RECEIVE_ERRORS: {
-      const rErrNewState = merge({}, oldState);
-      rErrNewState.errors = action.errors;
-      return rErrNewState;
+      const newState4 = merge({}, oldState);
+      newState4.errors = action.errors;
+      return newState4;
     }
 
     default: {
@@ -45,4 +45,4 @@ const NoteReducer = (oldState = _defaultState, action) => {
   }
 };
 
-export default NoteReducer;
+export default NotebookReducer;

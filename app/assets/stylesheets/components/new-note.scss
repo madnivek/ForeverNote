@@ -43,12 +43,28 @@ $ever-grey: #dedede;
   border-bottom: 1px solid $ever-grey;
 }
 
-.draft-editor {
-  background: rgba(240, 240, 240, 1);
-  padding:10px;
-  margin-left: 5px;
+.draft-editor div{
+  cursor: text;
+  margin:0;
 }
 
+.draft-editor .public-DraftEditorPlaceholder-root {
+  position: absolute;
+  margin-left: 10px;
+  padding: 10px;
+  color: grey;
+}
+
+.draft-editor .public-DraftEditor-content{
+  border: 1px solid rgba(240, 240, 240, 1);
+  margin-left: 10px;
+  padding: 10px;
+}
+
+
+.draft-editor .public-DraftEditor-content {
+  min-height: 100px;
+}
 
 .rich-text-nav button {
   color: black;
