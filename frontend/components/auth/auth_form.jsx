@@ -43,18 +43,24 @@ class AuthForm extends React.Component{
     e.preventDefault();
     this.props.processForm(this.state)
       .then(
-        () => hashHistory.push('/'),
-        this.setState(this.default)
+        () => {
+          hashHistory.push('/');
+          this.props.clearErrors();
+        },
+        () => this.setState(this.default)
       );
   }
 
   handleDemoLogin(e) {
     e.preventDefault();
     this.props.processForm({username: "harry", password: "potter"})
-      .then(
-        () => hashHistory.push('/'),
-        this.setState(this.default)
-      );
+    .then(
+      () => {
+        hashHistory.push('/');
+        this.props.clearErrors();
+      },
+      () => this.setState(this.default)
+    );
   }
 
   render(){
