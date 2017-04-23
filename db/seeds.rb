@@ -96,6 +96,9 @@ note_4 = Note.create!(author_id: demouser.id,
       TEXT
 )
 
+notebook1 = Notebook.create!(title: "Harry's Notes", author_id: demouser.id )
+notebook2 = Notebook.create!(title: "Harry's Bucket List", author_id: demouser.id)
+
 #
 #
 #

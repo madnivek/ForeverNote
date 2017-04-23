@@ -10,6 +10,8 @@ class Note < ApplicationRecord
     foreign_key: :author_id
   )
 
+  belongs_to :notebook
+
 # belongs_to :notebook
 # has_many :tags through: taggings
 

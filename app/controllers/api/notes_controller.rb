@@ -1,8 +1,9 @@
 class Api::NotesController < ApplicationController
   before_action :require_logged_in, except: [:index]
+
   def index
     if(logged_in?)
-      @notes = Note.where(author_id: current_user.id) if logged_in?
+      @notes = current_user.notes
     else
       @notes = [];
     end
@@ -34,7 +35,7 @@ class Api::NotesController < ApplicationController
 
   def destroy
     @note = Note.find(params[:id])
-    @note.destroy
+    @note.destroy!
     render :show
   end
 
