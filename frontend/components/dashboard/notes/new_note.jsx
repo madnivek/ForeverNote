@@ -66,7 +66,7 @@ class NewNote extends React.Component{
 
   render() {
     return(
-      <div className='form-parent-container' onClick={ this.focus }>
+      <div className='form-parent-container' >
 
 
         <form onSubmit={ this.submitNote }>
@@ -94,7 +94,7 @@ class NewNote extends React.Component{
             type="text" value={this.state.title}/>
 
 
-          <div className="draft-editor">
+          <div className="draft-editor" onClick={ this.focus }>
             <Editor
               height="500"
               spellCheck={true}
