@@ -2,10 +2,10 @@ class Api::NotebooksController < ApplicationController
   before_action :require_logged_in, except: [:index]
 
   def index
-    if(logged_in?)
-      @notes = current_user.notebooks
+    if logged_in?
+      @notebooks = current_user.notebooks
     else
-      @notes = [];
+      @notebooks = []
     end
     render :index
   end
@@ -41,6 +41,8 @@ class Api::NotebooksController < ApplicationController
 
   private
 
-  params.require(:notebook).permit(:title, :author_id)
+  def notebook_params
+    params.require(:notebook).permit(:title, :author_id)
+  end
 
 end

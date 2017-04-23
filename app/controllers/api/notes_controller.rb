@@ -2,7 +2,7 @@ class Api::NotesController < ApplicationController
   before_action :require_logged_in, except: [:index]
 
   def index
-    if(logged_in?)
+    if logged_in?
       @notes = current_user.notes
     else
       @notes = [];

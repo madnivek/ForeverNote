@@ -56,8 +56,11 @@ def fake_body
   array.join(". ")
 end
 
+notebook1 = Notebook.create!(title: "Harry's Notes", author_id: demouser.id )
+notebook2 = Notebook.create!(title: "Harry's Bucket List", author_id: demouser.id)
+
 note_1 = Note.create!(author_id: demouser.id,
-      notebook_id: 1,
+      notebook_id: notebook1.id,
       title: "Harry's Chamber of Secrets",
       body: <<-TEXT
 
@@ -67,7 +70,7 @@ note_1 = Note.create!(author_id: demouser.id,
 )
 
 note_2 = Note.create!(author_id: demouser.id,
-      notebook_id: 1,
+      notebook_id: notebook1.id,
       title: "Notes to Sirius",
       body: <<-TEXT
 
@@ -77,7 +80,7 @@ note_2 = Note.create!(author_id: demouser.id,
 )
 
 note_3 = Note.create!(author_id: demouser.id,
-      notebook_id: 1,
+      notebook_id: notebook1.id,
       title: "Hogwarts Reunion Planning",
       body: <<-TEXT
 
@@ -87,7 +90,7 @@ note_3 = Note.create!(author_id: demouser.id,
 )
 
 note_4 = Note.create!(author_id: demouser.id,
-      notebook_id: 1,
+      notebook_id: notebook1.id,
       title: "New Spell Ideas",
       body: <<-TEXT
 
@@ -96,8 +99,6 @@ note_4 = Note.create!(author_id: demouser.id,
       TEXT
 )
 
-notebook1 = Notebook.create!(title: "Harry's Notes", author_id: demouser.id )
-notebook2 = Notebook.create!(title: "Harry's Bucket List", author_id: demouser.id)
 
 #
 #

@@ -2,7 +2,7 @@ class Notebook < ApplicationRecord
   validates :title, :author, presence: true;
 
   belongs_to(
-    :owner,
+    :author,
     class_name: 'User',
     primary_key: :id,
     foreign_key: :author_id
