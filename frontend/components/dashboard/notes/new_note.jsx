@@ -93,7 +93,7 @@ class NewNote extends React.Component{
 
           <div className="title-and-content">
             <input
-              className="new-form-title"
+              className="new-title"
               placeholder="Title your note"
               onChange={ this.update }
               type="text" value={this.state.title}/>

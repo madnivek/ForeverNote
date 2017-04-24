@@ -1,0 +1,33 @@
+$ever-green: #2dbe60;
+$ever-grey: #dedede;
+
+.new-notebook-parent{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+}
+
+.new-notebook-form{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.new-notebook-form h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-variant: small-caps;
+  color: grey;
+}
+
+.notebook-input{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.new-notebook-button {
+  padding: 8px 15px;
+}

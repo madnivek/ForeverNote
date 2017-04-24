@@ -5,7 +5,7 @@ class NavButton extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = { imgSrc: window.images[this.props.buttonName] }
+    this.state = { imgSrc: window.images[this.props.buttonName] };
     this.handleLogout = this.handleLogout.bind(this);
     this.handleRedirect = this.handleRedirect.bind(this);
     this.handleMouseOver = this.handleMouseOver.bind(this);
@@ -28,14 +28,14 @@ class NavButton extends React.Component {
     e.preventDefault();
     this.props.logout().
       then( () => hashHistory.push('/login'));
-  };
+  }
 
   handleRedirect(e) {
     e.preventDefault();
     if(this.props.location.pathname === this.props.redirectLink){
       hashHistory.goBack();
     } else {
-      hashHistory.push(this.props.redirectLink)
+      hashHistory.push(this.props.redirectLink);
     }
   }
 

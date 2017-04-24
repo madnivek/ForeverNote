@@ -14,7 +14,8 @@ $ever-grey: #dedede;
 .notebook-index-header{
   font-size: 25px;
   position: relative;
-  display: block;
+  display: flex;
+  justify-content: space-between;
   padding: 10px;
   border-bottom: 1px solid $ever-grey;
   color: grey;
@@ -25,9 +26,18 @@ $ever-grey: #dedede;
 }
 
 .notebook-index-item {
-  padding-left: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px 5px 10px;
+}
+
+.add-notebook {
+  color: grey;
+  margin-right: 10px;
+}
+
+.add-notebook:hover {
+  color: $ever-green;
 }
 
 .notebook-index-item:hover {

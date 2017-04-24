@@ -54,7 +54,7 @@ $ever-grey: #dedede;
   padding: 20px;
 }
 
-.new-form-title{
+.new-title{
   border:none;
   outline: none;
   width:100%;
@@ -66,11 +66,11 @@ $ever-grey: #dedede;
 
 
 
-.new-form-title::-webkit-input-placeholder  { /* Chrome */
+.new-title::-webkit-input-placeholder  { /* Chrome */
   color: $ever-green;
 }
 
-.new-form-title:focus {
+.new-title:focus {
   border: none;
   padding: 5px;
 }

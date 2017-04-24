@@ -1,5 +1,6 @@
 import React from 'react';
 import NotebookIndexItem from './notebook_index_item';
+import { withRouter, Link } from 'react-router';
 
 
 class NotebookIndex extends React.Component {
@@ -14,16 +15,23 @@ class NotebookIndex extends React.Component {
         <NotebookIndexItem
           key={notebook.id}
           notebook={notebook}
+          deleteNotebook={ this.props.deleteNotebook }
           fetchNotebook={ this.props.fetchNotebook }
           fetchNotes={ this.props.fetchNotes} />
       );
     });
 
+    let addNotebookButton;
+    const location = this.props.router.getCurrentLocation().pathname;
+    if(location === "/notebooks"){
+      addNotebookButton = <Link to='/notebooks/new'><i className="fa fa-plus-circle add-notebook" aria-hidden="true" /></Link>;
+    }
+
 
     return(
       <div className="main-container">
         <section className="notebook-index-section">
-          <h2 className="notebook-index-header">NOTEBOOKS</h2>
+          <div className="notebook-index-header"><h2>NOTEBOOKS</h2>{ addNotebookButton }</div>
           <ul className="note-index-list">
             { notebooks }
           </ul>
@@ -33,4 +41,4 @@ class NotebookIndex extends React.Component {
   }
 }
 
-export default NotebookIndex;
+export default withRouter(NotebookIndex);

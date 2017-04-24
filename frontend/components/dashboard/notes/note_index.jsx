@@ -40,6 +40,7 @@ class NoteIndex extends React.Component {
       );
     });
 
+
     return(
       <div className="main-container">
         <NavBarContainer />

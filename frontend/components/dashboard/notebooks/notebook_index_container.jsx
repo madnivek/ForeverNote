@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Modal } from 'react-modal';
-import { fetchNotebooks, fetchNotebook } from '../../../actions/notebook_actions';
+import { deleteNotebook, fetchNotebooks, fetchNotebook } from '../../../actions/notebook_actions';
 import { fetchNotes } from '../../../actions/note_actions';
 import NotebookIndex from './notebook_index';
 
@@ -16,6 +16,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchNotebooks: () => dispatch(fetchNotebooks()),
     fetchNotebook: id => dispatch(fetchNotebook(id)),
+    deleteNotebook: id => dispatch(deleteNotebook(id)),
     fetchNotes: (filter, value) => dispatch(fetchNotes(filter, value))
   };
 };
