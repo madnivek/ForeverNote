@@ -26,22 +26,14 @@ class ForeverModal extends React.Component {
     hashHistory.goBack();
   }
   render(){
-    let modal;
-    switch(this.props.route.modalType){
-      case "notebooks":{
-        modal = <NotebookIndexContainer />;
-        break;
-      }
-      default: {
-        modal = "";
-      }
-    }
+
 
     return(
       <Modal
           className="forever-modal"
           overlayClassName="forever-modal-overlay"
           isOpen={ this.state.modalIsOpen }
+          shouldCloseOnOverlayClick = {true}
           contentLabel="Example Modal"
           onRequestClose={this.closeModal}
         >
