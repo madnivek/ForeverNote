@@ -45,20 +45,18 @@ $ever-grey: #dedede;
 
 .draft-editor div{
   cursor: text;
-  margin:0;
+  margin-bottom: 0;
 }
 
 .draft-editor .public-DraftEditorPlaceholder-root {
   position: absolute;
   margin-left: 10px;
-  padding: 10px;
   color: grey;
 }
 
 .draft-editor .public-DraftEditor-content{
-  border: 1px solid rgba(240, 240, 240, 1);
-  margin-left: 10px;
-  padding: 10px;
+  margin-left: 6px;
+  line-height: 1.3;
 }
 
 
@@ -71,13 +69,17 @@ $ever-grey: #dedede;
   background: white;
 }
 
-.new-form-title {
-  margin-left: 10px;
-  border: none;
+.new-form-title{
+  border:none;
+  outline: none;
   width:100%;
   color: $ever-green;
   font-size: 30px;
+  padding:5px;
+  margin:0px;
 }
+
+
 
 .new-form-title::-webkit-input-placeholder  { /* Chrome */
   color: $ever-green;

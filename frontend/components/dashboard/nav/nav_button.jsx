@@ -32,9 +32,10 @@ class NavButton extends React.Component {
 
   handleRedirect(e) {
     e.preventDefault();
-    debugger
-    if(this.props.location.pathname !== this.props.redirectLink){
-      hashHistory.push(this.props.redirectLink);
+    if(this.props.location.pathname === this.props.redirectLink){
+      hashHistory.goBack();
+    } else {
+      hashHistory.push(this.props.redirectLink)
     }
   }
 

@@ -1,5 +1,5 @@
 import { RECEIVE_NOTEBOOK, RECEIVE_NOTEBOOKS, RECEIVE_ERRORS, REMOVE_NOTEBOOK} from
-  '../actions/note_actions';
+  '../actions/notebook_actions';
 
 import merge from 'lodash/merge';
 
@@ -14,8 +14,9 @@ const NotebookReducer = (oldState = _defaultState, action) => {
   Object.freeze(oldState);
   switch(action.type){
     case RECEIVE_NOTEBOOKS: {
+      debugger
       const newState1 = merge({}, oldState);
-      newState1.notes = action.notebooks;
+      newState1.notebooks = action.notebooks;
       newState1.errors = [];
       return newState1;
     }
@@ -23,13 +24,13 @@ const NotebookReducer = (oldState = _defaultState, action) => {
     case RECEIVE_NOTEBOOK: {
       const newState2 = Object.assign({}, oldState);
       newState2.notes[action.note.id] = action.notebook;
-      newState2.currentNote = action.notebook;
+      newState2.currentNotebook = action.notebook;
       return newState2;
     }
 
     case REMOVE_NOTEBOOK: {
       const newState3 = merge({}, oldState);
-      delete newState3.notes[action.notebook.id];
+      delete newState3.notebooks[action.notebook.id];
       return newState3;
     }
 

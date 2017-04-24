@@ -8,24 +8,24 @@ export const RECEIVE_NOTEBOOKS = 'RECEIVE_NOTEBOOKS';
 export const REMOVE_NOTEBOOK = 'REMOVE_NOTEBOOK';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
-export const receiveNotebooks = notes => {
+export const receiveNotebooks = notebooks => {
   return {
     type: RECEIVE_NOTEBOOKS,
-    notes
+    notebooks
   };
 };
 
-export const receiveNotebook = note => {
+export const receiveNotebook = notebook => {
   return {
     type: RECEIVE_NOTEBOOK,
-    note
+    notebook
   };
 };
 
-export const removeNotebook = note => {
+export const removeNotebook = notebook => {
   return {
     type: REMOVE_NOTEBOOK,
-    note
+    notebook
   };
 };
 
@@ -37,8 +37,9 @@ export const receiveErrors = errors => {
 };
 
 export const fetchNotebooks = () => dispatch => {
+  debugger
   return NotebooksAPIUtil.fetchNotebooks()
-    .then( notes => dispatch(receiveNotebooks(notes)),
+    .then( notebooks => dispatch(receiveNotebooks(notebooks)),
       err => dispatch(receiveErrors(err))
   );
 };
@@ -46,29 +47,29 @@ export const fetchNotebooks = () => dispatch => {
 
 export const fetchNotebook = (id) => dispatch => {
   return NotebooksAPIUtil.fetchNotebook(id)
-    .then( note => dispatch(receiveNotebook(note)),
+    .then( notebook => dispatch(receiveNotebook(notebook)),
       err => dispatch(receiveErrors(err)))
         .then()
         .then( () => hashHistory.push(`/notes/${id}`));
 };
 
-export const createNotebook = (note) => dispatch => {
-  return NotebooksAPIUtil.createNotebook(note)
-    .then( note => dispatch(receiveNotebook(note)),
+export const createNotebook = (notebook) => dispatch => {
+  return NotebooksAPIUtil.createNotebook(notebook)
+    .then( notebook => dispatch(receiveNotebook(notebook)),
       err => dispatch(receiveErrors(err))
   );
 };
 
-export const updateNotebook = (note) => dispatch => {
-  return NotebooksAPIUtil.updateNotebook(note)
-    .then( note => dispatch(receiveNotebook(note)),
+export const updateNotebook = (notebook) => dispatch => {
+  return NotebooksAPIUtil.updateNotebook(notebook)
+    .then( notebook => dispatch(receiveNotebook(notebook)),
       err => dispatch(receiveErrors(err))
   );
 };
 
 export const deleteNotebook = (id) => dispatch => {
   return NotebooksAPIUtil.deleteNotebook(id)
-    .then( note => dispatch(removeNotebook(note)),
+    .then( notebook => dispatch(removeNotebook(notebook)),
       err => dispatch(receiveErrors(err))
   );
 };

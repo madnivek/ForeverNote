@@ -17,13 +17,14 @@
  $ever-green: #2dbe60;
  $ever-grey: #dedede;
 
+
 body, div, ul, form, h1, h2, h3, header, nav, section, li, main, span, input, button{
   margin: 0;
   padding: 0;
   background: transparent;
-  line-height: 1;
+  line-height: inherit;
 
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Noto Sans', sans-serif;
   font-size: inherit;
 }
 

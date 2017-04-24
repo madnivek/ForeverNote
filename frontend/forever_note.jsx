@@ -9,10 +9,10 @@ import configureStore from './store/store';
 document.addEventListener('DOMContentLoaded', () => {
   let store;
 
-  window.fetchNotebooks = fetchNotebooks;
-  window.fetchNotebook = fetchNotebook;
-  window.deleteNotebook = deleteNotebook;
-  window.updateNotebook = updateNotebook;
+  // window.fetchNotebooks = fetchNotebooks;
+  // window.fetchNotebook = fetchNotebook;
+  // window.deleteNotebook = deleteNotebook;
+  // window.updateNotebook = updateNotebook;
 
   if (window.currentUser){
     const preloadedState = { session: { currentUser: window.currentUser } };
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
-
+  window.store = store;
   fetchNotes()(store.dispatch).then(
     () => ReactDOM.render(<Root store={store} />, document.getElementById('root'))
   );

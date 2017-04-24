@@ -66,11 +66,11 @@ $ever-grey: #dedede;
   display: block; /* Fallback for non-webkit */
   display: -webkit-box;
   max-width: 400px;
-  height: 12*1*4; /* Fallback for non-webkit */
+  height: 12*1.2*4; /* Fallback for non-webkit */
   margin: 0 auto;
-  font-size: 12;
-  line-height: 1;
-  -webkit-line-clamp: 3;
+  font-size: 12px;
+  line-height: 1.2;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   color: grey;
 }
