@@ -3,16 +3,20 @@ $ever-green: #2dbe60;
 $ever-grey: #dedede;
 
 .main-container {
+  position: relative;
   display: flex;
   width:100%;
+  height:100%;
 }
 
 .note-index-section {
   display: flex;
+  position: relative;
   flex-direction: column;
   min-width: 350px;
   max-width: 350px;
   border-right: 1px solid lightgrey;
+  height:100%;
 }
 
 // PAD THE LEFT OF THE INDEX

@@ -14,7 +14,6 @@ const NotebookReducer = (oldState = _defaultState, action) => {
   Object.freeze(oldState);
   switch(action.type){
     case RECEIVE_NOTEBOOKS: {
-      debugger
       const newState1 = merge({}, oldState);
       newState1.notebooks = action.notebooks;
       newState1.errors = [];

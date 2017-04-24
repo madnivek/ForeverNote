@@ -1,32 +1,42 @@
 $ever-green: #2dbe60;
 $ever-grey: #dedede;
 
+
 .app-container {
+  height:100%;
   display: flex;
+  justify-content: flex-start;
   background: white;
 }
 .nav-bar {
-  min-width: 70px;
-  height: 1080px;
-  z-index:1000;
+  position: relative;
+  height:100%;
+  min-width: 73px;
   background: #f3f3f3;
-  display: flex;
-  flex-direction: column;
   list-style: none;
   text-align: center;
+  border-right: 1px solid rgba(230,230,230,1);
+}
+
+.nav-bar ul {
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .nav-bar li {
-  position: relative;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding: 15px 0px;
 }
 
+.nav-bar-button {
+  position: relative;
+}
 .pop-up-text {
   display: none;
   position: absolute;
-  left: 59px;
-  top: 5px;
+  left: 68px;
+  top: -15px;
   background: rgba(0,0,0,0.7);
   padding: 3.5px;
   border-radius: 5px;

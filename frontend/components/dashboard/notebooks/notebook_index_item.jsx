@@ -1,7 +1,6 @@
 import React from 'react';
 
 const NotebookIndexItem = props => {
-  debugger
   return(
     <li>
       <div>

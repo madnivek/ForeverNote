@@ -69,39 +69,39 @@ class NewNote extends React.Component{
       <div className='form-parent-container' >
 
 
-        <form onSubmit={ this.submitNote }>
-          <div className="cancel-back">
-
-            <button className="button"
-              onClick={ this.redirectToIndex }>Cancel</button>
-
-            <input className="button" type="submit" value="Save Note" />
-
+        <form className='form' onSubmit={ this.submitNote }>
+          <div className="fixed-main-controls">
+            <div className="cancel-back">
+              <button className="button"
+                onClick={ this.redirectToIndex }>Cancel</button>
+              <input className="button" type="submit" value="Save Note" />
+            </div>
+            <nav className="rich-text-nav">
+              <span onMouseDown={ this._toggleInlineStyle("BOLD") } className="button"><i className="fa fa-bold" aria-hidden="true"></i></span>
+              <span onMouseDown={ this._toggleInlineStyle("ITALIC") } className="button"><i className="fa fa-italic" aria-hidden="true"></i></span>
+              <span onMouseDown={ this._toggleInlineStyle("UNDERLINE") } className="button"><i className="fa fa-underline" aria-hidden="true"></i></span>
+              <span onMouseDown={ this._toggleInlineStyle("STRIKETHROUGH") } className="button"><i className="fa fa-strikethrough" aria-hidden="true"></i></span>
+            </nav>
           </div>
 
-          <nav className="rich-text-nav">
-            <span onMouseDown={ this._toggleInlineStyle("BOLD") } className="button"><i className="fa fa-bold" aria-hidden="true"></i></span>
-            <span onMouseDown={ this._toggleInlineStyle("ITALIC") } className="button"><i className="fa fa-italic" aria-hidden="true"></i></span>
-            <span onMouseDown={ this._toggleInlineStyle("UNDERLINE") } className="button"><i className="fa fa-underline" aria-hidden="true"></i></span>
-            <span onMouseDown={ this._toggleInlineStyle("STRIKETHROUGH") } className="button"><i className="fa fa-strikethrough" aria-hidden="true"></i></span>
-          </nav>
+
+          <div className="title-and-content">
+            <input
+              className="new-form-title"
+              placeholder="Title your note"
+              onChange={ this.update }
+              type="text" value={this.state.title}/>
 
 
-          <input
-            className="new-form-title"
-            placeholder="Title your note"
-            onChange={ this.update }
-            type="text" value={this.state.title}/>
-
-
-          <div className="draft-editor" onClick={ this.focus }>
-            <Editor
-              height="500"
-              spellCheck={true}
-              ref="editor"
-              placeholder="Just start typing..."
-              editorState={this.state.editorState}
-              onChange={this.onChange} />
+            <div className="draft-editor" onClick={ this.focus }>
+              <Editor
+                height="500"
+                spellCheck={true}
+                ref="editor"
+                placeholder="Just start typing..."
+                editorState={this.state.editorState}
+                onChange={this.onChange} />
+            </div>
           </div>
 
         </form>

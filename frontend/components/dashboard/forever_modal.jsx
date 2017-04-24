@@ -23,10 +23,12 @@ class ForeverModal extends React.Component {
 
   closeModal(){
     this.setState( {modalIsOpen: false} );
+    hashHistory.goBack();
   }
   render(){
     return(
       <Modal
+          className="forever-modal"
           isOpen={ this.state.modalIsOpen }
           contentLabel="Example Modal"
           onRequestClose={this.closeModal}

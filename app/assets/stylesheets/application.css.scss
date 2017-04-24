@@ -23,7 +23,7 @@ body, div, ul, form, h1, h2, h3, header, nav, section, li, main, span, input, bu
   padding: 0;
   background: transparent;
   line-height: inherit;
-
+  list-style: none;
   font-family: 'Noto Sans', sans-serif;
   font-size: inherit;
 }
@@ -40,4 +40,9 @@ body {
   color: white;
   cursor: pointer;
   border-radius: 4px;
+}
+
+#root {
+  position: absolute;
+  height:100%
 }

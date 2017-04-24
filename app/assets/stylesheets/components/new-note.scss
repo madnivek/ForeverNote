@@ -2,20 +2,22 @@ $ever-green: #2dbe60;
 $ever-grey: #dedede;
 
 .form-parent-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
   background: white;
-  margin: 0 auto;
-  padding-left: 30px;
-  padding-right: 30px;
-  width:90%;
+  height: 100%;
 }
 
-.form-parent-container * {
-  margin-bottom: 10px;
-}
 
 .form-parent-container .button {
   margin: 0 10px;
   padding: 5px 10px;
+}
+
+.form {
+  height:100%;
 }
 
 .rich-text-nav .button {
@@ -32,7 +34,7 @@ $ever-grey: #dedede;
 .cancel-back {
   display: flex;
   justify-content: flex-end;
-  margin: 25px 0px 0px 10px;
+  padding: 25px 0px 0px 10px;
   padding-bottom: 0px;
 }
 
@@ -43,30 +45,11 @@ $ever-grey: #dedede;
   border-bottom: 1px solid $ever-grey;
 }
 
-.draft-editor div{
-  cursor: text;
-  margin-bottom: 0;
-}
-
-.draft-editor .public-DraftEditorPlaceholder-root {
-  position: absolute;
-  margin-left: 10px;
-  color: grey;
-}
-
-.draft-editor .public-DraftEditor-content{
-  margin-left: 6px;
-  line-height: 1.3;
-}
-
-
-.draft-editor .public-DraftEditor-content {
-  min-height: 100px;
-}
-
-.rich-text-nav button {
-  color: black;
-  background: white;
+.title-and-content {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: calc(100% - 150px);
+  padding: 20px;
 }
 
 .new-form-title{
@@ -88,4 +71,27 @@ $ever-grey: #dedede;
 .new-form-title:focus {
   border: none;
   padding: 5px;
+}
+
+.draft-editor div{
+  cursor: text;
+  margin-bottom: 0;
+}
+
+.draft-editor .public-DraftEditorPlaceholder-root {
+  position: absolute;
+  margin-left: 10px;
+  color: grey;
+}
+
+.draft-editor .public-DraftEditor-content{
+  margin-left: 6px;
+  margin-right: 6px;
+  line-height: 1.3;
+
+}
+
+.rich-text-nav button {
+  color: black;
+  background: white;
 }
