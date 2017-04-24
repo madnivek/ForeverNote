@@ -26,13 +26,14 @@ $ever-grey: #dedede;
 }
 
 .nav-bar li {
-  padding: 15px 0px;
+  padding: 10px 0px;
 }
 
 .nav-bar-button {
   position: relative;
 }
 .pop-up-text {
+  z-index: 1000;
   display: none;
   position: absolute;
   left: 68px;

@@ -5,10 +5,10 @@ $ever-grey: #dedede;
   display: flex;
   align-items: center;
   flex-direction: column;
-
+  margin: 0 auto;
   width: 1150px;
   height: 720px;
-  margin: 0 auto;
+
 }
 
 .splash-video {
@@ -16,6 +16,7 @@ $ever-grey: #dedede;
   width: 1150px;
   height: auto;
   top: 5%;
+  margin: 0 auto;
 }
 
 .splash-video video {
