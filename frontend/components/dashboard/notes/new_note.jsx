@@ -6,10 +6,14 @@ class NewNote extends React.Component{
   constructor(props){
     super(props);
     this.state = this.props.currentNoteRaw;
-    this.onChange = (editorState) => this.setState({editorState});
+    this.saveText = "Save Note";
+    this.onChange = (editorState) => {
+      this.saveText = "Save Note";
+      this.setState({editorState});
+    };
     this.submitNote = this.submitNote.bind(this);
     this.update = this.update.bind(this);
-    this._toggleInlineStyle = this._toggleInlineStyle.bind(this)
+    this._toggleInlineStyle = this._toggleInlineStyle.bind(this);
     this.focus = () => this.refs.editor.focus();
   }
 
@@ -42,6 +46,7 @@ class NewNote extends React.Component{
   submitNote(e){
 
     e.preventDefault();
+    this.saveText = "Saved!"
     let { id, title, author_id, notebook_id } = this.state;
 
     if(this.props.formType === 'new') {
@@ -61,6 +66,7 @@ class NewNote extends React.Component{
   }
 
   update(e){
+    this.saveText = "Save Note"
     this.setState({ title: e.target.value });
   }
 
@@ -74,7 +80,7 @@ class NewNote extends React.Component{
             <div className="cancel-back">
               <button className="button"
                 onClick={ this.redirectToIndex }>Cancel</button>
-              <input className="button" type="submit" value="Save Note" />
+              <input className="button" type="submit" value={this.saveText} />
             </div>
             <nav className="rich-text-nav">
               <span onMouseDown={ this._toggleInlineStyle("BOLD") } className="button"><i className="fa fa-bold" aria-hidden="true"></i></span>
