@@ -7,8 +7,26 @@ class NoteIndex extends React.Component {
     super(props);
   }
 
+  componentWillReceiveProps(newProps){
+    const prev = this.props.location.pathname;
+    const next = newProps.location.pathname;
+    if (prev !== next && next === '/notes'){
+      this.props.fetchNotes("all")
+        .then(this.props.clearCurrentNotebook);
+    }
+  }
+
   componentDidMount(){
-    this.props.fetchNotes();
+    switch(this.props.indexType){
+      case "notebook": {
+        this.props.fetchNotes("notebook", this.props.notebookId);
+        break;
+      }
+      default:{
+        this.props.fetchNotes("all");
+        break;
+      }
+    }
   }
 
   render(){
@@ -26,7 +44,7 @@ class NoteIndex extends React.Component {
       <div className="main-container">
         <NavBarContainer />
         <section className="note-index-section">
-          <h2 className="note-index-header">NOTES</h2>
+          <h2 className="note-index-header">{ this.props.header }</h2>
           <ul className="note-index-list">
             { notes }
           </ul>

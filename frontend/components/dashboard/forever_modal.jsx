@@ -29,6 +29,7 @@ class ForeverModal extends React.Component {
     return(
       <Modal
           className="forever-modal"
+          overlayClassName="forever-modal-overlay"
           isOpen={ this.state.modalIsOpen }
           contentLabel="Example Modal"
           onRequestClose={this.closeModal}

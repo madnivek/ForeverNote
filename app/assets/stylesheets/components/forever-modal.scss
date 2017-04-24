@@ -1,7 +1,15 @@
 .forever-modal {
-  outline: none;
-  left: 73px;
-  width: 450px;
+  position: relative;
+  width: 456px;
   height: 100%;
-  border-right: 1px solid rgba(230,230,230,1);
+  border: none;
+  outline: none;
+
+}
+
+.forever-modal-overlay {
+  position: absolute;
+  background: white;
+  left: 73px;
+  height: 100%;
 }

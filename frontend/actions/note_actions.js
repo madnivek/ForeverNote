@@ -36,8 +36,8 @@ export const receiveErrors = errors => {
   };
 };
 
-export const fetchNotes = () => dispatch => {
-  return NotesAPIUtil.fetchNotes()
+export const fetchNotes = (filter, value) => dispatch => {
+  return NotesAPIUtil.fetchNotes(filter, value)
     .then( notes => dispatch(receiveNotes(notes)),
       err => dispatch(receiveErrors(err))
   );

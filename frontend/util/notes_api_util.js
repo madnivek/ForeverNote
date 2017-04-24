@@ -1,7 +1,8 @@
-export const fetchNotes = () => {
+export const fetchNotes = (filter, value) => {
   return $.ajax({
     type: 'GET',
-    url: 'api/notes'
+    url: 'api/notes',
+    data: { filter, value }
   });
 };
 

@@ -5,6 +5,7 @@ import { hashHistory } from 'react-router';
 
 export const RECEIVE_NOTEBOOK = 'RECEIVE_NOTEBOOK';
 export const RECEIVE_NOTEBOOKS = 'RECEIVE_NOTEBOOKS';
+export const CLEAR_CURRENT_NOTEBOOK = 'CLEAR_CURRENT_NOTEBOOK';
 export const REMOVE_NOTEBOOK = 'REMOVE_NOTEBOOK';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
@@ -19,6 +20,12 @@ export const receiveNotebook = notebook => {
   return {
     type: RECEIVE_NOTEBOOK,
     notebook
+  };
+};
+
+export const clearCurrentNotebook = () => {
+  return {
+    type: CLEAR_CURRENT_NOTEBOOK
   };
 };
 
@@ -47,9 +54,7 @@ export const fetchNotebooks = () => dispatch => {
 export const fetchNotebook = (id) => dispatch => {
   return NotebooksAPIUtil.fetchNotebook(id)
     .then( notebook => dispatch(receiveNotebook(notebook)),
-      err => dispatch(receiveErrors(err)))
-        .then()
-        .then( () => hashHistory.push(`/notes/${id}`));
+      err => dispatch(receiveErrors(err)));
 };
 
 export const createNotebook = (notebook) => dispatch => {

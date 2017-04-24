@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import { fetchNote, deleteNote, updateNote } from './util/notes_api_util';
-import { fetchNotebook, fetchNotebooks, deleteNotebook, updateNotebook } from './util/notebooks_api_util';
+import { fetchNotebooks } from './actions/notebook_actions';
 import { fetchNotes } from './actions/note_actions';
 import configureStore from './store/store';
 
@@ -22,8 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
   window.store = store;
-  fetchNotes()(store.dispatch).then(
-    () => ReactDOM.render(<Root store={store} />, document.getElementById('root'))
+  fetchNotebooks()(store.dispatch).then(
+    fetchNotes("all")(store.dispatch).then(
+      () => ReactDOM.render(<Root store={store} />, document.getElementById('root'))
+    )
   );
 
 });

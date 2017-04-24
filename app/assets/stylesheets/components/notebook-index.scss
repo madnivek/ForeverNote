@@ -1,0 +1,41 @@
+$ever-green: #2dbe60;
+$ever-grey: #dedede;
+
+.notebook-index-section {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  min-width: 450px;
+  max-width: 450px;
+  border-right: 1px solid lightgrey;
+  height:100%;
+}
+
+.notebook-index-header{
+  font-size: 25px;
+  position: relative;
+  display: block;
+  padding: 10px;
+  border-bottom: 1px solid $ever-grey;
+  color: grey;
+}
+
+.notebook-index-item:first-child {
+  padding-top: 10px;
+}
+
+.notebook-index-item {
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.notebook-index-item:hover {
+  background: $ever-green;
+  color: white;
+  cursor: pointer;
+}
+
+.notebook-item-header {
+  font-weight: normal;
+}

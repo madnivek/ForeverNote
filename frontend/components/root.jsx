@@ -33,9 +33,10 @@ const Root = ({ store }) => {
         <Route path="/notes/new" component={ NewNoteContainer } onEnter={ _ensureLoggedIn } />
         <Route path="/" component={ App } onEnter={ _ensureLoggedIn }>
           <IndexRedirect to="/notes" />
+          <Route path="/notebooks/:notebookId" component={ NoteIndexContainer } onEnter={ _ensureLoggedIn } />
           <Route path="/notes" component={ NoteIndexContainer } onEnter={ _ensureLoggedIn }>
-            <Route path="/notebooks" component={ ForeverModal } onEnter={ _ensureLoggedIn } />
             <Route path="/notes/:noteId" component={ NewNoteContainer } onEnter={ _ensureLoggedIn } />
+            <Route path="/notebooks" component={ ForeverModal } onEnter={ _ensureLoggedIn } />
           </Route>
         </Route>
       </Router>

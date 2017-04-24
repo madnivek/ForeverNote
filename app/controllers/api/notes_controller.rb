@@ -3,7 +3,12 @@ class Api::NotesController < ApplicationController
 
   def index
     if logged_in?
-      @notes = current_user.notes
+      case params[:filter]
+      when "all"
+        @notes = current_user.notes
+      when "notebook"
+        @notes = Note.where(notebook_id: params[:value])
+      end
     else
       @notes = [];
     end

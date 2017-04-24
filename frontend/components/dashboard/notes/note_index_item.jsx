@@ -1,6 +1,6 @@
 import React from 'react';
 import { convertFromRaw } from 'draft-js';
-import { hashHistory } from 'react-router';
+import { hashHistory, withRouter } from 'react-router';
 
 
 const NoteIndexItem = props => {
@@ -8,7 +8,7 @@ const NoteIndexItem = props => {
   const convertedBody = convertFromRaw(JSON.parse(props.note.body)).getPlainText();
 
   const getNote = id => {
-    hashHistory.push(`/notes/${id}`)
+    hashHistory.push(`/notes/${id}`);
   };
 
   const handleDelete = id => e => {
@@ -30,4 +30,4 @@ const NoteIndexItem = props => {
   );
 };
 
-export default NoteIndexItem;
+export default withRouter(NoteIndexItem);
