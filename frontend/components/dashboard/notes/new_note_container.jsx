@@ -6,10 +6,10 @@ import NewNote from './new_note';
 
 const _convertFromRaw = (rawContentString) => {
   return convertFromRaw(JSON.parse(rawContentString));
-}
+};
 
 const mapStateToProps = ({ session, notes_slice }, ownProps) => {
-  
+
   let currentNoteRaw = {  title: "", editorState: EditorState.createEmpty()};
 
   let formType = ownProps.location.pathname === '/notes/new' ? "new" : "edit";

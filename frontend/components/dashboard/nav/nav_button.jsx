@@ -1,5 +1,5 @@
 import React from 'react';
-import { hashHistory } from 'react-router';
+import { hashHistory, withRouter } from 'react-router';
 
 class NavButton extends React.Component {
 
@@ -32,7 +32,10 @@ class NavButton extends React.Component {
 
   handleRedirect(e) {
     e.preventDefault();
-    hashHistory.push('/notes/new');
+    debugger
+    if(this.props.location.pathname !== this.props.redirectLink){
+      hashHistory.push(this.props.redirectLink);
+    }
   }
 
   render(){
@@ -52,4 +55,4 @@ class NavButton extends React.Component {
   }
 }
 
-export default NavButton;
+export default withRouter(NavButton);
