@@ -1,7 +1,7 @@
 import React from 'react';
 import NotebookIndexItem from './notebook_index_item';
 import { withRouter, Link } from 'react-router';
-
+import { CSSTransitionGroup } from 'react-transition-group'
 
 class NotebookIndex extends React.Component {
 
@@ -29,14 +29,21 @@ class NotebookIndex extends React.Component {
 
 
     return(
-      <div className="main-container">
-        <section className="notebook-index-section">
-          <div className="notebook-index-header"><h2>NOTEBOOKS</h2>{ addNotebookButton }</div>
-          <ul className="note-index-list">
-            { notebooks }
-          </ul>
-        </section>
-      </div>
+      <CSSTransitionGroup
+      transitionName="example"
+      transitionAppear={true}
+      transitionAppearTimeout={500}
+      transitionEnter={false}
+      transitionLeave={false}>
+        <div className="main-container">
+          <section className="notebook-index-section">
+            <div className="notebook-index-header"><h2>NOTEBOOKS</h2>{ addNotebookButton }</div>
+            <ul className="note-index-list">
+              { notebooks }
+            </ul>
+          </section>
+        </div>
+      </CSSTransitionGroup>
     );
   }
 }

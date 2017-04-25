@@ -10,6 +10,7 @@ $ever-grey: #dedede;
 }
 .nav-bar {
   position: relative;
+  z-index:1000;
   height:100%;
   min-width: 73px;
   background: #f3f3f3;

@@ -1,5 +1,6 @@
 .forever-modal {
   position: relative;
+  left:-300;
   width: 456px;
   height: 100%;
   border: none;
@@ -13,4 +14,13 @@
   left: 73px;
   height: 100%;
   width: 100%;
+}
+
+.example-appear {
+  left:-600px;
+}
+
+.example-appear.example-appear-active {
+  left:0px;
+  transition: left 500ms;
 }

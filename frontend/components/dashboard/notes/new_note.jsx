@@ -51,7 +51,6 @@ class NewNote extends React.Component{
 
     if(this.props.formType === 'new') {
       author_id = this.props.currentUser.id;
-      notebook_id = 1
     }
 
     const rawContent = convertToRaw(this.state.editorState.getCurrentContent());

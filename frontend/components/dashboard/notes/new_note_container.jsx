@@ -8,7 +8,7 @@ const _convertFromRaw = (rawContentString) => {
   return convertFromRaw(JSON.parse(rawContentString));
 };
 
-const mapStateToProps = ({ session, notes_slice }, ownProps) => {
+const mapStateToProps = ({ session, notes_slice, notebooks_slice }, ownProps) => {
 
   let currentNoteRaw = {  title: "", editorState: EditorState.createEmpty()};
 

@@ -3,13 +3,7 @@ import Modal from 'react-modal';
 import NotebookIndexContainer from './notebooks/notebook_index_container';
 import { hashHistory } from 'react-router';
 
-//
-// const appElement = document.getElementById('root');
-//
-// Modal.setAppElement(appElement);
-
-
-class ForeverModal extends React.Component {
+class NotebookSelectModal extends React.Component {
   constructor(props){
     super(props);
     Modal.setAppElement('#root');
@@ -24,10 +18,8 @@ class ForeverModal extends React.Component {
 
   closeModal(){
     this.setState( {modalIsOpen: false} );
-    hashHistory.goBack();
   }
   render(){
-
 
     return(
       <Modal
