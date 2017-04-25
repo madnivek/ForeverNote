@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class NotebookSelectModal extends React.Component {
   constructor(props){
@@ -55,9 +56,16 @@ class NotebookSelectModal extends React.Component {
         >
 
         <div>
-          <ul className="notebook-modal-selector-ul">
-            { notebooks }
-          </ul>
+          <CSSTransitionGroup
+            transitionName="notebook-selector-transition"
+            transitionAppear={true}
+            transitionAppearTimeout={1000}
+            transitionEnter={false}
+            transitionLeave={false}>
+            <ul className="notebook-modal-selector-ul">
+              { notebooks }
+            </ul>
+          </CSSTransitionGroup>
         </div>
       </Modal>
     );

@@ -5,11 +5,12 @@
   height: 100%;
   border: none;
   outline: none;
+  background: white;
 }
 
 .forever-modal-overlay {
   position: absolute;
-  background: white;
+  background: transparent;
   height: 100%;
   width: 100%;
 }
