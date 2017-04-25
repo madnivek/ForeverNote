@@ -10,7 +10,7 @@ const _convertFromRaw = (rawContentString) => {
 
 const mapStateToProps = ({ session, notes_slice, notebooks_slice }, ownProps) => {
 
-  let currentNoteRaw = {  title: "", editorState: EditorState.createEmpty()};
+  let currentNoteRaw = {  notebook_id: "", isOpen: false, title: "", editorState: EditorState.createEmpty()};
 
   let formType = ownProps.location.pathname === '/notes/new' ? "new" : "edit";
 
@@ -30,7 +30,8 @@ const mapStateToProps = ({ session, notes_slice, notebooks_slice }, ownProps) =>
   return {
     currentUser: session.currentUser,
     currentNoteRaw,
-    formType
+    formType,
+    notebooks: Object.values(notebooks_slice.notebooks)
   };
 };
 

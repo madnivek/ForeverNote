@@ -10,6 +10,8 @@ $ever-grey: #dedede;
   padding-left: 20px;
   padding-right: 20px;
   height: 100%;
+  width: 100%;
+  margin-right:20px
 }
 
 
@@ -50,6 +52,7 @@ $ever-grey: #dedede;
 .title-and-content {
   overflow-y: scroll;
   overflow-x: hidden;
+  width: 100%;
   height: calc(100% - 140px);
   padding: 20px;
 }
@@ -96,4 +99,22 @@ $ever-grey: #dedede;
 .rich-text-nav button {
   color: black;
   background: white;
+}
+
+.editor-enter {
+  opacity: 0.01;
+}
+
+.editor-enter.editor-enter-active {
+  opacity: 1;
+  transition: opacity 5000ms ease-in;
+}
+
+.editor-leave {
+  opacity: 1;
+}
+
+.editor-leave.editor-leave-active {
+  opacity: 0.01;
+  transition: opacity 5000ms ease-in;
 }

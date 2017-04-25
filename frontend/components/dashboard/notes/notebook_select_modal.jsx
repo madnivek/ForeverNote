@@ -1,15 +1,17 @@
 import React from 'react';
 import Modal from 'react-modal';
-import NotebookIndexContainer from './notebooks/notebook_index_container';
-import { hashHistory } from 'react-router';
 
 class NotebookSelectModal extends React.Component {
   constructor(props){
     super(props);
     Modal.setAppElement('#root');
-    this.state = { modalIsOpen: true};
+    this.state = { modalIsOpen: false};
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+  }
+
+  componentWillReceiveProps(newProps){
+    this.setState( {modalIsOpen: newProps.isOpen} );
   }
 
   openModal(){
@@ -19,21 +21,34 @@ class NotebookSelectModal extends React.Component {
   closeModal(){
     this.setState( {modalIsOpen: false} );
   }
+
   render(){
 
+    const notebooks = this.props.notebooks.map( notebook => {
+      return(
+        <li key={notebook.id}>{notebook.title}</li>
+      )
+    });
+
     return(
+
       <Modal
-          className="forever-modal"
+          className="notebook-selector"
           overlayClassName="forever-modal-overlay"
           isOpen={ this.state.modalIsOpen }
           shouldCloseOnOverlayClick = {true}
           contentLabel="Example Modal"
           onRequestClose={this.closeModal}
         >
-        <NotebookIndexContainer />
+
+        <div>
+          <ul>
+            { notebooks }
+          </ul>
+        </div>
       </Modal>
     );
   }
 }
 
-export default ForeverModal;
+export default NotebookSelectModal;

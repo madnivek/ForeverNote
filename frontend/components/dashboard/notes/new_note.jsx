@@ -1,6 +1,7 @@
 import React from 'react';
 import { convertFromRaw, convertToRaw, Editor, RichUtils, Draft} from 'draft-js';
 import { hashHistory } from 'react-router';
+import NotebookSelectModal from './notebook_select_modal';
 
 class NewNote extends React.Component{
   constructor(props){
@@ -15,6 +16,7 @@ class NewNote extends React.Component{
     this.update = this.update.bind(this);
     this._toggleInlineStyle = this._toggleInlineStyle.bind(this);
     this.focus = () => this.refs.editor.focus();
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
 
@@ -69,10 +71,20 @@ class NewNote extends React.Component{
     this.setState({ title: e.target.value });
   }
 
+  toggleModal(e){
+    e.preventDefault();
+    debugger
+    this.setState({isOpen: true});
+  }
+
   render() {
+
+    const currentNotebook = <span onClick={ this.toggleModal }>Select a notebook</span>
+
     return(
       <div className='form-parent-container' >
 
+        <NotebookSelectModal notebooks={this.props.notebooks} isOpen={this.state.isOpen} />
 
         <form className='form' onSubmit={ this.submitNote }>
           <div className="fixed-main-controls">
@@ -82,6 +94,7 @@ class NewNote extends React.Component{
               <input className="button" type="submit" value={this.saveText} />
             </div>
             <nav className="rich-text-nav">
+              { currentNotebook }
               <span onMouseDown={ this._toggleInlineStyle("BOLD") } className="button"><i className="fa fa-bold" aria-hidden="true"></i></span>
               <span onMouseDown={ this._toggleInlineStyle("ITALIC") } className="button"><i className="fa fa-italic" aria-hidden="true"></i></span>
               <span onMouseDown={ this._toggleInlineStyle("UNDERLINE") } className="button"><i className="fa fa-underline" aria-hidden="true"></i></span>
