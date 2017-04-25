@@ -14,7 +14,6 @@ const mapStateToProps = ({ notes_slice, notebooks_slice }, ownProps) => {
 
   const header = notebooks_slice.currentNotebook.title || "NOTES"
 
-
   const notebookId = ownProps.params.notebookId;
 
   return {

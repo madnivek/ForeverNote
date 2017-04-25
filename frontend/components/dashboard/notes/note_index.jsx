@@ -23,7 +23,7 @@ class NoteIndex extends React.Component {
         break;
       }
       default:{
-        this.props.fetchNotes("all");
+        this.props.fetchNotes("all").then(this.props.clearCurrentNotebook);
         break;
       }
     }

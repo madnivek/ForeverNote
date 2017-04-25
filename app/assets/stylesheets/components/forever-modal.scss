@@ -1,26 +1,24 @@
 .forever-modal {
   position: relative;
-  left:-300;
+  margin-left:73px;
   width: 456px;
   height: 100%;
   border: none;
   outline: none;
-
 }
 
 .forever-modal-overlay {
   position: absolute;
   background: white;
-  left: 73px;
   height: 100%;
   width: 100%;
 }
 
-.example-appear {
+.notebook-index-transition-appear {
   left:-600px;
 }
 
-.example-appear.example-appear-active {
+.notebook-index-transition-appear.notebook-index-transition-appear-active {
   left:0px;
   transition: left 500ms;
 }

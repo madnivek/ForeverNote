@@ -30,7 +30,7 @@ class NotebookIndex extends React.Component {
 
     return(
       <CSSTransitionGroup
-        transitionName="example"
+        transitionName="notebook-index-transition"
         transitionAppear={true}
         transitionAppearTimeout={500}
         transitionEnter={false}

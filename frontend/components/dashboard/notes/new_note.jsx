@@ -148,7 +148,6 @@ class NewNote extends React.Component{
 
             <div className="draft-editor" onClick={ this.focus }>
               <Editor
-                height="500"
                 spellCheck={true}
                 ref="editor"
                 placeholder="Just start typing..."
