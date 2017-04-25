@@ -17,15 +17,21 @@ class NewNote extends React.Component{
     this._toggleInlineStyle = this._toggleInlineStyle.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.changeNotebook = this.changeNotebook.bind(this);
+    this.handleRedirect = this.handleRedirect.bind(this);
   }
 
   componentWillReceiveProps(newProps){
     this.setState(newProps.currentNoteRaw);
   }
 
-  redirectToIndex(e){
+  handleRedirect(e){
     e.preventDefault();
-    hashHistory.push('/');
+    const currentNotebookId = this.props.currentNotebook.id;
+    if(currentNotebookId){
+      hashHistory.push(`/notebooks/${currentNotebookId}`);
+    } else {
+      hashHistory.push('/notes');
+    }
   }
 
   _convertFromRaw(rawContentString){
@@ -114,7 +120,7 @@ class NewNote extends React.Component{
 
             <div className="cancel-back">
               <button className="button"
-                onClick={ this.redirectToIndex }>Cancel</button>
+                onClick={ (this.handleRedirect) }>Close Note</button>
               <input className="button" type="submit" value={this.state.saveText} />
             </div>
 
