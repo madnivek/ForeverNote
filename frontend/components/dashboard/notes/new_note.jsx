@@ -7,12 +7,9 @@ class NewNote extends React.Component{
   constructor(props){
     super(props);
     this.state = this.props.currentNoteRaw;
-    this.saveText = "Save Note";
-
     this.focus = () => this.refs.editor.focus();
     this.onChange = (editorState) => {
-      this.saveText = "Save Note";
-      this.setState({editorState, isOpen: false});
+      this.setState({editorState, isOpen: false, saveText: 'Save Note'});
     };
 
     this.submitNote = this.submitNote.bind(this);
@@ -52,7 +49,6 @@ class NewNote extends React.Component{
   submitNote(e){
 
     e.preventDefault();
-    this.saveText = "Saved";
     let { id, title, author_id, notebook_id } = this.state;
 
     notebook_id = this.state.notebook_id
@@ -83,8 +79,7 @@ class NewNote extends React.Component{
   }
 
   update(e){
-    this.saveText = "Save Note";
-    this.setState({ title: e.target.value });
+    this.setState({ title: e.target.value, saveText: "Save Note" });
   }
 
   toggleModal(e){
@@ -93,7 +88,7 @@ class NewNote extends React.Component{
   }
 
   changeNotebook(notebook_id){
-    this.setState({notebook_id, isOpen: false});
+    this.setState({notebook_id, isOpen: false, saveText: "Save Note"});
   }
 
   render() {
@@ -120,7 +115,7 @@ class NewNote extends React.Component{
             <div className="cancel-back">
               <button className="button"
                 onClick={ this.redirectToIndex }>Cancel</button>
-              <input className="button" type="submit" value={this.saveText} />
+              <input className="button" type="submit" value={this.state.saveText} />
             </div>
 
             <nav className="rich-text-nav">

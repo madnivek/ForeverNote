@@ -15,6 +15,7 @@ const mapStateToProps = ({ session, notes_slice, notebooks_slice }, ownProps) =>
       notebook_id: "",
       isOpen: false,
       title: "",
+      saveText: "Saved",
       editorState: EditorState.createEmpty()};
 
   let formType = ownProps.location.pathname === '/notes/new' ? "new" : "edit";
