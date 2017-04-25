@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchNote, updateNote, createNote } from '../../../actions/note_actions.js';
+import { fetchNote, updateNote, createNote, fetchNotes } from '../../../actions/note_actions.js';
 import { setCurrentNotebook } from '../../../actions/notebook_actions';
 import { EditorState, convertFromRaw } from 'draft-js';
 import NewNote from './new_note';
@@ -48,6 +48,7 @@ const mapDispatchToProps = ( dispatch, ownProps ) => {
   const processForm = ownProps.params.noteId ? updateNote : createNote;
 
   return {
+    fetchNotes: (type, value) => dispatch(fetchNotes(type, value)),
     fetchNote: id => dispatch(fetchNote(id)),
     processForm: note => dispatch(processForm(note)),
     setCurrentNotebook: notebook => dispatch(setCurrentNotebook(notebook))

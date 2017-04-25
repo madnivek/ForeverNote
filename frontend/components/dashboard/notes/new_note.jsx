@@ -8,14 +8,16 @@ class NewNote extends React.Component{
     super(props);
     this.state = this.props.currentNoteRaw;
     this.saveText = "Save Note";
+
+    this.focus = () => this.refs.editor.focus();
     this.onChange = (editorState) => {
       this.saveText = "Save Note";
       this.setState({editorState, isOpen: false});
     };
+    
     this.submitNote = this.submitNote.bind(this);
     this.update = this.update.bind(this);
     this._toggleInlineStyle = this._toggleInlineStyle.bind(this);
-    this.focus = () => this.refs.editor.focus();
     this.toggleModal = this.toggleModal.bind(this);
     this.changeNotebook = this.changeNotebook.bind(this);
   }
@@ -53,19 +55,27 @@ class NewNote extends React.Component{
     this.saveText = "Saved!";
     let { id, title, author_id, notebook_id } = this.state;
 
-    notebook_id = this.props.currentNotebook.id
-
+    notebook_id = this.state.notebook_id
+    debugger
     if(this.props.formType === 'new') {
       author_id = this.props.currentUser.id;
     }
 
     const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
     const rawContentString = JSON.stringify(rawContent);
-    const note = { id, title, author_id: this.props.currentUser.id , notebook_id , body: rawContentString };
+    const note = {
+      id,
+      title,
+      author_id: this.props.currentUser.id ,
+      notebook_id , body:
+      rawContentString };
+
     this.props.processForm(note)
       .then( () => {
         if(this.props.formType === 'new'){
           hashHistory.push(`/notes`);
+        } else {
+          this.props.fetchNotes('notebook', this.props.currentNotebook.id);
         }
       });
   }
@@ -87,7 +97,7 @@ class NewNote extends React.Component{
   render() {
 
     const selectedNotebook = this.props.notebooks[this.state.notebook_id];
-    const notebookTitle = selectedNotebook ? selectedNotebook.title : "";
+    const notebookTitle = selectedNotebook ? selectedNotebook.title : this.props.currentNotebook.title;
     let selectorClassName = this.props.formType === 'new' ?
       "new-note-selector" : "edit-note-selector";
 
