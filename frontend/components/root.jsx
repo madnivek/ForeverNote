@@ -31,6 +31,7 @@ const Root = ({ store }) => {
         <Route path="/signup" component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn } />
         <Route path="/notes/new" component={ NewNoteContainer } onEnter={ _ensureLoggedIn } />
         <Route path="/notebooks/new" component={ NewNotebookContainer } onEnter={ _ensureLoggedIn } />
+        <Route path="/notebooks/edit/:notebookId" component={ NewNotebookContainer } onEnter={ _ensureLoggedIn } />
         <Route path="/" component={ App } onEnter={ _ensureLoggedIn }>
           <IndexRedirect to="/notes" />
           <Route path="/notebooks/:notebookId" component={ NoteIndexContainer } onEnter={ _ensureLoggedIn } />

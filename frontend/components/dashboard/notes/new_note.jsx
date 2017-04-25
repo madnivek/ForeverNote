@@ -14,7 +14,7 @@ class NewNote extends React.Component{
       this.saveText = "Save Note";
       this.setState({editorState, isOpen: false});
     };
-    
+
     this.submitNote = this.submitNote.bind(this);
     this.update = this.update.bind(this);
     this._toggleInlineStyle = this._toggleInlineStyle.bind(this);
@@ -52,11 +52,11 @@ class NewNote extends React.Component{
   submitNote(e){
 
     e.preventDefault();
-    this.saveText = "Saved!";
+    this.saveText = "Saved";
     let { id, title, author_id, notebook_id } = this.state;
 
     notebook_id = this.state.notebook_id
-    debugger
+
     if(this.props.formType === 'new') {
       author_id = this.props.currentUser.id;
     }

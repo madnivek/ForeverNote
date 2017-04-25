@@ -33,6 +33,8 @@ $ever-grey: #dedede;
   padding-bottom: 10px;
   border-bottom: 1px solid $ever-grey;
   color: grey;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 // UL that holds the index items
@@ -47,13 +49,13 @@ $ever-grey: #dedede;
   display: flex;
 }
 
-.note-index-item p:after{
+.between-borders:after{
   content : "";
   position: absolute;
   left    : 15px;
   bottom  : 0;
   height  : 1px;
-  width   : 85%;  /* or 100px */
+  width   : 95%;  /* or 100px */
   margin: auto;
   border-bottom:1px solid $ever-grey;
 }

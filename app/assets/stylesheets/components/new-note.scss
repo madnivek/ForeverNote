@@ -74,7 +74,7 @@ $ever-grey: #dedede;
   outline: none;
   background: white;
   box-shadow: 1px 1px 1px 1px black;
-  padding: 20px;
+  padding-bottom: 10px;
   border-radius: 1px;
   top: 100px;
 }
@@ -93,7 +93,23 @@ $ever-grey: #dedede;
   height: 100%;
 }
 
+.notebook-selector-list{
+  border-bottom: 1px solid $ever-grey;
+  padding: 10px;
+  margin: 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
+.notebook-selector-list:last-child {
+  border-bottom: none;
+  padding-bottom: 0px;
+}
+
+.notebook-selector-list:hover {
+  color: $ever-green;
+  cursor: pointer;
+}
 
 .title-and-content {
   overflow-y: scroll;

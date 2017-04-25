@@ -33,7 +33,14 @@ class NotebookSelectModal extends React.Component {
 
     const notebooks = this.props.notebooks.map( notebook => {
       return(
-        <li key={notebook.id} onClick={ this.handleSelectNotebook(notebook.id) }>{notebook.title}</li>
+        <li
+          key={notebook.id}
+          className="notebook-selector-list"
+          onClick={ this.handleSelectNotebook(notebook.id) }>
+
+          {notebook.title}
+
+        </li>
       )
     });
 
@@ -48,7 +55,7 @@ class NotebookSelectModal extends React.Component {
         >
 
         <div>
-          <ul>
+          <ul className="notebook-modal-selector-ul">
             { notebooks }
           </ul>
         </div>

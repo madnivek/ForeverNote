@@ -26,9 +26,17 @@ $ever-grey: #dedede;
 }
 
 .notebook-index-item {
+  position: relative;
   display: flex;
   justify-content: space-between;
   padding: 5px 20px 5px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.notebook-index-item i {
+  padding-left: 10px;
 }
 
 .add-notebook {
