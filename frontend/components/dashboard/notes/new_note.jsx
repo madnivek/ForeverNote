@@ -75,7 +75,9 @@ class NewNote extends React.Component{
         if(this.props.formType === 'new'){
           hashHistory.push(`/notes`);
         } else {
-          this.props.fetchNotes('notebook', this.props.currentNotebook.id);
+          if(this.props.currentNotebook.id){
+            this.props.fetchNotes('notebook', this.props.currentNotebook.id);
+          }
         }
       });
   }
