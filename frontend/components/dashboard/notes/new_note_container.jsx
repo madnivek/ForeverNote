@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchNote, updateNote, createNote } from '../../../actions/note_actions.js';
+import { setCurrentNotebook } from '../../../actions/notebook_actions';
 import { EditorState, convertFromRaw } from 'draft-js';
 import NewNote from './new_note';
 
@@ -10,7 +11,11 @@ const _convertFromRaw = (rawContentString) => {
 
 const mapStateToProps = ({ session, notes_slice, notebooks_slice }, ownProps) => {
 
-  let currentNoteRaw = {  notebook_id: "", isOpen: false, title: "", editorState: EditorState.createEmpty()};
+  let currentNoteRaw = {
+      notebook_id: "",
+      isOpen: false,
+      title: "",
+      editorState: EditorState.createEmpty()};
 
   let formType = ownProps.location.pathname === '/notes/new' ? "new" : "edit";
 
@@ -25,13 +30,17 @@ const mapStateToProps = ({ session, notes_slice, notebooks_slice }, ownProps) =>
     currentNoteRaw.id = note.id;
     currentNoteRaw.title = note.title;
     currentNoteRaw.editorState = EditorState.createWithContent(contentState);
+    currentNoteRaw.notebook_id = note.notebook_id;
   }
+
+  const currentNotebook = notebooks_slice.currentNotebook;
 
   return {
     currentUser: session.currentUser,
     currentNoteRaw,
     formType,
-    notebooks: Object.values(notebooks_slice.notebooks)
+    notebooks: notebooks_slice.notebooks,
+    currentNotebook
   };
 };
 
@@ -40,7 +49,8 @@ const mapDispatchToProps = ( dispatch, ownProps ) => {
 
   return {
     fetchNote: id => dispatch(fetchNote(id)),
-    processForm: note => dispatch(processForm(note))
+    processForm: note => dispatch(processForm(note)),
+    setCurrentNotebook: notebook => dispatch(setCurrentNotebook(notebook))
   };
 };
 

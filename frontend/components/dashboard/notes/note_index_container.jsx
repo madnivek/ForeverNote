@@ -7,18 +7,15 @@ import { clearCurrentNotebook } from '../../../actions/notebook_actions';
 
 const mapStateToProps = ({ notes_slice, notebooks_slice }, ownProps) => {
   let indexType = "main";
+
   if (ownProps.params.notebookId){
     indexType = "notebook";
   }
 
+  const header = notebooks_slice.currentNotebook.title || "NOTES"
+
+
   const notebookId = ownProps.params.notebookId;
-
-  let header = "NOTES";
-  const notebook = notebooks_slice.currentNotebook;
-
-  if(notebook.title){
-    header = notebook.title;
-  }
 
   return {
     notes: Object.values(notes_slice.notes).reverse(),

@@ -1,5 +1,11 @@
-import { RECEIVE_NOTEBOOK, RECEIVE_NOTEBOOKS, RECEIVE_ERRORS, REMOVE_NOTEBOOK, CLEAR_CURRENT_NOTEBOOK } from
-  '../actions/notebook_actions';
+import {
+  RECEIVE_NOTEBOOK,
+  RECEIVE_NOTEBOOKS,
+  RECEIVE_ERRORS,
+  REMOVE_NOTEBOOK,
+  CLEAR_CURRENT_NOTEBOOK,
+  SET_CURRENT_NOTEBOOK
+} from '../actions/notebook_actions';
 
 import merge from 'lodash/merge';
 
@@ -43,6 +49,12 @@ const NotebookReducer = (oldState = _defaultState, action) => {
       const newState5 = merge({}, oldState);
       newState5.currentNotebook = {};
       return newState5;
+    }
+
+    case SET_CURRENT_NOTEBOOK: {
+      const newState6 = merge({}, oldState);
+      newState6.currentNotebook = newState6.notebooks[action.id];
+      return newState6;
     }
 
     default: {

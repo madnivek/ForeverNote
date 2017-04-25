@@ -43,11 +43,56 @@ $ever-grey: #dedede;
 }
 
 .rich-text-nav {
+  position: relative;
   display: flex;
   padding-bottom: 10px;
   padding-left: 10px;
   border-bottom: 1px solid $ever-grey;
 }
+
+.rich-text-nav button {
+  color: black;
+  background: white;
+}
+
+.rich-text-nav span:first-child {
+  padding-top: 5px;
+  padding-right: 10px;
+  border-right: 1px solid $ever-grey;
+  color: grey;
+  cursor: pointer;
+}
+
+.fa-book {
+  padding-right: 5px;
+}
+
+.new-note-selector, .edit-note-selector {
+  position: relative;
+  width: 250px;
+  outline: none;
+  background: white;
+  box-shadow: 1px 1px 1px 1px black;
+  padding: 20px;
+  border-radius: 1px;
+  top: 100px;
+}
+
+.new-note-selector {
+  left:21px;
+}
+
+.edit-note-selector {
+  left: 445px;
+}
+
+.notebook-selector-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+
 
 .title-and-content {
   overflow-y: scroll;
@@ -55,6 +100,7 @@ $ever-grey: #dedede;
   width: 100%;
   height: calc(100% - 140px);
   padding: 20px;
+  padding-top: 5px;
 }
 
 .new-title{
@@ -94,27 +140,4 @@ $ever-grey: #dedede;
   margin-right: 6px;
   line-height: 1.3;
 
-}
-
-.rich-text-nav button {
-  color: black;
-  background: white;
-}
-
-.editor-enter {
-  opacity: 0.01;
-}
-
-.editor-enter.editor-enter-active {
-  opacity: 1;
-  transition: opacity 5000ms ease-in;
-}
-
-.editor-leave {
-  opacity: 1;
-}
-
-.editor-leave.editor-leave-active {
-  opacity: 0.01;
-  transition: opacity 5000ms ease-in;
 }

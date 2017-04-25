@@ -10,15 +10,19 @@ class NewNote extends React.Component{
     this.saveText = "Save Note";
     this.onChange = (editorState) => {
       this.saveText = "Save Note";
-      this.setState({editorState});
+      this.setState({editorState, isOpen: false});
     };
     this.submitNote = this.submitNote.bind(this);
     this.update = this.update.bind(this);
     this._toggleInlineStyle = this._toggleInlineStyle.bind(this);
     this.focus = () => this.refs.editor.focus();
     this.toggleModal = this.toggleModal.bind(this);
+    this.changeNotebook = this.changeNotebook.bind(this);
   }
 
+  componentWillReceiveProps(newProps){
+    this.setState(newProps.currentNoteRaw);
+  }
 
   redirectToIndex(e){
     e.preventDefault();
@@ -29,9 +33,7 @@ class NewNote extends React.Component{
     return JSON.parse(rawContentString)
   }
 
-  componentWillReceiveProps(newProps){
-      this.setState(newProps.currentNoteRaw);
-  }
+
 
   _toggleInlineStyle(inlineStyle) {
     return (e) => {
@@ -48,8 +50,10 @@ class NewNote extends React.Component{
   submitNote(e){
 
     e.preventDefault();
-    this.saveText = "Saved!"
+    this.saveText = "Saved!";
     let { id, title, author_id, notebook_id } = this.state;
+
+    notebook_id = this.props.currentNotebook.id
 
     if(this.props.formType === 'new') {
       author_id = this.props.currentUser.id;
@@ -57,49 +61,80 @@ class NewNote extends React.Component{
 
     const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
     const rawContentString = JSON.stringify(rawContent);
-    const note = { id, title, author_id: this.props.currentUser.id , notebook_id, body: rawContentString }
+    const note = { id, title, author_id: this.props.currentUser.id , notebook_id , body: rawContentString };
     this.props.processForm(note)
       .then( () => {
         if(this.props.formType === 'new'){
-          hashHistory.push(`/notes`)
+          hashHistory.push(`/notes`);
         }
       });
   }
 
   update(e){
-    this.saveText = "Save Note"
+    this.saveText = "Save Note";
     this.setState({ title: e.target.value });
   }
 
   toggleModal(e){
     e.preventDefault();
-    debugger
     this.setState({isOpen: true});
+  }
+
+  changeNotebook(notebook_id){
+    this.setState({notebook_id, isOpen: false});
   }
 
   render() {
 
-    const currentNotebook = <span onClick={ this.toggleModal }>Select a notebook</span>
+    const selectedNotebook = this.props.notebooks[this.state.notebook_id];
+    const notebookTitle = selectedNotebook ? selectedNotebook.title : "";
+    let selectorClassName = this.props.formType === 'new' ?
+      "new-note-selector" : "edit-note-selector";
 
     return(
       <div className='form-parent-container' >
 
-        <NotebookSelectModal notebooks={this.props.notebooks} isOpen={this.state.isOpen} />
 
         <form className='form' onSubmit={ this.submitNote }>
+
+          <NotebookSelectModal
+            selectorClassName={selectorClassName}
+            notebooks={ Object.values(this.props.notebooks) }
+            isOpen={this.state.isOpen}
+            changeNotebook={ this.changeNotebook } />
+
           <div className="fixed-main-controls">
+
             <div className="cancel-back">
               <button className="button"
                 onClick={ this.redirectToIndex }>Cancel</button>
               <input className="button" type="submit" value={this.saveText} />
             </div>
+
             <nav className="rich-text-nav">
-              { currentNotebook }
-              <span onMouseDown={ this._toggleInlineStyle("BOLD") } className="button"><i className="fa fa-bold" aria-hidden="true"></i></span>
-              <span onMouseDown={ this._toggleInlineStyle("ITALIC") } className="button"><i className="fa fa-italic" aria-hidden="true"></i></span>
-              <span onMouseDown={ this._toggleInlineStyle("UNDERLINE") } className="button"><i className="fa fa-underline" aria-hidden="true"></i></span>
-              <span onMouseDown={ this._toggleInlineStyle("STRIKETHROUGH") } className="button"><i className="fa fa-strikethrough" aria-hidden="true"></i></span>
+
+              <span onClick={ this.toggleModal } className="button">
+                <i className="fa fa-book" aria-hidden="true"></i>
+                { notebookTitle }
+              </span>
+
+              <span onMouseDown={ this._toggleInlineStyle("BOLD") }
+                className="button"><i className="fa fa-bold" aria-hidden="true"></i></span>
+
+              <span onMouseDown={ this._toggleInlineStyle("ITALIC") }
+                className="button"><i className="fa fa-italic"
+                aria-hidden="true"></i></span>
+
+              <span onMouseDown={ this._toggleInlineStyle("UNDERLINE") }
+                className="button"><i className="fa fa-underline"
+                aria-hidden="true"></i></span>
+
+              <span onMouseDown={ this._toggleInlineStyle("STRIKETHROUGH") }
+                className="button"><i className="fa fa-strikethrough"
+                aria-hidden="true"></i></span>
+
             </nav>
+
           </div>
 
 

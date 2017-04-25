@@ -45,7 +45,7 @@ class NoteIndex extends React.Component {
       <div className="main-container">
         <NavBarContainer />
         <section className="note-index-section">
-          <h2 className="note-index-header">{ this.props.header }</h2>
+          <h2 className="note-index-header">{this.props.header}</h2>
           <ul className="note-index-list">
             { notes }
           </ul>

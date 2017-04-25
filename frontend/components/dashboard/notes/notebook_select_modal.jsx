@@ -8,6 +8,7 @@ class NotebookSelectModal extends React.Component {
     this.state = { modalIsOpen: false};
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.handleSelectNotebook = this.handleSelectNotebook.bind(this);
   }
 
   componentWillReceiveProps(newProps){
@@ -22,21 +23,26 @@ class NotebookSelectModal extends React.Component {
     this.setState( {modalIsOpen: false} );
   }
 
+  handleSelectNotebook(notebook_id){
+    return () => {
+      this.props.changeNotebook(notebook_id);
+    }
+  }
+
   render(){
 
     const notebooks = this.props.notebooks.map( notebook => {
       return(
-        <li key={notebook.id}>{notebook.title}</li>
+        <li key={notebook.id} onClick={ this.handleSelectNotebook(notebook.id) }>{notebook.title}</li>
       )
     });
 
     return(
 
       <Modal
-          className="notebook-selector"
-          overlayClassName="forever-modal-overlay"
+          className={this.props.selectorClassName}
+          overlayClassName="notebook-selector-overlay"
           isOpen={ this.state.modalIsOpen }
-          shouldCloseOnOverlayClick = {true}
           contentLabel="Example Modal"
           onRequestClose={this.closeModal}
         >

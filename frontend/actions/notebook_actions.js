@@ -8,6 +8,7 @@ export const RECEIVE_NOTEBOOKS = 'RECEIVE_NOTEBOOKS';
 export const CLEAR_CURRENT_NOTEBOOK = 'CLEAR_CURRENT_NOTEBOOK';
 export const REMOVE_NOTEBOOK = 'REMOVE_NOTEBOOK';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const SET_CURRENT_NOTEBOOK = 'SET_CURRENT_NOTEBOOK';
 
 export const receiveNotebooks = notebooks => {
   return {
@@ -26,6 +27,13 @@ export const receiveNotebook = notebook => {
 export const clearCurrentNotebook = () => {
   return {
     type: CLEAR_CURRENT_NOTEBOOK
+  };
+};
+
+export const setCurrentNotebook = id => {
+  return {
+    type: SET_CURRENT_NOTEBOOK,
+    id
   };
 };
 
