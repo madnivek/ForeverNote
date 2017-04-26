@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteTag, fetchTags, fetchTag } from '../../../actions/tag_actions';
+import { setCurrentTag, deleteTag, fetchTags, fetchTag } from '../../../actions/tag_actions';
+import { setCurrentNotebook } from '../../../actions/notebook_actions';
 import TagIndex from './tag_index';
 
 const mapStateToProps = (state, ownProps) => {
@@ -13,7 +14,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchTags: () => dispatch(fetchTags()),
     fetchTag: id => dispatch(fetchTag(id)),
-    deleteTag: id => dispatch(deleteTag(id))
+    deleteTag: id => dispatch(deleteTag(id)),
+    setCurrentTag: tag => dispatch(setCurrentTag(tag)),
+    setCurrentNotebook: tag => dispatch(setCurrentNotebook(tag))
   };
 };
 

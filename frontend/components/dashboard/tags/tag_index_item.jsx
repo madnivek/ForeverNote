@@ -1,12 +1,17 @@
 import React from 'react';
 import { hashHistory, Link } from 'react-router';
-import { withRouter } from 'react-router'
-
+import { withRouter } from 'react-router';
 
 const TagIndexItem = props => {
 
+  const goToFilteredNotes = tagId => e => {
+    props.setCurrentTag(props.tag);
+    props.setCurrentNotebook({});
+    hashHistory.push(`/tags/${tagId}`);
+  };
+
   return(
-    <li className="notebook-index-item">
+    <li className="notebook-index-item" onClick={ goToFilteredNotes(props.tag.id) }>
       <h3 className="notebook-item-header between-borders">{props.tag.tag_name}</h3>
       <div>
         <i className="fa fa-pencil-square-o inverse-button" aria-hidden="true"/>

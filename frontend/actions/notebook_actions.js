@@ -23,16 +23,11 @@ export const receiveNotebook = notebook => {
   };
 };
 
-export const clearCurrentNotebook = () => {
-  return {
-    type: CLEAR_CURRENT_NOTEBOOK
-  };
-};
-
-export const setCurrentNotebook = id => {
+export const setCurrentNotebook = notebook => {
+  
   return {
     type: SET_CURRENT_NOTEBOOK,
-    id
+    notebook
   };
 };
 

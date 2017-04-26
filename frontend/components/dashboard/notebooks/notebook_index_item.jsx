@@ -8,7 +8,8 @@ const NotebookIndexItem = props => {
 
   const redirectToNote = id => {
     return e => {
-      props.setCurrentNotebook(id);
+      props.setCurrentNotebook(props.notebook);
+      props.setCurrentTag(props.setCurrentTag({}));
       hashHistory.push(`/notebooks/${id}`);
     };
   };

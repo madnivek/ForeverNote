@@ -1,4 +1,5 @@
 export const getNotesByTag = (notes, taggings, tagId) => {
+  
   const noteIdArray = taggings[tagId];
   const noteArray = noteIdArray.map( noteId => {
     return notes[noteId];

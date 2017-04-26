@@ -16,8 +16,8 @@ class TagIndex extends React.Component {
           key={tag.id}
           tag={tag}
           deleteTag={ this.props.deleteTag }
-          fetchTag={ this.props.fetchTag }
-          fetchTags={ this.props.fetchTags} />
+          setCurrentNotebook={this.props.setCurrentNotebook}
+          setCurrentTag={this.props.setCurrentTag} />
       );
     });
 

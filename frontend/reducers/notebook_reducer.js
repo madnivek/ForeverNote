@@ -53,7 +53,7 @@ const NotebookReducer = (oldState = _defaultState, action) => {
 
     case SET_CURRENT_NOTEBOOK: {
       const newState6 = merge({}, oldState);
-      newState6.currentNotebook = newState6.notebooks[action.id];
+      newState6.currentNotebook = action.notebook;
       return newState6;
     }
 

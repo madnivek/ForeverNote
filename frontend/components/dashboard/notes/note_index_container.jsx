@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import NoteIndex from './note_index';
 import { deleteNote, fetchNotes, fetchNote } from '../../../actions/note_actions';
-import { clearCurrentNotebook } from '../../../actions/notebook_actions';
+import { setCurrentNotebook } from '../../../actions/notebook_actions';
+import { setCurrentTag } from '../../../actions/tag_actions';
 import { fetchNotebooks } from '../../../actions/notebook_actions';
 import { fetchTags, fetchTaggings } from '../../../actions/tag_actions';
 
@@ -21,7 +22,7 @@ const mapStateToProps = ({ notes_slice, notebooks_slice, tags_slice, session }, 
   } else if (tags_slice.currentTag.id ){
     header = tags_slice.currentTag.tag_name;
   }
-
+  
   const notebookId = notebooks_slice.currentNotebook.id;
   const tagId = tags_slice.currentTag.id;
 
@@ -29,6 +30,7 @@ const mapStateToProps = ({ notes_slice, notebooks_slice, tags_slice, session }, 
     notes: notes_slice.notes,
     indexType,
     notebookId,
+    tagId,
     header,
     taggings: tags_slice.taggings
   };
@@ -42,7 +44,8 @@ const mapDispatchToProps = dispatch => {
     fetchTags: () => dispatch(fetchTags()),
     fetchTaggings: () => dispatch(fetchTaggings()),
     fetchNotebooks: () => dispatch(fetchNotebooks()),
-    clearCurrentNotebook: () => dispatch(clearCurrentNotebook())
+    setCurrentNotebook: notebook => dispatch(setCurrentNotebook(notebook)),
+    setCurrentTag: tag => dispatch(setCurrentTag(tag))
   };
 };
 

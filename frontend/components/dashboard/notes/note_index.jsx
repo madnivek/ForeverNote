@@ -39,7 +39,7 @@ class NoteIndex extends React.Component {
         break;
       }
       case "tag":{
-        this.setState({notes, parsedNotes: SelectorUtil.getNotesByTagging(notes, taggings, tagId )});
+        this.setState({notes, parsedNotes: SelectorUtil.getNotesByTag(notes, taggings, tagId )});
         break;
       }
       default: {
@@ -54,11 +54,12 @@ class NoteIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    // const currentLoc = this.props.location.pathname;
+    const currentLoc = this.props.location.pathname;
     const nextLoc = newProps.location.pathname;
     // const nextLocIndex = nextLoc === '/notes';
     // const nextLocNew = currentLoc === nextLoc;
     const hasCurrentNotebook = this.props.notebookId
+    const hasCurrentTag = this.props.tagId
 
     //
     // if(nextLocIndex || (nextLocNew && hasCurrentNotebook)){
@@ -67,11 +68,14 @@ class NoteIndex extends React.Component {
     //     this.props.clearCurrentNotebook();
     //   }
     // }
-    if(nextLoc === '/notes'){
-      this.props.clearCurrentNotebook();
+    if(nextLoc === '/notes' && nextLoc !== currentLoc){
+      this.props.setCurrentNotebook({});
+      this.props.setCurrentTag({});
       this.filterNotes();
     } else if (hasCurrentNotebook) {
       this.filterNotes("notebook");
+    } else if(hasCurrentTag) {
+      this.filterNotes("tag")
     } else {
       this.filterNotes();
     }
