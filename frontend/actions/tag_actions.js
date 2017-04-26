@@ -8,6 +8,7 @@ export const REMOVE_TAG = 'REMOVE_TAG';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 export const receiveTags = tags => {
+  debugger
   return {
     type: RECEIVE_TAGS,
     tags

@@ -38,6 +38,7 @@ const Root = ({ store }) => {
           <Route path="/notes" component={ NoteIndexContainer } onEnter={ _ensureLoggedIn }>
             <Route path="/notes/:noteId" component={ NewNoteContainer } onEnter={ _ensureLoggedIn } />
             <Route path="/notebooks" modalType="notebooks" component={ ForeverModal } onEnter={ _ensureLoggedIn } />
+            <Route path="/tags" modalType="tags" component={ ForeverModal } onEnter={ _ensureLoggedIn } />
           </Route>
         </Route>
       </Router>

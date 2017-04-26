@@ -1,12 +1,8 @@
 import React from 'react';
 import Modal from 'react-modal';
 import NotebookIndexContainer from './notebooks/notebook_index_container';
+import TagIndexContainer from './tags/tag_index_container';
 import { hashHistory } from 'react-router';
-
-//
-// const appElement = document.getElementById('root');
-//
-// Modal.setAppElement(appElement);
 
 
 class ForeverModal extends React.Component {
@@ -27,7 +23,21 @@ class ForeverModal extends React.Component {
     hashHistory.goBack();
   }
   render(){
-
+    let modal;
+    switch(this.props.route.modalType){
+      case "notebooks": {
+        modal = <NotebookIndexContainer />;
+        break;
+      }
+      case "tags": {
+        modal = <TagIndexContainer />;
+        break;
+      }
+      default: {
+        modal = "";
+        break;
+      }
+    }
 
     return(
       <Modal
@@ -38,7 +48,7 @@ class ForeverModal extends React.Component {
           contentLabel="Example Modal"
           onRequestClose={this.closeModal}
         >
-        <NotebookIndexContainer />
+        { modal }
       </Modal>
     );
   }

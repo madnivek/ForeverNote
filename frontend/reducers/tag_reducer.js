@@ -12,6 +12,7 @@ const _defaultState = {
 const TagReducer = (oldState = _defaultState, action) => {
   switch(action.type){
     case RECEIVE_TAGS:{
+      debugger
       const newState1 = merge({}, oldState);
       newState1.tags = action.tags;
       return newState1;

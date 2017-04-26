@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Modal } from 'react-modal';
 import { deleteNotebook, fetchNotebooks, fetchNotebook } from '../../../actions/notebook_actions';
 import { fetchNotes } from '../../../actions/note_actions';
 import NotebookIndex from './notebook_index';
