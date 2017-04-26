@@ -43,7 +43,7 @@ class NoteIndex extends React.Component {
         break;
       }
       default: {
-        this.setState({notes, parsedNotes: Object.values(notes)});
+        this.setState({notes, parsedNotes: Object.values(notes).reverse()});
         break;
       }
     }

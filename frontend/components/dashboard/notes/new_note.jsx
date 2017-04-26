@@ -83,7 +83,7 @@ class NewNote extends React.Component{
   }
 
   update(e){
-    this.setState({ title: e.target.value, saveText: "Save Note" });
+    this.setState({ title: e.target.value, isOpen: false, saveText: "Save Note" });
   }
 
   toggleModal(e){
@@ -111,7 +111,7 @@ class NewNote extends React.Component{
           <NotebookSelectModal
             selectorClassName={selectorClassName}
             notebooks={ Object.values(this.props.notebooks) }
-            currentNotebookId={this.state.notebook_id}
+            currentNotebookId={this.props.currentNotebook.id || this.state.notebook_id}
             isOpen={this.state.isOpen}
             changeNotebook={ this.changeNotebook } />
 

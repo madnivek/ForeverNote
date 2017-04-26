@@ -3,7 +3,7 @@ export const getNotesByTag = (notes, taggings, tagId) => {
   const noteArray = noteIdArray.map( noteId => {
     return notes[noteId];
   });
-  return noteArray;
+  return noteArray.reverse();
 };
 
 
@@ -12,5 +12,5 @@ export const getNotesByNotebook = (notes, notebookId) => {
   const notebookNotesArray = allNotesArray.filter( note => {
     return note.notebook_id === parseInt(notebookId);
   });
-  return notebookNotesArray;
+  return notebookNotesArray.reverse();
 };
