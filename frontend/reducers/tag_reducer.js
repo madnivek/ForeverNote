@@ -35,6 +35,10 @@ const TagReducer = (oldState = _defaultState, action) => {
       return newState4;
     }
 
+    default: {
+      return oldState;
+    }
+
   }
 };
 

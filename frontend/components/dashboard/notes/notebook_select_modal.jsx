@@ -32,8 +32,9 @@ class NotebookSelectModal extends React.Component {
 
   render(){
 
-    const notebooks = this.props.notebooks.map( notebook => {
-      if(notebook.id === this.props.notebookId){
+    const notebooks = this.props.notebooks.map( (notebook => {
+
+      if(notebook.id === this.props.currentNotebookId){
         return;
       }
       return(
@@ -46,7 +47,7 @@ class NotebookSelectModal extends React.Component {
 
         </li>
       )
-    });
+    }).bind(this));
 
     return(
 
@@ -66,6 +67,7 @@ class NotebookSelectModal extends React.Component {
             transitionEnter={false}
             transitionLeave={false}>
             <ul className="notebook-modal-selector-ul">
+              <li className="notebook-selector-list">Move To: </li>
               { notebooks }
             </ul>
           </CSSTransitionGroup>

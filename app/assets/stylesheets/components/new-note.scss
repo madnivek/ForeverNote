@@ -105,6 +105,16 @@ $ever-grey: #dedede;
   text-overflow: ellipsis;
 }
 
+.notebook-selector-list:first-child {
+  font-variant: small-caps;
+  color: grey;
+}
+
+.notebook-selector-list:first-child:hover {
+  color: grey;
+  cursor: default;
+}
+
 .notebook-selector-list:last-child {
   border-bottom: none;
   padding-bottom: 0px;
