@@ -4,18 +4,21 @@ import { fetchNote, updateNote, createNote, fetchNotes } from '../../../actions/
 import { setCurrentNotebook } from '../../../actions/notebook_actions';
 import { EditorState, convertFromRaw } from 'draft-js';
 import NewNote from './new_note';
+import { getTagsByNote } from '../../../util/selector_util'
 
 const _convertFromRaw = (rawContentString) => {
   return convertFromRaw(JSON.parse(rawContentString));
 };
 
-const mapStateToProps = ({ session, notes_slice, notebooks_slice }, ownProps) => {
+const mapStateToProps = ({ session, notes_slice, notebooks_slice, tags_slice }, ownProps) => {
 
   let currentNoteRaw = {
       notebook_id: "",
       isOpen: false,
       title: "",
       saveText: "Saved",
+      tag_ids: [],
+      new_tags:{},
       editorState: EditorState.createEmpty()};
 
   let formType = ownProps.location.pathname === '/notes/new' ? "new" : "edit";
@@ -25,10 +28,14 @@ const mapStateToProps = ({ session, notes_slice, notebooks_slice }, ownProps) =>
   if(!note) {
     note = notes_slice.currentNote
   }
-  
+
   if(formType === "edit"){
+
+    const tags = getTagsByNote(tags_slice.tags, tags_slice.taggings, note.id)
+
     const contentState = _convertFromRaw(note.body.trim());
     currentNoteRaw.id = note.id;
+    currentNoteRaw.tags = tags;
     currentNoteRaw.title = note.title;
     currentNoteRaw.editorState = EditorState.createWithContent(contentState);
     currentNoteRaw.notebook_id = note.notebook_id;

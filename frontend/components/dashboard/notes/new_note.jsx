@@ -6,6 +6,7 @@ import NotebookSelectModal from './notebook_select_modal';
 class NewNote extends React.Component{
   constructor(props){
     super(props);
+
     this.state = this.props.currentNoteRaw;
     this.focus = () => this.refs.editor.focus();
     this.onChange = (editorState) => {
@@ -18,6 +19,8 @@ class NewNote extends React.Component{
     this.toggleModal = this.toggleModal.bind(this);
     this.changeNotebook = this.changeNotebook.bind(this);
     this.handleRedirect = this.handleRedirect.bind(this);
+    this.generateTagList = this.generateTagList.bind(this);
+    this.enterTag = this.enterTag.bind(this);
   }
 
   componentWillReceiveProps(newProps){
@@ -50,6 +53,24 @@ class NewNote extends React.Component{
         )
       );
     };
+  }
+
+  generateTagList() {
+
+    const existingTags =  this.state.tags.map( tag => {
+      return(
+        <span className="tag-show-item">{ tag.tag_name }</span>
+      );
+    });
+
+    const newTags = Object.values(this.state.new_tags).map( tag => {
+      return(
+        <span className="tag-show-item">{ tag.tag_name }</span>
+      );
+    });
+    debugger
+    return existingTags.concat(newTags);
+
   }
 
   submitNote(e){
@@ -95,8 +116,20 @@ class NewNote extends React.Component{
     this.setState({notebook_id, isOpen: false, saveText: "Save Note"});
   }
 
-  render() {
+  enterTag(e){
+    if(e.which === 13){
+      e.preventDefault()
+      const newTagTitle = e.target.value
+      const newTag = { tag_name: e.target.value, user_id: this.props.currentUser.id };
+      let updatedNewTags = this.state.new_tags;
+      updatedNewTags[newTag.tag_name] = newTag;
+      e.target.value = "";
+      this.setState({new_tags: updatedNewTags});
+    }
+  }
 
+  render() {
+    console.log(this.state.new_tags);
     const selectedNotebook = this.props.notebooks[this.state.notebook_id];
     const notebookTitle = selectedNotebook ? selectedNotebook.title : this.props.currentNotebook.title;
     let selectorClassName = this.props.formType === 'new' ?
@@ -145,8 +178,14 @@ class NewNote extends React.Component{
                 className="button"><i className="fa fa-strikethrough"
                 aria-hidden="true"></i></span>
 
+
             </nav>
 
+            <div className="tags-div">
+              <span><i className="fa fa-tags" aria-hidden="true"></i></span>
+              { this.generateTagList() }
+              <input onKeyPress={ this.enterTag } type="text" placeholder="+" />
+            </div>
           </div>
 
 

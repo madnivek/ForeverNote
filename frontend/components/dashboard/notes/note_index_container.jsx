@@ -20,9 +20,9 @@ const mapStateToProps = ({ notes_slice, notebooks_slice, tags_slice, session }, 
   if(notebooks_slice.currentNotebook.id){
     header = notebooks_slice.currentNotebook.title;
   } else if (tags_slice.currentTag.id ){
-    header = tags_slice.currentTag.tag_name;
+    header = '#' + tags_slice.currentTag.tag_name;
   }
-  
+
   const notebookId = notebooks_slice.currentNotebook.id;
   const tagId = tags_slice.currentTag.id;
 
