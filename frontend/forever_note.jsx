@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
-import { fetchNote, deleteNote, updateNote } from './util/notes_api_util';
+import { fetchTags, fetchTag, deleteTag, updateTag } from './util/tag_api_util';
 import { fetchNotebooks } from './actions/notebook_actions';
 import { fetchNotes } from './actions/note_actions';
 import configureStore from './store/store';
@@ -9,10 +9,10 @@ import configureStore from './store/store';
 document.addEventListener('DOMContentLoaded', () => {
   let store;
 
-  // window.fetchNotebooks = fetchNotebooks;
-  // window.fetchNotebook = fetchNotebook;
-  // window.deleteNotebook = deleteNotebook;
-  // window.updateNotebook = updateNotebook;
+  window.fetchTags = fetchTags;
+  window.fetchTag = fetchTag;
+  window.deleteTag = deleteTag;
+  window.updateTag = updateTag;
 
   if (window.currentUser){
     const preloadedState = { session: { currentUser: window.currentUser } };

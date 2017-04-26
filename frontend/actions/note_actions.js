@@ -1,4 +1,3 @@
-import React from 'react';
 import * as NotesAPIUtil from '../util/notes_api_util';
 import { hashHistory } from 'react-router';
 

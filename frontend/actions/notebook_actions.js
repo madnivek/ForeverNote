@@ -1,4 +1,3 @@
-import React from 'react';
 import * as NotebooksAPIUtil from '../util/notebooks_api_util';
 import { hashHistory } from 'react-router';
 

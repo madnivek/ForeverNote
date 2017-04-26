@@ -19,6 +19,8 @@ class User < ApplicationRecord
     foreign_key: :author_id
   )
 
+  has_many :tags
+
   attr_reader :password
 
   def self.find_by_credentials(username, password)

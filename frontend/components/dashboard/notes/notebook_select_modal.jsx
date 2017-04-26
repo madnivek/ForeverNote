@@ -33,6 +33,9 @@ class NotebookSelectModal extends React.Component {
   render(){
 
     const notebooks = this.props.notebooks.map( notebook => {
+      if(notebook.id === this.props.notebookId){
+        return;
+      }
       return(
         <li
           key={notebook.id}

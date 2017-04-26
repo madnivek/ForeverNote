@@ -113,6 +113,7 @@ class NewNote extends React.Component{
           <NotebookSelectModal
             selectorClassName={selectorClassName}
             notebooks={ Object.values(this.props.notebooks) }
+            currentNotebookId={this.props.currentNotebookId}
             isOpen={this.state.isOpen}
             changeNotebook={ this.changeNotebook } />
 

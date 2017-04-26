@@ -10,7 +10,7 @@ class Api::NotesController < ApplicationController
         @notes = Note.where(notebook_id: params[:value])
       end
     else
-      @notes = [];
+      @notes = []
     end
     render :index
   end
