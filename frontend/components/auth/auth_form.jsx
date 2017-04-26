@@ -44,8 +44,14 @@ class AuthForm extends React.Component{
     this.props.processForm(this.state)
       .then(
         () => {
-          hashHistory.push('/');
-          this.props.clearErrors();
+          this.props.fetchNotes("all")
+            .then( () => this.props.fetchNotebooks())
+            .then( () => this.props.fetchTags())
+            .then( () => this.props.fetchTaggings())
+            .then( () => {
+              hashHistory.push('/');
+              this.props.clearErrors();
+            });
         },
         () => this.setState(this.default)
       );
@@ -54,13 +60,19 @@ class AuthForm extends React.Component{
   handleDemoLogin(e) {
     e.preventDefault();
     this.props.processForm({username: "harry", password: "potter"})
-    .then(
-      () => {
-        hashHistory.push('/');
-        this.props.clearErrors();
-      },
-      () => this.setState(this.default)
-    );
+      .then(
+        () => {
+          this.props.fetchNotes("all")
+            .then( () => this.props.fetchNotebooks())
+            .then( () => this.props.fetchTags())
+            .then( () => this.props.fetchTaggings())
+            .then( () => {
+              hashHistory.push('/');
+              this.props.clearErrors();
+            });
+        },
+        () => this.setState(this.default)
+      );
   }
 
   render(){

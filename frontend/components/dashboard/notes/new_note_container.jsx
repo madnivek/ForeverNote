@@ -25,7 +25,7 @@ const mapStateToProps = ({ session, notes_slice, notebooks_slice }, ownProps) =>
   if(!note) {
     note = notes_slice.currentNote
   }
-
+  
   if(formType === "edit"){
     const contentState = _convertFromRaw(note.body.trim());
     currentNoteRaw.id = note.id;

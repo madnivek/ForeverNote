@@ -1,10 +1,14 @@
 class Api::TagsController < ApplicationController
 
-  before_action :require_logged_in
+  before_action :require_logged_in, except: [:index]
 
   def index
-    @tags = current_user.tags
-    render :index
+    if logged_in?
+      @tags = current_user.tags
+      render :index
+    else
+      @tags = []
+    end
   end
 
   def show

@@ -1,17 +1,15 @@
 import React from 'react';
 import { hashHistory, Link } from 'react-router';
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router';
+
 
 
 const NotebookIndexItem = props => {
-  const fetchAndRedirect = id => {
+
+  const redirectToNote = id => {
     return e => {
-      e.preventDefault();
-      props.fetchNotes("notebook",id)
-        .then( () => {
-          props.fetchNotebook(id);
-        })
-        .then( () => hashHistory.push(`/notebooks/${id}`));
+      props.setCurrentNotebook(id);
+      hashHistory.push(`/notebooks/${id}`);
     };
   };
 
@@ -28,7 +26,7 @@ const NotebookIndexItem = props => {
   };
 
   return(
-    <li onClick={ fetchAndRedirect(props.notebook.id) } className="notebook-index-item">
+    <li onClick={ redirectToNote(props.notebook.id) } className="notebook-index-item">
       <h3 className="notebook-item-header between-borders">{props.notebook.title}</h3>
       <div>
         <i className="fa fa-pencil-square-o inverse-button" aria-hidden="true" onClick={ goToEdit( props.notebook.id ) } />

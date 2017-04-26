@@ -1,10 +1,11 @@
-import { RECEIVE_TAG, RECEIVE_TAGS, RECEIVE_ERRORS, REMOVE_TAG} from
+import { RECEIVE_TAGGINGS, RECEIVE_TAG, RECEIVE_TAGS, RECEIVE_ERRORS, REMOVE_TAG} from
   '../actions/tag_actions';
 
 import merge from 'lodash/merge';
 
 const _defaultState = {
   tags: {},
+  taggings: {},
   currentTag: {},
   errors: []
 };
@@ -12,7 +13,6 @@ const _defaultState = {
 const TagReducer = (oldState = _defaultState, action) => {
   switch(action.type){
     case RECEIVE_TAGS:{
-      debugger
       const newState1 = merge({}, oldState);
       newState1.tags = action.tags;
       return newState1;
@@ -34,6 +34,12 @@ const TagReducer = (oldState = _defaultState, action) => {
       const newState4 = merge({}, oldState);
       newState4.errors = action.errors;
       return newState4;
+    }
+
+    case RECEIVE_TAGGINGS:{
+        const newState5 = merge({}, oldState);
+        newState5.taggings = action.taggings;
+        return newState5;
     }
 
     default: {

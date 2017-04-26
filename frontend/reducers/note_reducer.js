@@ -20,6 +20,7 @@ const NoteReducer = (oldState = _defaultState, action) => {
     }
 
     case RECEIVE_NOTE: {
+      
       const rNoteNewState = Object.assign({}, oldState);
       rNoteNewState.notes[action.note.id] = action.note;
       rNoteNewState.currentNote = action.note;

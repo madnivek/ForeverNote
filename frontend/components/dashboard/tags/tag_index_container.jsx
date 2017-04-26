@@ -4,7 +4,6 @@ import { deleteTag, fetchTags, fetchTag } from '../../../actions/tag_actions';
 import TagIndex from './tag_index';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   return {
     tags: Object.values(state.tags_slice.tags)
   };

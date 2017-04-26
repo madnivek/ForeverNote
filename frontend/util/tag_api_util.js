@@ -34,3 +34,10 @@ export const deleteTag = id => {
   url: `api/tags/${id}`
   });
 };
+
+export const fetchTaggings = () => {
+  return $.ajax({
+    type: 'GET',
+    url: 'api/taggings'
+  });
+};
