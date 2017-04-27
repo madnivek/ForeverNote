@@ -8,26 +8,8 @@ class NoteIndex extends React.Component {
   constructor(props){
     super(props);
     this.state = {notes: this.props.notes, parsedNotes: []};
-
-    // if(Object.values(this.props.notes).length === 0){
-    //   debugger
-    //   this.props.fetchNotes("all")
-    //     .then( () => this.props.fetchNotebooks())
-    //     .then( () => this.props.fetchTags())
-    //     .then( () => this.props.fetchTaggings());
-    //   this.filterNotes = this.filterNotes.bind(this);
-    // }
   }
-
-  // componentWillReceiveProps(newProps){
-  //   const prev = this.props.location.pathname;
-  //   const next = newProps.location.pathname;
-  //   if (prev !== next && next === '/notes'){
-  //     this.props.fetchNotes("all")
-  //       .then(this.props.clearCurrentNotebook);
-  //   }
-  // }
-
+  
   filterNotes(type){
 
     const notes = this.props.notes;

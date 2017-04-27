@@ -13,6 +13,8 @@ export const getNotesByTag = (notes, taggings, tagId) => {
 };
 
 export const getTagsByNote = (tags, taggings, noteId) => {
+  
+  if(!taggings.notesToTags) { return; }
 
   const tagIdArray = taggings.notesToTags[noteId];
   let tagArray = [];

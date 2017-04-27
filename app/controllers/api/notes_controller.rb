@@ -23,7 +23,6 @@ class Api::NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
 
-
     if @note.save
       if params[:note][:newTags]
         create_tags(params[:note][:newTags].values)
@@ -37,7 +36,11 @@ class Api::NotesController < ApplicationController
   def update
 
     @note = Note.find(params[:id])
-
+    raw_deleted_tags = params[:note][:deleted_tags]
+    unless raw_deleted_tags.nil?
+      deleted_tags = raw_deleted_tags.map(&:to_i)
+      @note.tag_ids -= deleted_tags
+    end
 
     if @note.update(note_params)
       if params[:note][:newTags]

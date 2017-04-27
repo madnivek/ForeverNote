@@ -20,10 +20,14 @@ const mapStateToProps = ({ session, notes_slice, notebooks_slice, tags_slice }, 
       saveText: "Saved",
       tags: {},
       new_tags:{},
-      deleted_tags:{},
+      deleted_tags:[],
       editorState: EditorState.createEmpty()};
 
   let formType = ownProps.location.pathname === '/notes/new' ? "new" : "edit";
+
+  if(ownProps.params.noteId && !notes_slice.notes[ownProps.params.noteId]){
+    formType = "none";
+  }
 
   let note = notes_slice.notes[ownProps.params.noteId];
 
@@ -31,8 +35,8 @@ const mapStateToProps = ({ session, notes_slice, notebooks_slice, tags_slice }, 
     note = notes_slice.currentNote
   }
 
-  if(formType === "edit" && note.body){
 
+  if(formType === "edit"){
     const tags = getTagsByNote(tags_slice.tags, tags_slice.taggings, note.id)
 
     const contentState = _convertFromRaw(note.body.trim());

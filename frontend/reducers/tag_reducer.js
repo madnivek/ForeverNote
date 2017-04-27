@@ -37,6 +37,7 @@ const TagReducer = (oldState = _defaultState, action) => {
     }
 
     case RECEIVE_TAGGINGS:{
+        
         const newState5 = merge({}, oldState);
         newState5.taggings = action.taggings;
         return newState5;

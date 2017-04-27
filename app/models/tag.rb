@@ -1,8 +1,8 @@
 class Tag < ApplicationRecord
-  validates :tag_name, :notes, presence: true
+  validates :tag_name, presence: true
   validates :tag_name, uniqueness: true
 
-  has_many :taggings
+  has_many :taggings, dependent: :destroy, foreign_key: :tag_id
 
   has_many(
     :notes,

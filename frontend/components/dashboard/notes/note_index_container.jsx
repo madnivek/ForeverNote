@@ -28,11 +28,11 @@ const mapStateToProps = ({ notes_slice, notebooks_slice, tags_slice, session }, 
 
   return {
     notes: notes_slice.notes,
-    indexType,
     notebookId,
-    tagId,
+    indexType,
     header,
-    taggings: tags_slice.taggings
+    taggings: tags_slice.taggings,
+    tagId
   };
 };
 

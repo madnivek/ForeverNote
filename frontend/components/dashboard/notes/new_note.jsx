@@ -21,6 +21,7 @@ class NewNote extends React.Component{
     this.handleRedirect = this.handleRedirect.bind(this);
     this.generateTagList = this.generateTagList.bind(this);
     this.enterTag = this.enterTag.bind(this);
+    this.deleteNewTag = this.deleteNewTag.bind(this);
   }
 
   componentWillReceiveProps(newProps){
@@ -75,24 +76,28 @@ class NewNote extends React.Component{
 
   generateTagList() {
     let existingTags = [];
-    const trash = <i className="fa fa-minus-circle" aria-hidden="true"></i>
 
     if(Object.values(this.state.tags).length !== 0){
-      existingTags =  this.state.tags.map( tag => {
+      existingTags =  this.state.tags.map( (tag, index) => {
         return(
-          <span key={tag.tag_name} className="tag-show-item">{ tag.tag_name } { trash } </span>
+          <span key={tag.tag_name} className="tag-show-item old-tag">
+            { tag.tag_name }
+            <i className="fa fa-minus-circle" aria-hidden="true" onClick={ this.deleteOldTag(tag.id, index)}/>
+          </span>
         );
       });
     }
 
     const newTags = Object.values(this.state.new_tags).map( tag => {
       return(
-        <span key={tag.tag_name} className="tag-show-item">{ tag.tag_name } { trash }</span>
+        <span key={tag.tag_name} className="tag-show-item new-tag">
+          { tag.tag_name }
+          <i className="fa fa-minus-circle" aria-hidden="true" onClick={ this.deleteNewTag(tag.tag_name)} />
+        </span>
       );
     });
 
-    return existingTags.concat(newTags);
-
+    return existingTags.concat(newTags)
   }
 
   enterTag(e){
@@ -132,6 +137,7 @@ class NewNote extends React.Component{
     const note = {
       id,
       title,
+      deleted_tags: this.state.deleted_tags,
       newTags: this.state.new_tags,
       author_id: this.props.currentUser.id ,
       notebook_id , body:
@@ -151,8 +157,36 @@ class NewNote extends React.Component{
       });
   }
 
+  deleteOldTag(tagId, index) {
+    return (e) => {
+      const newState = this.state.tags.slice();
+
+      newState.splice(index,1);
+
+      this.setState({
+        deleted_tags: this.state.deleted_tags.concat([tagId]),
+        tags: newState,
+        saveText: "Save Note"
+      });
+    };
+  }
+
+  deleteNewTag(tag_name) {
+    return e => {
+      const newState = Object.assign({}, this.state.new_tags);
+      delete newState[tag_name];
+      this.setState({
+        new_tags: newState,
+        saveText: "Save Note"})
+    }
+  }
+
 
   render(){
+
+    if(this.props.formType === "none"){
+      return <div></div>;
+    }
 
     const selectedNotebook = this.props.notebooks[this.state.notebook_id];
     const notebookTitle = selectedNotebook ? selectedNotebook.title : this.props.currentNotebook.title;

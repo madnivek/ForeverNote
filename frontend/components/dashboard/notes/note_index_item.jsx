@@ -15,7 +15,7 @@ const NoteIndexItem = props => {
     e.preventDefault();
     e.stopPropagation();
     props.deleteNote(id)
-      .then( () => props.fetchTaggings());
+      .then( () => props.fetchTaggings())
   };
 
   return(

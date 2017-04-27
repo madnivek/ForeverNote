@@ -82,7 +82,7 @@ export const updateTag = tag => dispatch => {
 
 export const deleteTag = id => dispatch => {
   return TagsAPIUtil.deleteTag(id)
-    .then( tag => dispatch(receiveTags(tag)),
+    .then( tag => dispatch(removeTag(tag)),
       err => dispatch(receiveErrors(err))
     );
 };
