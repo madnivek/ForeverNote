@@ -7,10 +7,10 @@ class NavBar extends React.Component {
 
   render(){
 
-    const buttonNames = ["NEW", "SEARCH", "NOTES", "NOTEBOOKS", "TAGS", "LOGOUT"];
-    const buttonNamesHov = ["NEW_HOV", "SEARCH_HOV", "NOTES_HOV", "NOTEBOOKS_HOV", "TAGS_HOV", "LOGOUT_HOV"];
+    const buttonNames = ["NEW", "NOTES", "NOTEBOOKS", "TAGS", "LOGOUT"];
+    const buttonNamesHov = ["NEW_HOV", "NOTES_HOV", "NOTEBOOKS_HOV", "TAGS_HOV", "LOGOUT_HOV"];
 
-    const redirectLinks = ["/notes/new", "/notes/search", "/notes", "/notebooks", "/tags", ""];
+    const redirectLinks = ["/notes/new", "/notes", "/notebooks", "/tags", ""];
     let logout = "";
 
     const buttons = buttonNames.map( (name, index) => {
