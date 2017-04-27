@@ -1,6 +1,8 @@
 class Api::TagsController < ApplicationController
 
   before_action :require_logged_in, except: [:index]
+  # [{"tag_name"=>"asfsadf", "user_id"=>"1"}, {"tag_name"=>"asdfasdfsdf", "user_id"=>"1"}]
+
 
   def index
     if logged_in?

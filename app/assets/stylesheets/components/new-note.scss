@@ -224,9 +224,22 @@ $ever-grey: #dedede;
 }
 
 .tag-show-item {
+  cursor: default;
+  display: flex;
   font-size: 12px;
   margin-left: 5px;
   padding: 2.5px 5px;
   border: 1px solid $ever-grey;
   border-radius: 2px;
+}
+
+.fa-minus-circle {
+  cursor: pointer;
+  display: none;
+  padding-left:3px;
+  padding-top:3px;
+}
+
+.tag-show-item:hover .fa-minus-circle {
+  display: block;
 }

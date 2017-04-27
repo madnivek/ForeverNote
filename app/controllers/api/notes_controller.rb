@@ -22,7 +22,12 @@ class Api::NotesController < ApplicationController
 
   def create
     @note = Note.new(note_params)
+
+
     if @note.save
+      if params[:note][:newTags]
+        create_tags(params[:note][:newTags].values)
+      end
       render :show
     else
       render json: ["Invalid note criteria!"], status: 422
@@ -30,7 +35,13 @@ class Api::NotesController < ApplicationController
   end
 
   def update
+
     @note = Note.find(params[:id])
+
+    if params[:note][:newTags]
+      create_tags(params[:note][:newTags].values)
+    end
+
     if @note.update(note_params)
       render :show
     else
@@ -45,6 +56,14 @@ class Api::NotesController < ApplicationController
   end
 
   private
+
+  def create_tags(tag_infos)
+    tag_infos.each do |tag_info|
+      new_tag = Tag.new(tag_name: tag_info[:tag_name], user_id: tag_info[:user_id])
+      new_tag.note_ids = [@note.id]
+      new_tag.save!
+    end
+  end
 
   def note_params
     params.require(:note).permit(:title, :body, :author_id, :notebook_id)

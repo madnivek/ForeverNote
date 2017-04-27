@@ -56,21 +56,60 @@ class NewNote extends React.Component{
   }
 
   generateTagList() {
-
-    const existingTags =  this.state.tags.map( tag => {
-      return(
-        <span className="tag-show-item">{ tag.tag_name }</span>
-      );
-    });
+    let existingTags = [];
+    const trash = <i className="fa fa-minus-circle" aria-hidden="true"></i>
+    if(Object.values(this.state.tags).length !== 0){
+      existingTags =  this.state.tags.map( tag => {
+        return(
+          <span className="tag-show-item">{ tag.tag_name } { trash } </span>
+        );
+      });
+    }
 
     const newTags = Object.values(this.state.new_tags).map( tag => {
       return(
-        <span className="tag-show-item">{ tag.tag_name }</span>
+        <span className="tag-show-item">{ tag.tag_name } { trash }</span>
       );
     });
-    debugger
+
     return existingTags.concat(newTags);
 
+  }
+
+
+
+  update(e){
+    this.setState({ title: e.target.value, isOpen: false, saveText: "Save Note" });
+  }
+
+  toggleModal(e){
+    e.preventDefault();
+    this.setState({isOpen: true});
+  }
+
+  changeNotebook(notebook_id){
+    this.setState({notebook_id, isOpen: false, saveText: "Save Note"});
+  }
+
+  enterTag(e){
+    if(e.which === 13){
+      e.preventDefault()
+      const oldTags = this.state.tags
+      let oldTagTitles = []
+      if(Object.values(oldTags).length !== 0){
+        oldTagTitles = this.state.tags.map( tag => tag.tag_name);
+      }
+
+      let updatedNewTags = this.state.new_tags;
+      const tagIsInOldTags = updatedNewTags[e.target.value];
+      const tagIsInNewTags = oldTagTitles.includes(e.target.value)
+
+      if(!tagIsInOldTags && !tagIsInNewTags){
+        updatedNewTags[e.target.value] = { tag_name: e.target.value, user_id: this.props.currentUser.id };
+        this.setState({new_tags: updatedNewTags});
+      }
+      e.target.value = "";
+    }
   }
 
   submitNote(e){
@@ -89,11 +128,14 @@ class NewNote extends React.Component{
     const note = {
       id,
       title,
+      newTags: this.state.new_tags,
       author_id: this.props.currentUser.id ,
       notebook_id , body:
       rawContentString };
 
     this.props.processForm(note)
+      .then( () => this.props.fetchTags())
+      .then( () => this.props.fetchTaggings())
       .then( () => {
         if(this.props.formType === 'new'){
           hashHistory.push(`/notes`);
@@ -103,33 +145,8 @@ class NewNote extends React.Component{
       });
   }
 
-  update(e){
-    this.setState({ title: e.target.value, isOpen: false, saveText: "Save Note" });
-  }
-
-  toggleModal(e){
-    e.preventDefault();
-    this.setState({isOpen: true});
-  }
-
-  changeNotebook(notebook_id){
-    this.setState({notebook_id, isOpen: false, saveText: "Save Note"});
-  }
-
-  enterTag(e){
-    if(e.which === 13){
-      e.preventDefault()
-      const newTagTitle = e.target.value
-      const newTag = { tag_name: e.target.value, user_id: this.props.currentUser.id };
-      let updatedNewTags = this.state.new_tags;
-      updatedNewTags[newTag.tag_name] = newTag;
-      e.target.value = "";
-      this.setState({new_tags: updatedNewTags});
-    }
-  }
-
   render() {
-    console.log(this.state.new_tags);
+
     const selectedNotebook = this.props.notebooks[this.state.notebook_id];
     const notebookTitle = selectedNotebook ? selectedNotebook.title : this.props.currentNotebook.title;
     let selectorClassName = this.props.formType === 'new' ?
