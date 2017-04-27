@@ -15,8 +15,7 @@ const NoteIndexItem = props => {
     e.preventDefault();
     e.stopPropagation();
     props.deleteNote(id)
-      .then( () => props.fetchTaggings() )
-      .then(() => hashHistory.push('/'));
+      .then( () => props.fetchTaggings());
   };
 
   return(

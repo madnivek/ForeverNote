@@ -55,9 +55,28 @@ class NewNote extends React.Component{
     };
   }
 
+
+
+
+  update(e){
+    this.setState({ title: e.target.value, isOpen: false, saveText: "Save Note" });
+  }
+
+  toggleModal(e){
+    e.preventDefault();
+    this.setState({isOpen: true});
+  }
+
+  changeNotebook(notebook_id){
+    this.setState({notebook_id, isOpen: false, saveText: "Save Note"});
+  }
+
+
+
   generateTagList() {
     let existingTags = [];
     const trash = <i className="fa fa-minus-circle" aria-hidden="true"></i>
+
     if(Object.values(this.state.tags).length !== 0){
       existingTags =  this.state.tags.map( tag => {
         return(
@@ -74,21 +93,6 @@ class NewNote extends React.Component{
 
     return existingTags.concat(newTags);
 
-  }
-
-
-
-  update(e){
-    this.setState({ title: e.target.value, isOpen: false, saveText: "Save Note" });
-  }
-
-  toggleModal(e){
-    e.preventDefault();
-    this.setState({isOpen: true});
-  }
-
-  changeNotebook(notebook_id){
-    this.setState({notebook_id, isOpen: false, saveText: "Save Note"});
   }
 
   enterTag(e){
@@ -139,6 +143,7 @@ class NewNote extends React.Component{
       .then( () => {
         if(this.props.formType === 'new'){
           this.props.setCurrentNotebook({});
+          this.props.setCurrentTag({});
           hashHistory.push(`/notes`);
         } else {
           hashHistory.push(`/notes/${note.id}`);
@@ -146,7 +151,8 @@ class NewNote extends React.Component{
       });
   }
 
-  render() {
+
+  render(){
 
     const selectedNotebook = this.props.notebooks[this.state.notebook_id];
     const notebookTitle = selectedNotebook ? selectedNotebook.title : this.props.currentNotebook.title;

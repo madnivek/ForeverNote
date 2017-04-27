@@ -38,11 +38,11 @@ class Api::NotesController < ApplicationController
 
     @note = Note.find(params[:id])
 
-    if params[:note][:newTags]
-      create_tags(params[:note][:newTags].values)
-    end
 
     if @note.update(note_params)
+      if params[:note][:newTags]
+        create_tags(params[:note][:newTags].values)
+      end
       render :show
     else
       render json: ["Invalid note criteria!"], status: 422
@@ -59,9 +59,14 @@ class Api::NotesController < ApplicationController
 
   def create_tags(tag_infos)
     tag_infos.each do |tag_info|
-      new_tag = Tag.new(tag_name: tag_info[:tag_name], user_id: tag_info[:user_id])
-      new_tag.note_ids = [@note.id]
-      new_tag.save!
+      existing_tag = Tag.find_by_tag_name(tag_info[:tag_name])
+      if existing_tag
+        existing_tag.note_ids += [@note.id]
+      else
+        new_tag = Tag.new(tag_name: tag_info[:tag_name], user_id: tag_info[:user_id])
+        new_tag.note_ids = [@note.id]
+        new_tag.save!
+      end
     end
   end
 

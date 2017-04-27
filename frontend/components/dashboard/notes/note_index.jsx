@@ -85,14 +85,16 @@ class NoteIndex extends React.Component {
   render(){
 
     const notes = this.state.parsedNotes.map ( note => {
-      return(
-        <NoteIndexItem
-          key={note.id}
-          fetchTaggings={this.props.fetchTaggings}
-          note={note}
-          deleteNote={ this.props.deleteNote }
-          fetchNote={ this.props.fetchNote } />
-      );
+      if(note) {
+        return(
+          <NoteIndexItem
+            key={note.id}
+            fetchTaggings={this.props.fetchTaggings}
+            note={note}
+            deleteNote={ this.props.deleteNote }
+            fetchNote={ this.props.fetchNote } />
+        );
+      }
     });
 
 

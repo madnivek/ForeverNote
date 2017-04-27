@@ -1,12 +1,14 @@
 export const getNotesByTag = (notes, taggings, tagId) => {
-
   const noteIdArray = taggings.tagsToNotes[tagId];
   let noteArray = [];
   if(noteIdArray !== undefined){
     noteArray = noteIdArray.map( noteId => {
-      return notes[noteId];
+      if (notes[noteId]) {
+        return notes[noteId];
+      }
     });
   }
+
   return noteArray.reverse();
 };
 
@@ -14,11 +16,15 @@ export const getTagsByNote = (tags, taggings, noteId) => {
 
   const tagIdArray = taggings.notesToTags[noteId];
   let tagArray = [];
+
   if(tagIdArray !== undefined){
     tagArray = tagIdArray.map( tagId => {
-      return tags[tagId];
+      if(tags[tagId]){
+        return tags[tagId];
+      }
     });
   }
+
   return tagArray.reverse();
 };
 

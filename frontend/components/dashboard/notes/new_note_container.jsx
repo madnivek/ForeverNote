@@ -5,7 +5,7 @@ import { setCurrentNotebook } from '../../../actions/notebook_actions';
 import { EditorState, convertFromRaw } from 'draft-js';
 import NewNote from './new_note';
 import { getTagsByNote } from '../../../util/selector_util'
-import { createTag, fetchTags, fetchTaggings } from '../../../actions/tag_actions'
+import { setCurrentTag, createTag, fetchTags, fetchTaggings } from '../../../actions/tag_actions'
 
 const _convertFromRaw = (rawContentString) => {
   return convertFromRaw(JSON.parse(rawContentString));
@@ -20,6 +20,7 @@ const mapStateToProps = ({ session, notes_slice, notebooks_slice, tags_slice }, 
       saveText: "Saved",
       tags: {},
       new_tags:{},
+      deleted_tags:{},
       editorState: EditorState.createEmpty()};
 
   let formType = ownProps.location.pathname === '/notes/new' ? "new" : "edit";
@@ -62,7 +63,8 @@ const mapDispatchToProps = ( dispatch, ownProps ) => {
     fetchTags: () => dispatch(fetchTags()),
     fetchTaggings: () => dispatch(fetchTaggings()),
     processForm: note => dispatch(processForm(note)),
-    setCurrentNotebook: notebook => dispatch(setCurrentNotebook(notebook))
+    setCurrentNotebook: notebook => dispatch(setCurrentNotebook(notebook)),
+    setCurrentTag: tag => dispatch(setCurrentTag(tag))
   };
 };
 
