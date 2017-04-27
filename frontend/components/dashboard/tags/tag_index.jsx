@@ -54,7 +54,7 @@ class TagIndex extends React.Component {
         <div className="main-container">
           <section className="notebook-index-section">
             <h2 className="notebook-index-header">TAGS</h2>
-            <div className="tag-search-container">
+            <div className="search-container">
               <i className="fa fa-search" aria-hidden="true"></i>
               <input
                 className = "search-input"
@@ -65,14 +65,14 @@ class TagIndex extends React.Component {
             </div>
 
             <ul className="note-index-list">
-            <CSSTransitionGroup
-              transitionName="tag-search-transition"
-              transitionEnterTimeout={800}
-              transitionLeaveTimeout={500}>
+              <CSSTransitionGroup
+                transitionName="tag-search-transition"
+                transitionEnterTimeout={800}
+                transitionLeaveTimeout={500}>
 
-                { tags }
+                  { tags }
 
-            </CSSTransitionGroup>
+              </CSSTransitionGroup>
             </ul>
 
           </section>

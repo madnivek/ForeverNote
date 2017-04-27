@@ -24,7 +24,6 @@ class NotebookIndex extends React.Component {
       addNotebookButton = <Link to='/notebooks/new'><i className="fa fa-plus-circle add-notebook" aria-hidden="true" /></Link>;
     }
 
-
     return(
       <CSSTransitionGroup
         transitionName="notebook-index-transition"
@@ -32,6 +31,8 @@ class NotebookIndex extends React.Component {
         transitionAppearTimeout={500}
         transitionEnter={false}
         transitionLeave={false}>
+
+        <div className="loader"></div>
         <div className="main-container">
           <section className="notebook-index-section">
             <div className="notebook-index-header"><h2>NOTEBOOKS</h2>{ addNotebookButton }</div>

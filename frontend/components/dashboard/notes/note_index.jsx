@@ -4,37 +4,48 @@ import NavBarContainer from '../nav/nav_bar_container';
 import * as SelectorUtil from '../../../util/selector_util';
 import shallowCompare from 'react-addons-shallow-compare';
 
-
 class NoteIndex extends React.Component {
   constructor(props){
     super(props);
-    this.state = {notes: this.props.notes, parsedNotes: []};
+    this.state = {
+      notes: this.props.notes,
+      parsedNotes: [],
+      searchString: "",
+      currentNotes: Object.values(this.props.notes)
+    };
+    this.updateSearchTitleBar = this.updateSearchTitleBar.bind(this);
+    this.updateSearchBodyBar = this.updateSearchBodyBar.bind(this);
+    this.currentNotes = Object.values(this.props.notes);
+    this.filterNotesBySearch = this.filterNotesBySearch.bind(this);
+
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if(this.state.parsedNotes.length === nextState.parsedNotes.length) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
+  // componentWillReceiveProps(newProps){
+  //   this.currentNotes = this.state.parsedNotes;
   // }
 
   filterNotes(type){
 
     const notes = this.props.notes;
-    const { taggings, notebookId, tagId } = this.props
+    const { taggings, notebookId, tagId } = this.props;
 
     switch(type){
       case "notebook":{
-        this.setState({notes, parsedNotes: SelectorUtil.getNotesByNotebook(notes, notebookId)});
+        const parsedNotes = SelectorUtil.getNotesByNotebook(notes, notebookId);
+        this.currentNotes = parsedNotes;
+        this.setState({ notes, parsedNotes, currentNotes: parsedNotes});
         break;
       }
       case "tag":{
-        this.setState({notes, parsedNotes: SelectorUtil.getNotesByTag(notes, taggings, tagId )});
+        const parsedNotes = SelectorUtil.getNotesByTag(notes, taggings, tagId );
+        this.currentNotes = parsedNotes;
+        this.setState({notes, parsedNotes, currentNotes: parsedNotes});
         break;
       }
       default: {
-        this.setState({notes, parsedNotes: Object.values(notes).reverse()});
+        const parsedNotes = Object.values(notes).reverse();
+        this.currentNotes = parsedNotes;
+        this.setState({notes, parsedNotes, currentNotes: parsedNotes});
         break;
       }
     }
@@ -50,15 +61,46 @@ class NoteIndex extends React.Component {
   //   }
   // }
 
+  updateSearchTitleBar(e){
+    e.preventDefault();
+    this.setState( {searchString: e.target.value} );
+    this.filterNotesBySearch(e.target.value, "title");
+  }
+
+  updateSearchBodyBar(e){
+    e.preventDefault();
+    this.setState( {searchString: e.target.value} );
+    this.filterNotesBySearch(e.target.value, "body");
+  }
+
+  filterNotesBySearch(searchString, field){
+    const criteria = field === "title" ? "title" : "body"
+    const regExp = new RegExp(searchString, "i");
+
+    const filter = note => {
+      // const titleIncludesString = note.title.includes(searchString);
+      // const bodyIncludesString = note.plain_content.includes(searchString);
+
+      if(searchString === "" || regExp.test(note[criteria])){
+        return true;
+      } else {
+        return false;
+      }
+    };
+
+    const currentNotes = this.currentNotes.filter(filter);
+    this.setState({currentNotes});
+  }
+
 
   componentWillReceiveProps(newProps){
+
     const currentLoc = this.props.location.pathname;
     const nextLoc = newProps.location.pathname;
     // const nextLocIndex = nextLoc === '/notes';
     // const nextLocNew = currentLoc === nextLoc;
-    const hasCurrentNotebook = this.props.notebookId
-    const hasCurrentTag = this.props.tagId
-
+    const hasCurrentNotebook = this.props.notebookId;
+    const hasCurrentTag = this.props.tagId;
     //
     // if(nextLocIndex || (nextLocNew && hasCurrentNotebook)){
     //   this.filterNotes(newProps);
@@ -81,9 +123,18 @@ class NoteIndex extends React.Component {
   }
 
   render(){
+    let headerClassName;
 
-    const notes = this.state.parsedNotes.map ( note => {
-      
+    if(this.props.header === "NOTES"){
+      headerClassName = "note-index-header";
+    } else if(this.props.header === "TAGS") {
+      headerClassName = "note-index-header tags-header";
+    } else {
+      headerClassName = "note-index-header notebooks-header";
+    }
+
+    const notes = this.state.currentNotes.map ( note => {
+
       if(note) {
         return(
           <NoteIndexItem
@@ -101,7 +152,24 @@ class NoteIndex extends React.Component {
       <div className="main-container">
         <NavBarContainer />
         <section className="note-index-section">
-          <h2 className="note-index-header">{this.props.header}</h2>
+          <h2 className={ headerClassName }>{this.props.header}</h2>
+          <div className="parent-search-container">
+            <div className="search-container note-search">
+              <input
+                className = "search-input"
+                type="text"
+                placeholder="search by title..."
+                value={this.state.searchTerm}
+                onChange={ this.updateSearchTitleBar } />
+
+              <input
+                className = "search-input"
+                type="text"
+                placeholder="search by body..."
+                value={this.state.searchTerm}
+                onChange={ this.updateSearchBodyBar } />
+            </div>
+          </div>
           <ul className="note-index-list">
             { notes }
           </ul>

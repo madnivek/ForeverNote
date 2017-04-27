@@ -31,10 +31,15 @@ $ever-grey: #dedede;
   display: block;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid $ever-grey;
+  
   color: grey;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.note-index-header .tags-header{
+  color: white;
+  background: darkgrey;
 }
 
 // UL that holds the index items

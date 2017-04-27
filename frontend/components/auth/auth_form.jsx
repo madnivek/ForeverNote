@@ -7,6 +7,7 @@ class AuthForm extends React.Component{
     super(props);
     this.default = { username: "", password: "", email: ""};
     this.state = this.default;
+    this.loader = false;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.handleDemoLogin = this.handleDemoLogin.bind(this);
@@ -41,6 +42,7 @@ class AuthForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
+    this.loader = true;
     this.props.processForm(this.state)
       .then(
         () => {
@@ -53,12 +55,17 @@ class AuthForm extends React.Component{
               this.props.clearErrors();
             });
         },
-        () => this.setState(this.default)
+        () => {
+          this.loader = false;
+          this.setState(this.default)
+        }
       );
   }
 
   handleDemoLogin(e) {
     e.preventDefault();
+    this.loader = true;
+    this.setStat
     this.props.processForm({username: "harry", password: "potter"})
       .then(
         () => {
@@ -71,11 +78,28 @@ class AuthForm extends React.Component{
               this.props.clearErrors();
             });
         },
-        () => this.setState(this.default)
+        () => {
+          this.loader = false;
+          this.setState(this.default)
+        }
       );
   }
 
   render(){
+
+    if(this.loader){
+      return(
+        <div className="loader-container">
+          <div className="sk-folding-cube">
+            <div className="sk-cube1 sk-cube"></div>
+            <div className="sk-cube2 sk-cube"></div>
+            <div className="sk-cube4 sk-cube"></div>
+            <div className="sk-cube3 sk-cube"></div>
+          </div>
+        </div>
+      );
+    }
+
     let formTitle = "Sign Up";
 
     let altLink =
