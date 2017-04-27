@@ -14,7 +14,9 @@ const NoteIndexItem = props => {
   const handleDelete = id => e => {
     e.preventDefault();
     e.stopPropagation();
-    props.deleteNote(id).then(() => hashHistory.push('/'));
+    props.deleteNote(id)
+      .then( () => props.fetchTaggings() )
+      .then(() => hashHistory.push('/'));
   };
 
   return(

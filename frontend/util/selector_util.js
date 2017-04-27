@@ -1,9 +1,12 @@
 export const getNotesByTag = (notes, taggings, tagId) => {
 
   const noteIdArray = taggings.tagsToNotes[tagId];
-  const noteArray = noteIdArray.map( noteId => {
-    return notes[noteId];
-  });
+  let noteArray = [];
+  if(noteIdArray !== undefined){
+    noteArray = noteIdArray.map( noteId => {
+      return notes[noteId];
+    });
+  }
   return noteArray.reverse();
 };
 

@@ -12,7 +12,7 @@ class Note < ApplicationRecord
 
   belongs_to :notebook, optional: true
 
-  has_many :taggings
+  has_many :taggings, dependent: :destroy, foreign_key: :note_id
 
   has_many(
     :tags,

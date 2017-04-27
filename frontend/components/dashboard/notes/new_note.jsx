@@ -61,14 +61,14 @@ class NewNote extends React.Component{
     if(Object.values(this.state.tags).length !== 0){
       existingTags =  this.state.tags.map( tag => {
         return(
-          <span className="tag-show-item">{ tag.tag_name } { trash } </span>
+          <span key={tag.tag_name} className="tag-show-item">{ tag.tag_name } { trash } </span>
         );
       });
     }
 
     const newTags = Object.values(this.state.new_tags).map( tag => {
       return(
-        <span className="tag-show-item">{ tag.tag_name } { trash }</span>
+        <span key={tag.tag_name} className="tag-show-item">{ tag.tag_name } { trash }</span>
       );
     });
 

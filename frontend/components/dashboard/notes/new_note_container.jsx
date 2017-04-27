@@ -30,7 +30,7 @@ const mapStateToProps = ({ session, notes_slice, notebooks_slice, tags_slice }, 
     note = notes_slice.currentNote
   }
 
-  if(formType === "edit"){
+  if(formType === "edit" && note.body){
 
     const tags = getTagsByNote(tags_slice.tags, tags_slice.taggings, note.id)
 

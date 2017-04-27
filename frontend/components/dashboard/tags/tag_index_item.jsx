@@ -5,8 +5,8 @@ import { withRouter } from 'react-router';
 const TagIndexItem = props => {
 
   const goToFilteredNotes = tagId => e => {
-    props.setCurrentTag(props.tag);
     props.setCurrentNotebook({});
+    props.setCurrentTag(props.tag);
     hashHistory.push(`/tags/${tagId}`);
   };
 

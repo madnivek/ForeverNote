@@ -68,6 +68,7 @@ class NoteIndex extends React.Component {
     //     this.props.clearCurrentNotebook();
     //   }
     // }
+
     if(nextLoc === '/notes' && nextLoc !== currentLoc){
       this.props.setCurrentNotebook({});
       this.props.setCurrentTag({});
@@ -82,10 +83,12 @@ class NoteIndex extends React.Component {
   }
 
   render(){
+
     const notes = this.state.parsedNotes.map ( note => {
       return(
         <NoteIndexItem
           key={note.id}
+          fetchTaggings={this.props.fetchTaggings}
           note={note}
           deleteNote={ this.props.deleteNote }
           fetchNote={ this.props.fetchNote } />
