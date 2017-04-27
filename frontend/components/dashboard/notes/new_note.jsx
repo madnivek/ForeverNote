@@ -106,7 +106,7 @@ class NewNote extends React.Component{
 
       if(!tagIsInOldTags && !tagIsInNewTags){
         updatedNewTags[e.target.value] = { tag_name: e.target.value, user_id: this.props.currentUser.id };
-        this.setState({new_tags: updatedNewTags});
+        this.setState({new_tags: updatedNewTags, saveText:"Save Note"});
       }
       e.target.value = "";
     }
@@ -138,6 +138,7 @@ class NewNote extends React.Component{
       .then( () => this.props.fetchTaggings())
       .then( () => {
         if(this.props.formType === 'new'){
+          this.props.setCurrentNotebook({});
           hashHistory.push(`/notes`);
         } else {
           hashHistory.push(`/notes/${note.id}`);
@@ -149,6 +150,8 @@ class NewNote extends React.Component{
 
     const selectedNotebook = this.props.notebooks[this.state.notebook_id];
     const notebookTitle = selectedNotebook ? selectedNotebook.title : this.props.currentNotebook.title;
+    const currentNotebookId = this.state.notebook_id ? this.state.notebook_id : this.props.currentNotebook.id;
+
     let selectorClassName = this.props.formType === 'new' ?
       "new-note-selector" : "edit-note-selector";
 
@@ -161,7 +164,7 @@ class NewNote extends React.Component{
           <NotebookSelectModal
             selectorClassName={selectorClassName}
             notebooks={ Object.values(this.props.notebooks) }
-            currentNotebookId={this.props.currentNotebook.id || this.state.notebook_id}
+            currentNotebookId={currentNotebookId}
             isOpen={this.state.isOpen}
             changeNotebook={ this.changeNotebook } />
 
