@@ -2,6 +2,7 @@ import React from 'react';
 import { convertFromRaw, convertToRaw, Editor, RichUtils, Draft} from 'draft-js';
 import { hashHistory } from 'react-router';
 import NotebookSelectModal from './notebook_select_modal';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class NewNote extends React.Component{
   constructor(props){
@@ -80,20 +81,24 @@ class NewNote extends React.Component{
     if(Object.values(this.state.tags).length !== 0){
       existingTags =  this.state.tags.map( (tag, index) => {
         return(
-          <span key={tag.tag_name} className="tag-show-item old-tag">
-            { tag.tag_name }
-            <i className="fa fa-minus-circle" aria-hidden="true" onClick={ this.deleteOldTag(tag.id, index)}/>
-          </span>
+          <li key={tag.tag_name}>
+            <span  className="tag-show-item old-tag">
+              { tag.tag_name }
+              <i className="fa fa-minus-circle" aria-hidden="true" onClick={ this.deleteOldTag(tag.id, index)}/>
+            </span>
+          </li>
         );
       });
     }
 
     const newTags = Object.values(this.state.new_tags).map( tag => {
       return(
-        <span key={tag.tag_name} className="tag-show-item new-tag">
-          { tag.tag_name }
-          <i className="fa fa-minus-circle" aria-hidden="true" onClick={ this.deleteNewTag(tag.tag_name)} />
-        </span>
+        <li>
+          <span key={tag.tag_name} className="tag-show-item new-tag">
+            { tag.tag_name }
+            <i className="fa fa-minus-circle" aria-hidden="true" onClick={ this.deleteNewTag(tag.tag_name)} />
+          </span>
+        </li>
       );
     });
 
@@ -133,10 +138,13 @@ class NewNote extends React.Component{
     }
 
     const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
+    const plainContent = this.state.editorState.getCurrentContent().getPlainText()
+
     const rawContentString = JSON.stringify(rawContent);
     const note = {
       id,
       title,
+      plain_content: plainContent,
       deleted_tags: this.state.deleted_tags,
       newTags: this.state.new_tags,
       author_id: this.props.currentUser.id ,
@@ -243,9 +251,19 @@ class NewNote extends React.Component{
 
             <div className="tags-div">
               <span><i className="fa fa-tags" aria-hidden="true"></i></span>
-              { this.generateTagList() }
-              <input onKeyPress={ this.enterTag } type="text" placeholder="+" />
+              <ul className="tags-ul">
+                <CSSTransitionGroup
+                  transitionName="tags-list-transition"
+                  transitionAppear={true}
+                  transitionAppearTimeout={500}
+                  transitionEnter={false}
+                  transitionLeave={false}>
+                  { this.generateTagList() }
+                </CSSTransitionGroup>
+                <li><input onKeyPress={ this.enterTag } type="text" placeholder="+" /></li>
+              </ul>
             </div>
+
           </div>
 
 

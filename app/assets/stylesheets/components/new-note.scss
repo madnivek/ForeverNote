@@ -186,17 +186,24 @@ $ever-grey: #dedede;
 
 //tags
 
+.tags-ul li {
+  float: left;
+  margin-top: 5px;
+}
+
 .tags-div{
   margin-top:20px;
+  margin-left:0px;
   padding-left:20px;
   display: flex;
 }
 
-.tags-div span:first-child {
-  margin-left: 10px;
-  margin-right: 5px;
+.fa-tags{
+  padding-top:10px;
+  padding-right:10px;
   color: grey;
 }
+
 
 .tags-div input {
   margin-left: 5px;
@@ -247,4 +254,24 @@ $ever-grey: #dedede;
 
 .tag-show-item:hover .fa-minus-circle {
   display: block;
+}
+
+//TAG LIST TRANSITION
+
+.tags-list-transition-enter {
+  opacity: 0.01;
+}
+
+.tags-list-transition-enter.tags-list-transition-enter-active {
+  opacity: 1;
+  transition: opacity 400ms ease-in, max-height 800ms ease-in;
+}
+
+.tags-list-transition-leave {
+  opacity: 1;
+}
+
+.tags-list-transition-leave.tags-list-transition-leave-active {
+  opacity: 0.01;
+  transition: opacity 500ms ease-in;
 }

@@ -5,10 +5,6 @@ import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class NotebookIndex extends React.Component {
 
-  componentDidMount(){
-    this.props.fetchNotebooks();
-  }
-
   render(){
     const notebooks = this.props.notebooks.map( notebook =>{
       return(

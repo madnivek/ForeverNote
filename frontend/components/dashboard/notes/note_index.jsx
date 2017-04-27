@@ -2,6 +2,7 @@ import React from 'react';
 import NoteIndexItem from "./note_index_item";
 import NavBarContainer from '../nav/nav_bar_container';
 import * as SelectorUtil from '../../../util/selector_util';
+import shallowCompare from 'react-addons-shallow-compare';
 
 
 class NoteIndex extends React.Component {
@@ -9,7 +10,15 @@ class NoteIndex extends React.Component {
     super(props);
     this.state = {notes: this.props.notes, parsedNotes: []};
   }
-  
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if(this.state.parsedNotes.length === nextState.parsedNotes.length) {
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
+
   filterNotes(type){
 
     const notes = this.props.notes;
@@ -34,6 +43,13 @@ class NoteIndex extends React.Component {
   componentDidMount(){
     this.filterNotes(this.props.indexType);
   }
+  //
+  // shouldComponentUpdate(nextProps, nextState){
+  //   if(this.props.indexType === nextProps.indexType){
+  //     return false;
+  //   }
+  // }
+
 
   componentWillReceiveProps(newProps){
     const currentLoc = this.props.location.pathname;
@@ -67,6 +83,7 @@ class NoteIndex extends React.Component {
   render(){
 
     const notes = this.state.parsedNotes.map ( note => {
+      
       if(note) {
         return(
           <NoteIndexItem

@@ -1,3 +1,6 @@
+$ever-green: #2dbe60;
+$ever-grey: #dedede;
+
 .forever-modal {
   position: relative;
   margin-left:73px;
@@ -22,4 +25,58 @@
 .notebook-index-transition-appear.notebook-index-transition-appear-active {
   left:0px;
   transition: left 500ms;
+}
+
+//SEARCH STYLING
+
+.tag-search-container{
+  margin-left: 10px;
+  margin-top: 10px;
+  display: flex;
+  width: 90%
+}
+.fa-search {
+  font-size: 20px;
+  float: left;
+  display: inline;
+  margin: auto 0;
+  color: $ever-grey;
+}
+
+.search-input {
+  float: left;
+  margin:0;
+  display:inline;
+  margin: 0 auto;
+  padding: 5px;
+  width: 100%;
+  margin-left: 10px;
+  border: 1px solid $ever-grey;
+  border-radius: 2.5px;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+//TAG SEARCH TRANSITION
+
+.tag-search-transition-enter {
+  opacity: 0.01;
+  max-height: 0px;
+}
+
+.tag-search-transition-enter.tag-search-transition-enter-active {
+  opacity: 1;
+  max-height: 500px;
+  transition: opacity 400ms ease-in, max-height 800ms ease-in;
+}
+
+.tag-search-transition-leave {
+  opacity: 1;
+}
+
+.tag-search-transition-leave.tag-search-transition-leave-active {
+  opacity: 0.01;
+  transition: opacity 500ms ease-in;
 }
