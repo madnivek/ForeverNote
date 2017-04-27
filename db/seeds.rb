@@ -98,7 +98,7 @@ notebook6 = Notebook.create!(title: "Random Thoughts", author_id: demouser.id)
 notebook7 = Notebook.create!(title: "Potion Recipes", author_id: demouser.id)
 
 
-500.times do
+200.times do
   all_notebook_ids = Notebook.all.map { |note| note.id }
 
   Note.create!(
@@ -139,7 +139,7 @@ def generate_tags(user_id)
 
   tag_names.each do |name|
     new_tag = Tag.new(tag_name: name, user_id: user_id)
-    new_tag.note_ids = all_note_ids.sample((rand * 250).to_i + 1)
+    new_tag.note_ids = all_note_ids.sample((rand * 25).to_i + 1)
     new_tag.save!
   end
 
