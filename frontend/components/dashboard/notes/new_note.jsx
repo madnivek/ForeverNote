@@ -48,7 +48,7 @@ const { InlineToolbar } = inlineToolbarPlugin;
 const emojiPlugin = createEmojiPlugin();
 const { EmojiSuggestions } = emojiPlugin;
 
-const plugins = [inlineToolbarPlugin, emojiPlugin];
+const plugins = [ emojiPlugin, inlineToolbarPlugin];
 
 class NewNote extends React.Component{
   constructor(props){
@@ -321,7 +321,7 @@ class NewNote extends React.Component{
                 ref={(element) => { this.editor = element; }}
                 placeholder="Just start typing..."
                 editorState={this.state.editorState}
-                plugins={plugins}
+                plugins={[emojiPlugin]}
                 onChange={this.onChange} />
               <InlineToolbar />
               <EmojiSuggestions />
