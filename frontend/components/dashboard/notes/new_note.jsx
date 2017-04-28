@@ -1,14 +1,14 @@
 import React from 'react';
-import { convertFromRaw, convertToRaw, Editor, RichUtils, Draft} from 'draft-js';
+import { convertFromRaw, convertToRaw, RichUtils, Draft} from 'draft-js';
 import { hashHistory } from 'react-router';
-// import Editor from 'draft-js-plugins-editor';
+import Editor from 'draft-js-plugins-editor';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import NotebookSelectModal from './notebook_select_modal';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
-// import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
-// import 'draft-js-emoji-plugin/lib/plugin.css';
-// import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
+import 'draft-js-emoji-plugin/lib/plugin.css';
 import editorStyles from './editorStyles.css';
+// import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
+// import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
 // import 'draft-js-buttons-plugin/lib/plugin.css';
 // import {AlignBlockCenterButton} from 'draft-js-buttons';
 // import 'draft-js/dist/Draft.css';
@@ -41,8 +41,8 @@ import editorStyles from './editorStyles.css';
 
 // const { InlineToolbar } = inlineToolbarPlugin;
 //
-// const emojiPlugin = createEmojiPlugin();
-// const { EmojiSuggestions } = emojiPlugin;
+const emojiPlugin = createEmojiPlugin();
+const { EmojiSuggestions } = emojiPlugin;
 
 
 class NewNote extends React.Component{
@@ -341,7 +341,9 @@ class NewNote extends React.Component{
                 ref={(element) => { this.draftEditor = element; }}
                 placeholder="Just start typing..."
                 editorState={this.state.editorState}
+                plugins={[emojiPlugin]}
                 onChange={this.onChange} />
+              <EmojiSuggestions />
             </div>
           </div>
 

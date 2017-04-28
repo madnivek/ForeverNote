@@ -20,11 +20,11 @@ $ever-grey: #dedede;
   color: grey;
 }
 
-.notebook-index-item:first-child {
+.index-item:first-child {
   padding-top: 10px;
 }
 
-.notebook-index-item {
+.index-item {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -34,8 +34,43 @@ $ever-grey: #dedede;
 
 }
 
-.notebook-index-item i {
+.index-item i {
   padding-left: 10px;
+}
+
+.tag-item {
+  font-size: 12px;
+  margin-left: 38px;
+  display: inline-block;
+  width: auto;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 2.5px 5px 2.5px 5px;
+  margin-bottom: 5px;
+
+}
+
+.tag-item h3 {
+  padding-right: 5px;
+}
+
+.tag-item .fa-trash{
+  display: none;
+}
+
+.tag-item:hover{
+  background: $ever-green;
+  color: white;
+  cursor: pointer;
+}
+
+.tag-item:hover i {
+  display: block;
+}
+
+.tag-item div {
+  display:flex;
+  justify-content: space-between;
 }
 
 .add-notebook {
@@ -47,7 +82,7 @@ $ever-grey: #dedede;
   color: $ever-green;
 }
 
-.notebook-index-item:hover {
+.index-item:hover {
   background: $ever-green;
   color: white;
   cursor: pointer;

@@ -27,7 +27,7 @@ const NotebookIndexItem = props => {
   };
 
   return(
-    <li onClick={ redirectToNote(props.notebook.id) } className="notebook-index-item">
+    <li onClick={ redirectToNote(props.notebook.id) } className="index-item">
       <h3 className="notebook-item-header between-borders">{props.notebook.title}</h3>
       <div>
         <i className="fa fa-pencil-square-o inverse-button" aria-hidden="true" onClick={ goToEdit( props.notebook.id ) } />

@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchNote, updateNote, createNote, fetchNotes } from '../../../actions/note_actions.js';
 import { setCurrentNotebook } from '../../../actions/notebook_actions';
-import { EditorState, convertFromRaw } from 'draft-js';
+import { convertFromRaw, EditorState } from 'draft-js';
+import { createEditorStateWithText } from 'draft-js-plugins-editor';
 import NewNote from './new_note';
 import { getTagsByNote } from '../../../util/selector_util'
 import { setCurrentTag, createTag, fetchTags, fetchTaggings } from '../../../actions/tag_actions'
@@ -21,7 +22,7 @@ const mapStateToProps = ({ session, notes_slice, notebooks_slice, tags_slice }, 
       tags: {},
       new_tags:{},
       deleted_tags:[],
-      editorState: EditorState.createEmpty()};
+      editorState: createEditorStateWithText("")};
 
   let formType = ownProps.location.pathname === '/notes/new' ? "new" : "edit";
 

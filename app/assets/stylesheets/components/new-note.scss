@@ -188,17 +188,22 @@ $ever-grey: #dedede;
 //tags
 
 .tags-div{
-  margin-top:20px;
+  height:5px;
   margin-left:0px;
   padding-left:20px;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+  margin-bottom: 40px;
   vertical-align: bottom;
 }
 
 .tags-div li {
   float:left;
   padding-bottom: 0;
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+
+.tags-div li:first-child{
+  height: 20px;
 }
 
 .fa-tags{

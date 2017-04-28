@@ -19,9 +19,9 @@ const TagIndexItem = props => {
 
   return(
     <div>
-      <li className="notebook-index-item" onClick={ goToFilteredNotes(props.tag.id) }>
-        <h3 className="notebook-item-header between-borders">{props.tag.tag_name}</h3>
+      <li className="tag-item" onClick={ goToFilteredNotes(props.tag.id) }>
         <div>
+          <h3 className="notebook-item-header between-borders">{props.tag.tag_name}</h3>
           <i className="fa fa-trash inverse-button" aria-hidden="true" onClick={ deleteTag(props.tag.id) } />
         </div>
       </li>
