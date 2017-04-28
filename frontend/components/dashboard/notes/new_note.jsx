@@ -6,7 +6,7 @@ import createEmojiPlugin from 'draft-js-emoji-plugin';
 import NotebookSelectModal from './notebook_select_modal';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
-// import 'draft-js-emoji-plugin/lib/plugin.css';
+import 'draft-js-emoji-plugin/lib/plugin.css';
 import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
 import editorStyles from './editorStyles.css';
 import 'draft-js/dist/Draft.css';
@@ -17,8 +17,7 @@ import {
   UnderlineButton,
   UnorderedListButton,
   OrderedListButton,
-  BlockquoteButton,
-  CodeBlockButton,
+  BlockquoteButton
 } from 'draft-js-buttons';
 
 const inlineToolbarPlugin = createInlineToolbarPlugin({
@@ -28,23 +27,22 @@ const inlineToolbarPlugin = createInlineToolbarPlugin({
     UnderlineButton,
     UnorderedListButton,
     OrderedListButton,
-    BlockquoteButton,
-    CodeBlockButton
+    BlockquoteButton
   ]
 });
 
 const { InlineToolbar } = inlineToolbarPlugin;
 
-// const emojiPlugin = createEmojiPlugin();
-// const { EmojiSuggestions } = emojiPlugin;
-//
+const emojiPlugin = createEmojiPlugin();
+const { EmojiSuggestions } = emojiPlugin;
+
 
 class NewNote extends React.Component{
   constructor(props){
     super(props);
 
     this.state = this.props.currentNoteRaw;
-    this.focus = () => this.editor.focus();
+    this.focus = () => this.draftEditor.focus();
     this.onChange = (editorState) => {
       this.setState({editorState, isOpen: false, saveText: 'Save Note'});
     };
@@ -305,14 +303,15 @@ class NewNote extends React.Component{
               type="text" value={this.state.title}/>
 
 
-            <div className="draftEditor" onClick={ this.focus }>
+            <div className={editorStyles.draftEditor} onClick={ this.focus }>
               <Editor
-                ref={(element) => { this.editor = element; }}
+                ref={(element) => { this.draftEditor = element; }}
                 placeholder="Just start typing..."
                 editorState={this.state.editorState}
-                plugins={[inlineToolbarPlugin]}
+                plugins={[inlineToolbarPlugin, emojiPlugin]}
                 onChange={this.onChange} />
               <InlineToolbar />
+              <EmojiSuggestions />
             </div>
           </div>
 

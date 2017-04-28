@@ -131,7 +131,7 @@ def generate_tags(user_id)
 
   tag_names = %w(
     magic butterbeer everyone-hates-malfoy
-    muggle-lyfe dragons dumbledore snape voldemore
+    muggle-lyfe dragons dumbledore snape voldemort
     nagini ron-weasley boy-who-lived hermione-granger
     tri-wizard-tournament patronus leviosAH quidditch
     RIP-cedric i-miss-sirius
