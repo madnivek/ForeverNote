@@ -1,15 +1,61 @@
 import React from 'react';
-import { convertFromRaw, convertToRaw, Editor, RichUtils, Draft} from 'draft-js';
+import { convertFromRaw, convertToRaw, RichUtils, Draft} from 'draft-js';
 import { hashHistory } from 'react-router';
+import Editor from 'draft-js-plugins-editor';
+import createEmojiPlugin from 'draft-js-emoji-plugin';
 import NotebookSelectModal from './notebook_select_modal';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
+import 'draft-js-emoji-plugin/lib/plugin.css';
+import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
+import editorStyles from './editorStyles.css';
+import 'draft-js/dist/Draft.css';
+
+import {
+  ItalicButton,
+  BoldButton,
+  UnderlineButton,
+  CodeButton,
+  HeadlineOneButton,
+  HeadlineTwoButton,
+  HeadlineThreeButton,
+  UnorderedListButton,
+  OrderedListButton,
+  BlockquoteButton,
+  CodeBlockButton,
+} from 'draft-js-buttons';
+
+const inlineToolbarPlugin = createInlineToolbarPlugin({
+  structure: [
+    BoldButton,
+    ItalicButton,
+    UnderlineButton,
+    CodeButton,
+    Separator,
+    HeadlineOneButton,
+    HeadlineTwoButton,
+    HeadlineThreeButton,
+    UnorderedListButton,
+    OrderedListButton,
+    BlockquoteButton,
+    CodeBlockButton,
+  ]
+});
+
+const { InlineToolbar } = inlineToolbarPlugin;
+
+
+const emojiPlugin = createEmojiPlugin();
+const { EmojiSuggestions } = emojiPlugin;
+
+const plugins = [inlineToolbarPlugin, emojiPlugin];
 
 class NewNote extends React.Component{
   constructor(props){
     super(props);
 
     this.state = this.props.currentNoteRaw;
-    this.focus = () => this.refs.editor.focus();
+    this.focus = () => this.editor.focus();
     this.onChange = (editorState) => {
       this.setState({editorState, isOpen: false, saveText: 'Save Note'});
     };
@@ -196,6 +242,8 @@ class NewNote extends React.Component{
       return <div></div>;
     }
 
+    const formTypeContainer = this.props.formType === "new" ? "form-parent-container new-form-container" : "form-parent-container";
+
     const selectedNotebook = this.props.notebooks[this.state.notebook_id];
     const notebookTitle = selectedNotebook ? selectedNotebook.title : this.props.currentNotebook.title;
     const currentNotebookId = this.state.notebook_id ? this.state.notebook_id : this.props.currentNotebook.id;
@@ -204,7 +252,7 @@ class NewNote extends React.Component{
       "new-note-selector" : "edit-note-selector";
 
     return(
-      <div className='form-parent-container' >
+      <div className={formTypeContainer} >
 
 
         <form className='form' onSubmit={ this.submitNote }>
@@ -224,47 +272,39 @@ class NewNote extends React.Component{
               <input className="button" type="submit" value={this.state.saveText} />
             </div>
 
-            <nav className="rich-text-nav">
+            <ul className="tags-div">
 
-              <span onClick={ this.toggleModal } className="button">
-                <i className="fa fa-book" aria-hidden="true"></i>
-                { notebookTitle }
-              </span>
+              <li><nav className="rich-text-nav">
 
-              <span onMouseDown={ this._toggleInlineStyle("BOLD") }
-                className="button"><i className="fa fa-bold" aria-hidden="true"></i></span>
+                <span onClick={ this.toggleModal } className="button">
+                  <i className="fa fa-book" aria-hidden="true"></i>
+                  { notebookTitle }
+                </span>
 
-              <span onMouseDown={ this._toggleInlineStyle("ITALIC") }
-                className="button"><i className="fa fa-italic"
-                aria-hidden="true"></i></span>
+                <span onMouseDown={ this._toggleInlineStyle("BOLD") }
+                  className="button"><i className="fa fa-bold" aria-hidden="true"></i></span>
 
-              <span onMouseDown={ this._toggleInlineStyle("UNDERLINE") }
-                className="button"><i className="fa fa-underline"
-                aria-hidden="true"></i></span>
+                <span onMouseDown={ this._toggleInlineStyle("ITALIC") }
+                  className="button"><i className="fa fa-italic"
+                  aria-hidden="true"></i></span>
 
-              <span onMouseDown={ this._toggleInlineStyle("STRIKETHROUGH") }
-                className="button"><i className="fa fa-strikethrough"
-                aria-hidden="true"></i></span>
+                <span onMouseDown={ this._toggleInlineStyle("UNDERLINE") }
+                  className="button"><i className="fa fa-underline"
+                  aria-hidden="true"></i></span>
 
+                <span onMouseDown={ this._toggleInlineStyle("STRIKETHROUGH") }
+                  className="button"><i className="fa fa-strikethrough"
+                  aria-hidden="true"></i></span>
+              </nav></li>
 
-            </nav>
+              <li><span><i className="fa fa-tags" aria-hidden="true"></i></span></li>
 
-            <div className="tags-div">
-              <span><i className="fa fa-tags" aria-hidden="true"></i></span>
-              <ul className="tags-ul">
-                <CSSTransitionGroup
-                  transitionName="tags-list-transition"
-                  transitionAppear={true}
-                  transitionAppearTimeout={500}
-                  transitionEnter={false}
-                  transitionLeave={false}>
-                  { this.generateTagList() }
-                </CSSTransitionGroup>
-                <li><input onKeyPress={ this.enterTag } type="text" placeholder="+" /></li>
-              </ul>
-            </div>
+                { this.generateTagList() }
 
+              <li><input onKeyPress={ this.enterTag } type="text" placeholder="+" /></li>
+            </ul>
           </div>
+
 
 
           <div className="title-and-content">
@@ -275,13 +315,16 @@ class NewNote extends React.Component{
               type="text" value={this.state.title}/>
 
 
-            <div className="draft-editor" onClick={ this.focus }>
+            <div className="draftEditor" onClick={ this.focus }>
               <Editor
                 spellCheck={true}
-                ref="editor"
+                ref={(element) => { this.editor = element; }}
                 placeholder="Just start typing..."
                 editorState={this.state.editorState}
+                plugins={plugins}
                 onChange={this.onChange} />
+              <InlineToolbar />
+              <EmojiSuggestions />
             </div>
           </div>
 

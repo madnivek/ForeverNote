@@ -14,6 +14,9 @@
     "babel-preset-react": "^6.24.1",
     "draft-css": "0.0.1",
     "draft-js": "^0.10.0",
+    "draft-js-emoji-plugin": "^2.0.0-beta10",
+    "draft-js-inline-toolbar-plugin": "^2.0.0-beta10",
+    "draft-js-plugins-editor": "^2.0.0-beta10",
     "lodash": "^4.17.4",
     "react": "^15.5.4",
     "react-addons-shallow-compare": "^15.5.2",
@@ -26,7 +29,10 @@
     "redux-thunk": "^2.2.0",
     "webpack": "^2.4.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "css-loader": "^0.28.0",
+    "style-loader": "^0.16.1"
+  },
   "engines": {
     "node": "6.10.1",
     "npm": "3.10.10"

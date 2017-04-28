@@ -1,0 +1,7 @@
+.draftEditor .public-DraftEditor-content {
+  box-sizing: border-box;
+  cursor: text;
+  border: none;
+  outline: none;
+  padding-left: 5px;
+}

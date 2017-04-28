@@ -17,7 +17,6 @@ $ever-grey: #dedede;
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  border-bottom: 1px solid $ever-grey;
   color: grey;
 }
 
@@ -56,4 +55,5 @@ $ever-grey: #dedede;
 
 .notebook-item-header {
   font-weight: normal;
+  padding-left:5px;
 }

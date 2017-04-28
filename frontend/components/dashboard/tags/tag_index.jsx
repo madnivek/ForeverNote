@@ -54,7 +54,7 @@ class TagIndex extends React.Component {
         <div className="main-container">
           <section className="notebook-index-section">
             <h2 className="notebook-index-header">TAGS</h2>
-            <div className="search-container">
+            <div className="search-container tags-search-container">
               <i className="fa fa-search" aria-hidden="true"></i>
               <input
                 className = "search-input"

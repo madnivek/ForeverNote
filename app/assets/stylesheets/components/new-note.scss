@@ -11,7 +11,12 @@ $ever-grey: #dedede;
   padding-right: 20px;
   height: 100%;
   width: 100%;
+}
 
+.new-form-container {
+  padding-left: 170px;
+  margin-rigth: 100px;
+  width: 80%;
 }
 
 
@@ -51,8 +56,6 @@ $ever-grey: #dedede;
   position: relative;
   display: flex;
   padding-bottom: 10px;
-  padding-left: 10px;
-  border-bottom: 1px solid $ever-grey;
 }
 
 .rich-text-nav button {
@@ -68,11 +71,21 @@ $ever-grey: #dedede;
   cursor: pointer;
 }
 
+.rich-text-nav span:last-child {
+  padding-right: 25px;
+  border-right: 1px solid $ever-grey;
+}
+
+.rich-text-nav span {
+  border-radius: 0px;
+}
+
 .fa-book {
   padding-right: 5px;
 }
 
 .new-note-selector, .edit-note-selector {
+  z-index: 1000;
   position: relative;
   width: 250px;
   outline: none;
@@ -80,7 +93,7 @@ $ever-grey: #dedede;
   box-shadow: 1px 1px 1px 2px lightgrey;
   padding-bottom: 10px;
   border-radius: 1px;
-  top: 100px;
+  top: 120px;
 }
 
 .new-note-selector {
@@ -126,6 +139,7 @@ $ever-grey: #dedede;
 }
 
 .title-and-content {
+  border-top: 1px solid $ever-grey;
   overflow-y: scroll;
   overflow-x: hidden;
   width: 100%;
@@ -159,19 +173,6 @@ $ever-grey: #dedede;
   cursor: text;
   margin-bottom: 0;
 }
-
-.draft-editor .public-DraftEditorPlaceholder-root {
-  position: absolute;
-  margin-left: 10px;
-  color: grey;
-}
-
-.draft-editor .public-DraftEditor-content{
-  margin-left: 6px;
-  margin-right: 6px;
-  line-height: 1.3;
-}
-
 // NOTEBOOK SELECTOR ANIMATIONS
 
 .notebook-selector-transition-appear {
@@ -186,21 +187,24 @@ $ever-grey: #dedede;
 
 //tags
 
-.tags-ul li {
-  float: left;
-  margin-top: 5px;
-}
-
 .tags-div{
   margin-top:20px;
   margin-left:0px;
   padding-left:20px;
-  display: flex;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  vertical-align: bottom;
+}
+
+.tags-div li {
+  float:left;
+  padding-bottom: 0;
 }
 
 .fa-tags{
-  padding-top:10px;
+  padding-top:5px;
   padding-right:10px;
+  padding-left: 15px;
   color: grey;
 }
 
