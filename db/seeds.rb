@@ -106,9 +106,12 @@ titles = ["Boggarts Lavendar Robes", "Fantastic Beasts", "Hand of Glory", "Why I
   "Why Do Muggles Exist?", "How to Cheat at Wizard Chess", "Witch Weekly Letters", "How Does Electricity Work?",
   "Thoughts on Muggle Life", "Ingredients for Liquid Luck", "Where is MiddleEarth?", "Secret Places at Hogwarts", "Learning Parseltongue for Noobs",
   "Headless Hunt", "Burrow Wronski Feint", "The Restricted Section", "Best Places for Chocolate Frogs", "Room of Requirement Passwords", "Are You a Witch or Not?",
-  "Cool Things To Do With Time-Turner", "Godric's Hollow Renovations", "Directions to the Shrieking Shack"]
+  "Cool Things To Do With Time-Turner", "Godric's Hollow Renovations", "Directions to the Shrieking Shack", "Things Magic Can't Solve",
+  "Who is JK Rowling?", "Who is Daniel Radcliffe?", "Where Does Magic Come From?", "Magical Secrets to Youth", "On Scar Removal", "The Most Powerful Magic of All",
+  "Quidditch Tournament Prep", "Tri-Wizard-Tournament Prep"]
 
-200.times do
+
+50.times do
   new_title = Faker::HarryPotter.quote
   titles.push(new_title) unless titles.include?(new_title)
 end
