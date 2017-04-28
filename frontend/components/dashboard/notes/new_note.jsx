@@ -1,40 +1,48 @@
 import React from 'react';
-import { convertFromRaw, convertToRaw, RichUtils, Draft} from 'draft-js';
+import { convertFromRaw, convertToRaw, Editor, RichUtils, Draft} from 'draft-js';
 import { hashHistory } from 'react-router';
-import Editor from 'draft-js-plugins-editor';
+// import Editor from 'draft-js-plugins-editor';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import NotebookSelectModal from './notebook_select_modal';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
-import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
-import 'draft-js-emoji-plugin/lib/plugin.css';
-import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
+// import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
+// import 'draft-js-emoji-plugin/lib/plugin.css';
+// import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
 import editorStyles from './editorStyles.css';
-import 'draft-js/dist/Draft.css';
+// import 'draft-js-buttons-plugin/lib/plugin.css';
+// import {AlignBlockCenterButton} from 'draft-js-buttons';
+// import 'draft-js/dist/Draft.css';
+//
+// import createButtonsPlugin from 'draft-js-buttons';
+// const buttonsPlugin = createButtonsPlugin();
+//
+// import {
+//   ItalicButton,
+//   BoldButton,
+//   UnderlineButton,
+//   UnorderedListButton,
+//   OrderedListButton,
+//   BlockquoteButton,
+//   AlignBlockLeftButton,
+//   AlignBlockRightButton,
+//   AlignBlockCenterButton
+// } from 'draft-js-buttons';
+//
+// const inlineToolbarPlugin = createInlineToolbarPlugin({
+//   structure: [
+//     BoldButton,
+//     ItalicButton,
+//     UnderlineButton,
+//     UnorderedListButton,
+//     OrderedListButton,
+//     BlockquoteButton
+//   ]
+// });
 
-import {
-  ItalicButton,
-  BoldButton,
-  UnderlineButton,
-  UnorderedListButton,
-  OrderedListButton,
-  BlockquoteButton
-} from 'draft-js-buttons';
-
-const inlineToolbarPlugin = createInlineToolbarPlugin({
-  structure: [
-    BoldButton,
-    ItalicButton,
-    UnderlineButton,
-    UnorderedListButton,
-    OrderedListButton,
-    BlockquoteButton
-  ]
-});
-
-const { InlineToolbar } = inlineToolbarPlugin;
-
-const emojiPlugin = createEmojiPlugin();
-const { EmojiSuggestions } = emojiPlugin;
+// const { InlineToolbar } = inlineToolbarPlugin;
+//
+// const emojiPlugin = createEmojiPlugin();
+// const { EmojiSuggestions } = emojiPlugin;
 
 
 class NewNote extends React.Component{
@@ -50,6 +58,7 @@ class NewNote extends React.Component{
     this.submitNote = this.submitNote.bind(this);
     this.update = this.update.bind(this);
     this._toggleInlineStyle = this._toggleInlineStyle.bind(this);
+    this._toggleBlockType = this._toggleBlockType.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.changeNotebook = this.changeNotebook.bind(this);
     this.handleRedirect = this.handleRedirect.bind(this);
@@ -85,6 +94,18 @@ class NewNote extends React.Component{
         RichUtils.toggleInlineStyle(
           this.state.editorState,
           inlineStyle
+        )
+      );
+    };
+  }
+
+  _toggleBlockType(blockType) {
+    return (e) => {
+      e.preventDefault();
+      this.onChange(
+        RichUtils.toggleBlockType(
+          this.state.editorState,
+          blockType
         )
       );
     };
@@ -283,6 +304,18 @@ class NewNote extends React.Component{
                   className="button"><i className="fa fa-strikethrough"
                   aria-hidden="true"></i></span>
 
+                <span onMouseDown={ this._toggleBlockType("unordered-list-item") }
+                  className="button"><i className="fa fa-list"
+                  aria-hidden="true"></i></span>
+
+                <span onMouseDown={ this._toggleBlockType("ordered-list-item") }
+                  className="button"><i className="fa fa-list-ol"
+                  aria-hidden="true"></i></span>
+
+                <span onMouseDown={ this._toggleBlockType("blockquote") }
+                  className="button"><i className="fa fa-square-o"
+                  aria-hidden="true"></i></span>
+
               </nav></li>
 
               <li><span><i className="fa fa-tags" aria-hidden="true"></i></span></li>
@@ -303,15 +336,12 @@ class NewNote extends React.Component{
               type="text" value={this.state.title}/>
 
 
-            <div className={editorStyles.draftEditor} onClick={ this.focus }>
+            <div className="draftEditor" onClick={ this.focus }>
               <Editor
                 ref={(element) => { this.draftEditor = element; }}
                 placeholder="Just start typing..."
                 editorState={this.state.editorState}
-                plugins={[inlineToolbarPlugin, emojiPlugin]}
                 onChange={this.onChange} />
-              <InlineToolbar />
-              <EmojiSuggestions />
             </div>
           </div>
 

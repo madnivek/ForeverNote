@@ -23,7 +23,7 @@ body, div, ul, form, h1, h2, h3, header, nav, section, li, main, span, input, bu
   padding: 0;
   background: transparent;
   line-height: inherit;
-  list-style: none;
+  list-style: inherit;
   // font-family: 'Noto Sans', sans-serif;
   font-family: 'Open Sans', sans-serif;
 
@@ -35,10 +35,12 @@ body, div, ul, form, h1, h2, h3, header, nav, section, li, main, span, input, bu
 
 /*GREY BACKGROUND*/
 body {
+  list-style:none;
   background: white;
 }
 
 .button {
+
   background-color: $ever-green;
   border:none;
   font-weight: bold;

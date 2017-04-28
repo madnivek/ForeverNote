@@ -1,8 +1,20 @@
-.draftEditor {
+.draftEditor .public-DraftEditor-content{
   box-sizing: border-box;
   cursor: text;
   border: none;
   outline: none;
-  padding-left: 5px;
+  padding-left: 8px;
   min-height: 400px;
+  list-style: square;
+}
+
+.draftEditor .public-DraftEditor-content ul, .draftEditor .public-DraftEditor-content ol{
+  margin: 0px;
+  padding-left: 50px;
+}
+
+.draftEditor .public-DraftEditorPlaceholder-root {
+  position: absolute;
+  padding-left: 15px;
+  color: grey;
 }
