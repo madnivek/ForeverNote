@@ -43,7 +43,7 @@ class NavButton extends React.Component {
       <li>
         <div className="nav-bar-button" onClick={ buttonAction } onMouseOver={ this.handleMouseOver } onMouseOut={ this.handleMouseOut } >
 
-          <img  src={ this.state.imgSrc }  />
+          <img className="nav-button-img" src={ this.state.imgSrc }  />
           <p className="pop-up-text">{this.props.buttonName}</p>
 
         </div>

@@ -33,6 +33,23 @@ $ever-grey: #dedede;
 .nav-bar-button {
   position: relative;
 }
+
+.nav-button-img {
+  width: 36px;
+  height:36px;
+  border-radius: 20px;
+  border: 1px solid $ever-grey;
+}
+
+.nav-button-img:last-of-type{
+  border:1px solid #e6e6e6;
+}
+
+.nav-button-img:hover {
+  border:1px solid #e6e6e6;
+}
+
+
 .pop-up-text {
   z-index: 1000;
   display: none;
