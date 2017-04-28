@@ -147,12 +147,15 @@ class NoteIndex extends React.Component {
       }
     });
 
+    const numNotes = `${notes.length.toString()} notes`
+
 
     return(
       <div className="main-container">
         <NavBarContainer />
         <section className="note-index-section">
           <h2 className={ headerClassName }>{this.props.header}</h2>
+          <p className="notes-count">{numNotes}</p>
           <div className="parent-search-container">
             <div className="search-container note-search">
               <input

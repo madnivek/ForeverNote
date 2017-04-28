@@ -9,6 +9,7 @@ $ever-grey: #dedede;
   max-width: 450px;
   border-right: 1px solid lightgrey;
   height:100%;
+  box-shadow: 0px 0px 2px black;
 }
 
 .notebook-index-header{
@@ -17,7 +18,16 @@ $ever-grey: #dedede;
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  color: grey;
+  color: white;
+  background: #393d41;
+  box-shadow: 0px 2px 2px black;
+  width: 431px;
+}
+
+.notes-count {
+  margin: 0px 15px;
+  font-size:14px;
+  color:grey;
 }
 
 .index-item:first-child {
@@ -55,7 +65,9 @@ $ever-grey: #dedede;
 }
 
 .tag-item .fa-trash{
+  font-size: 13px;
   display: none;
+  align-self: center;
 }
 
 .tag-item:hover{
@@ -64,7 +76,7 @@ $ever-grey: #dedede;
   cursor: pointer;
 }
 
-.tag-item:hover i {
+.tag-item:hover .fa-trash {
   display: block;
 }
 
@@ -74,7 +86,7 @@ $ever-grey: #dedede;
 }
 
 .add-notebook {
-  color: grey;
+  color: white;
   margin-right: 10px;
 }
 

@@ -147,8 +147,8 @@ class NewNote extends React.Component{
 
     const newTags = Object.values(this.state.new_tags).map( tag => {
       return(
-        <li>
-          <span key={tag.tag_name} className="tag-show-item new-tag">
+        <li key={tag.tag_name}>
+          <span  className="tag-show-item new-tag">
             { tag.tag_name }
             <i className="fa fa-minus-circle" aria-hidden="true" onClick={ this.deleteNewTag(tag.tag_name)} />
           </span>
@@ -320,7 +320,7 @@ class NewNote extends React.Component{
 
               <li><span><i className="fa fa-tags" aria-hidden="true"></i></span></li>
 
-                { this.generateTagList() }
+                  { this.generateTagList() }
 
               <li><input onKeyPress={ this.enterTag } type="text" placeholder="+" /></li>
             </ul>
@@ -329,7 +329,8 @@ class NewNote extends React.Component{
 
 
           <div className="title-and-content">
-            <input
+            <textarea
+              rows="1"
               className="new-title"
               placeholder="Title your note"
               onChange={ this.update }

@@ -98,13 +98,28 @@ notebook6 = Notebook.create!(title: "Random Thoughts", author_id: demouser.id)
 notebook7 = Notebook.create!(title: "Potion Recipes", author_id: demouser.id)
 
 
+titles = ["Boggarts Lavendar Robes", "Fantastic Beasts", "Hand of Glory", "Why Is Ron So Annoying",
+  "Voldemort Has Issues", "Is Trump Like Voldemort?", "Things to Ask Dobby",
+  "Gift Ideas for Ginny", "Magical Job Search", "I Hate Malfoy", "New Years Resolutions",
+  "Befriending Aragog", "Reasons Why Slytherin Sucks", "Plans for our 5 Year Reunion", "Polyjuice Potion Recipe",
+  "How To Get Away With Magical Murder", "Gramp's Elemental Law of Transfiguration", "Dark Arts No-Nos",
+  "Why Do Muggles Exist?", "How to Cheat at Wizard Chess", "Witch Weekly Letters", "How Does Electricity Work?",
+  "Thoughts on Muggle Life", "Ingredients for Liquid Luck", "Where is MiddleEarth?", "Secret Places at Hogwarts", "Learning Parseltongue for Noobs",
+  "Headless Hunt", "Burrow Wronski Feint", "The Restricted Section", "Best Places for Chocolate Frogs", "Room of Requirement Passwords", "Are You a Witch or Not?",
+  "Cool Things To Do With Time-Turner", "Godric's Hollow Renovations", "Directions to the Shrieking Shack"]
+
 200.times do
+  new_title = Faker::HarryPotter.quote
+  titles.push(new_title) unless titles.include?(new_title)
+end
+
+titles.each do |title|
   all_notebook_ids = Notebook.all.map { |note| note.id }
 
   Note.create!(
   author_id: demouser.id,
   notebook_id: all_notebook_ids.sample,
-  title: Faker::HarryPotter.quote,
+  title: title,
   body: fake_body_and_content[:body],
   plain_content: fake_body_and_content[:plain_content]
   )

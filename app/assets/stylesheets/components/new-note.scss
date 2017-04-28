@@ -152,10 +152,12 @@ $ever-grey: #dedede;
   border:none;
   outline: none;
   width:100%;
+  height: auto;
   color: $ever-green;
   font-size: 30px;
   padding:5px;
   margin:0px;
+  resize: vertical;
 }
 
 
