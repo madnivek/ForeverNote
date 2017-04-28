@@ -342,10 +342,10 @@ class NewNote extends React.Component{
                 ref={(element) => { this.draftEditor = element; }}
                 placeholder="Just start typing..."
                 editorState={this.state.editorState}
-                plugins={[inlineToolbarPlugin]}
+                plugins={[emojiPlugin]}
                 onChange={this.onChange} />
-              <InlineToolbar />
             </div>
+            <EmojiSuggestions />
           </div>
 
         </form>
