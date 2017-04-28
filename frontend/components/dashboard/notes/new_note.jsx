@@ -6,7 +6,7 @@ import createEmojiPlugin from 'draft-js-emoji-plugin';
 import NotebookSelectModal from './notebook_select_modal';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
-import 'draft-js-emoji-plugin/lib/plugin.css';
+// import 'draft-js-emoji-plugin/lib/plugin.css';
 import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
 import editorStyles from './editorStyles.css';
 import 'draft-js/dist/Draft.css';
@@ -15,10 +15,6 @@ import {
   ItalicButton,
   BoldButton,
   UnderlineButton,
-  CodeButton,
-  HeadlineOneButton,
-  HeadlineTwoButton,
-  HeadlineThreeButton,
   UnorderedListButton,
   OrderedListButton,
   BlockquoteButton,
@@ -30,25 +26,18 @@ const inlineToolbarPlugin = createInlineToolbarPlugin({
     BoldButton,
     ItalicButton,
     UnderlineButton,
-    CodeButton,
-    Separator,
-    HeadlineOneButton,
-    HeadlineTwoButton,
-    HeadlineThreeButton,
     UnorderedListButton,
     OrderedListButton,
     BlockquoteButton,
-    CodeBlockButton,
+    CodeBlockButton
   ]
 });
 
 const { InlineToolbar } = inlineToolbarPlugin;
 
-
-const emojiPlugin = createEmojiPlugin();
-const { EmojiSuggestions } = emojiPlugin;
-
-const plugins = [ emojiPlugin, inlineToolbarPlugin];
+// const emojiPlugin = createEmojiPlugin();
+// const { EmojiSuggestions } = emojiPlugin;
+//
 
 class NewNote extends React.Component{
   constructor(props){
@@ -295,6 +284,7 @@ class NewNote extends React.Component{
                 <span onMouseDown={ this._toggleInlineStyle("STRIKETHROUGH") }
                   className="button"><i className="fa fa-strikethrough"
                   aria-hidden="true"></i></span>
+
               </nav></li>
 
               <li><span><i className="fa fa-tags" aria-hidden="true"></i></span></li>
@@ -317,14 +307,12 @@ class NewNote extends React.Component{
 
             <div className="draftEditor" onClick={ this.focus }>
               <Editor
-                spellCheck={true}
                 ref={(element) => { this.editor = element; }}
                 placeholder="Just start typing..."
                 editorState={this.state.editorState}
-                plugins={[emojiPlugin]}
+                plugins={[inlineToolbarPlugin]}
                 onChange={this.onChange} />
               <InlineToolbar />
-              <EmojiSuggestions />
             </div>
           </div>
 
@@ -335,6 +323,7 @@ class NewNote extends React.Component{
 }
 
 export default NewNote;
+
 
 // <span className="button"><i className="fa fa-align-center" aria-hidden="true"></i></span>
 // <span className="button"><i className="fa fa-align-right" aria-hidden="true"></i></span>
