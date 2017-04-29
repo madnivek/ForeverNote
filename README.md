@@ -4,15 +4,15 @@
 
 [heroku]: https://forever-note.herokuapp.com/
 
-ForeverNote is a full-stack web application that takes inspiration from Evernote. I relies on Ruby On Rails on the backend, a PostgresQL database. On the frontend, most features were implemented using a React.js and Redux framework.
+ForeverNote is a full-stack web application that takes inspiration from Evernote. It relies on Ruby On Rails and a PostgresQL database for the backend. On the frontend, most features were implemented using a React.js and Redux framework.
 
 ## Features & Implementation
 
 ### Creating, Editing, and Deleting Notes
 
-  Notes are stored in the database as a single table which tracks a note's `id`, `title`, `user_id`, `body`, `plain_content`, `created_at`, and `updated_at`. When a user logs in, an API request is made to fetch all a user's notes. This filtering is performed on the backend using an ActiveRecord query for all note having the current user's ID. These notes are then stored on the frontend in a "notes" slice of state.
+  Notes are stored in the database as a single table which tracks a note's `id`, `title`, `user_id`, `body`, `plain_content`, `created_at`, and `updated_at` columns. When a user logs in, an API request is made to fetch all a user's notes. This filtering is performed on the backend using an ActiveRecord query for all notes having the current user's ID. These notes are then stored on the frontend in a "notes" slice of state.
 
-  Notes are rendered to the page using a NoteContainer which handles viewing, editing, and creating notes depending on the user's location. This implemenation ensured that the code remained DRY and gives flexibility for restructuring of the website.
+  Notes are rendered to the page using a NoteContainer which handles viewing, editing, and creating notes depending on the user's page location. This implemenation ensured that the code remained DRY and gives flexibility for restructuring of the website.
 
   Note editing was implemented using Facebook's Draft.js library which allows for rich text editing and the use of various useful plugins.
 
@@ -70,6 +70,7 @@ Tags are stored in the frontend using a `tags` slice of state in the store, whic
 ### Search
 
 A search feature is core to a note-taking app which allows for maximum usability. As a user's notes are all stored in the frontend at the time of login, the search functionality was implemented in the frontend to reduce the number of API requests necessary. As such, the search is relatively efficient.
+
 The Search feature has been implemented for searching notes by title or body, and also searching all tags for a specific tag name.
 
 The search was baked right into the tag and note index, which allowed for a quick and useful auto-complete feature.
