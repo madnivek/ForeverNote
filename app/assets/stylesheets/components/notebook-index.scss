@@ -1,7 +1,7 @@
 $ever-green: #2dbe60;
 $ever-grey: #dedede;
 
-.notebook-index-section {
+.index-section {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -12,7 +12,7 @@ $ever-grey: #dedede;
   box-shadow: 0px 0px 2px black;
 }
 
-.notebook-index-header{
+.index-header{
   font-size: 25px;
   position: relative;
   display: flex;
@@ -22,6 +22,7 @@ $ever-grey: #dedede;
   background: #393d41;
   box-shadow: 0px 2px 2px black;
   width: 431px;
+  margin-bottom: 15px;
 }
 
 .notes-count {

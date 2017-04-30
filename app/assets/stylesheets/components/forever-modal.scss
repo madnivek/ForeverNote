@@ -73,12 +73,11 @@ $ever-grey: #dedede;
 
 .search-input {
   float: left;
-  margin:0;
   display:inline;
   margin: 0 auto;
+  margin-left: 10px;
   padding: 5px;
   width: 100%;
-  margin-left: 10px;
   border: 1px solid $ever-grey;
   border-radius: 2.5px;
 }
@@ -87,24 +86,24 @@ $ever-grey: #dedede;
   outline: none;
 }
 
-//TAG SEARCH TRANSITION
+//SEARCH TRANSITION
 
-.tag-search-transition-enter {
+.search-transition-enter {
   opacity: 0.01;
   max-height: 0px;
 }
 
-.tag-search-transition-enter.tag-search-transition-enter-active {
+.search-transition-enter.search-transition-enter-active {
   opacity: 1;
   max-height: 500px;
   transition: opacity 400ms ease-in, max-height 800ms ease-in;
 }
 
-.tag-search-transition-leave {
+.search-transition-leave {
   opacity: 1;
 }
 
-.tag-search-transition-leave.tag-search-transition-leave-active {
+.search-transition-leave.search-transition-leave-active {
   opacity: 0.01;
   transition: opacity 500ms ease-in;
 }

@@ -5,8 +5,41 @@ import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class NotebookIndex extends React.Component {
 
+  constructor(props){
+    super(props);
+    this.state = { notebooks: this.props.notebooks, searchString: ""};
+    this.allNotebooks = this.props.notebooks.slice();
+    this.updateSearchBar = this.updateSearchBar.bind(this);
+    this.filterNotebooksBySearch = this.filterNotebooksBySearch.bind(this);
+  }
+
+  componentWillReceiveProps(newProps){
+    this.setState({notebooks: newProps.notebooks});
+  }
+
+  updateSearchBar(e){
+    e.preventDefault();
+    this.setState( {searchString: e.target.value} );
+    this.filterNotebooksBySearch(e.target.value);
+  }
+
+  filterNotebooksBySearch(searchString){
+    const regExp = new RegExp(searchString, "i");
+
+    const filter = notebook => {
+      if(searchString === "" || regExp.test(notebook.title)){
+        return true;
+      } else {
+        return false;
+      }
+    };
+
+    const notebooks = this.allNotebooks.filter(filter);
+    this.setState({notebooks});
+  }
+
   render(){
-    const notebooks = this.props.notebooks.map( notebook =>{
+    const notebooks = this.state.notebooks.map( notebook =>{
       return(
         <NotebookIndexItem
           key={notebook.id}
@@ -34,10 +67,27 @@ class NotebookIndex extends React.Component {
 
         <div className="loader"></div>
         <div className="main-container">
-          <section className="notebook-index-section">
-            <div className="notebook-index-header"><h2>NOTEBOOKS</h2>{ addNotebookButton }</div>
+          <section className="index-section">
+            <div className="index-header"><h2>NOTEBOOKS</h2>{ addNotebookButton }</div>
+            <div className="search-container tags-search-container">
+              <i className="fa fa-search" aria-hidden="true"></i>
+              <input
+                className = "search-input"
+                type="text"
+                placeholder="search by title..."
+                value={this.state.searchTerm}
+                onChange={ this.updateSearchBar } />
+            </div>
+
             <ul className="note-index-list">
-              { notebooks }
+              <CSSTransitionGroup
+                transitionName="search-transition"
+                transitionEnterTimeout={800}
+                transitionLeaveTimeout={500}>
+
+                  { notebooks }
+
+              </CSSTransitionGroup>
             </ul>
           </section>
         </div>

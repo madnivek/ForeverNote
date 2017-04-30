@@ -1,5 +1,5 @@
 import React from 'react';
-import { convertFromRaw, convertToRaw, RichUtils, Draft} from 'draft-js';
+import { convertToRaw, RichUtils, Draft} from 'draft-js';
 import { hashHistory } from 'react-router';
 import Editor from 'draft-js-plugins-editor';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
@@ -8,7 +8,7 @@ import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import 'draft-js-emoji-plugin/lib/plugin.css';
 import editorStyles from './editorStyles.css';
 import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
-import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
+// import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
 // import 'draft-js-buttons-plugin/lib/plugin.css';
 // import {AlignBlockCenterButton} from 'draft-js-buttons';
 // import 'draft-js/dist/Draft.css';
@@ -16,30 +16,30 @@ import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
 // import createButtonsPlugin from 'draft-js-buttons';
 // const buttonsPlugin = createButtonsPlugin();
 //
-import {
-  ItalicButton,
-  BoldButton,
-  UnderlineButton,
-  UnorderedListButton,
-  OrderedListButton,
-  BlockquoteButton,
-  AlignBlockLeftButton,
-  AlignBlockRightButton,
-  AlignBlockCenterButton
-} from 'draft-js-buttons';
-//
-const inlineToolbarPlugin = createInlineToolbarPlugin({
-  structure: [
-    BoldButton,
-    ItalicButton,
-    UnderlineButton,
-    UnorderedListButton,
-    OrderedListButton,
-    BlockquoteButton
-  ]
-});
-//
-const { InlineToolbar } = inlineToolbarPlugin;
+// import {
+//   ItalicButton,
+//   BoldButton,
+//   UnderlineButton,
+//   UnorderedListButton,
+//   OrderedListButton,
+//   BlockquoteButton,
+//   AlignBlockLeftButton,
+//   AlignBlockRightButton,
+//   AlignBlockCenterButton
+// } from 'draft-js-buttons';
+// //
+// const inlineToolbarPlugin = createInlineToolbarPlugin({
+//   structure: [
+//     BoldButton,
+//     ItalicButton,
+//     UnderlineButton,
+//     UnorderedListButton,
+//     OrderedListButton,
+//     BlockquoteButton
+//   ]
+// });
+// //
+// const { InlineToolbar } = inlineToolbarPlugin;
 
 const emojiPlugin = createEmojiPlugin();
 const { EmojiSuggestions } = emojiPlugin;
@@ -81,12 +81,6 @@ class NewNote extends React.Component{
     }
   }
 
-  _convertFromRaw(rawContentString){
-    return JSON.parse(rawContentString)
-  }
-
-
-
   _toggleInlineStyle(inlineStyle) {
     return (e) => {
       e.preventDefault();
@@ -111,9 +105,6 @@ class NewNote extends React.Component{
     };
   }
 
-
-
-
   update(e){
     this.setState({ title: e.target.value, isOpen: false, saveText: "Save Note" });
   }
@@ -127,18 +118,19 @@ class NewNote extends React.Component{
     this.setState({notebook_id, isOpen: false, saveText: "Save Note"});
   }
 
-
-
   generateTagList() {
     let existingTags = [];
-
-    if(Object.values(this.state.tags).length !== 0){
+    const tags = this.state.tags || [];
+    if(Object.values(tags).length !== 0){
       existingTags =  this.state.tags.map( (tag, index) => {
         return(
           <li key={tag.tag_name}>
             <span  className="tag-show-item old-tag">
               { tag.tag_name }
-              <i className="fa fa-minus-circle" aria-hidden="true" onClick={ this.deleteOldTag(tag.id, index)}/>
+              <i
+                className="fa fa-minus-circle"
+                aria-hidden="true"
+                onClick={ this.deleteOldTag(tag.id, index)}/>
             </span>
           </li>
         );
@@ -155,25 +147,27 @@ class NewNote extends React.Component{
         </li>
       );
     });
-
-    return existingTags.concat(newTags)
+    return existingTags.concat(newTags);
   }
 
   enterTag(e){
     if(e.which === 13){
-      e.preventDefault()
-      const oldTags = this.state.tags
-      let oldTagTitles = []
+      e.preventDefault();
+      const oldTags = this.state.tags || [];
+      let oldTagTitles = [];
       if(Object.values(oldTags).length !== 0){
         oldTagTitles = this.state.tags.map( tag => tag.tag_name);
       }
 
       let updatedNewTags = this.state.new_tags;
       const tagIsInOldTags = updatedNewTags[e.target.value];
-      const tagIsInNewTags = oldTagTitles.includes(e.target.value)
+      const tagIsInNewTags = oldTagTitles.includes(e.target.value);
 
       if(!tagIsInOldTags && !tagIsInNewTags){
-        updatedNewTags[e.target.value] = { tag_name: e.target.value, user_id: this.props.currentUser.id };
+        updatedNewTags[e.target.value] = {
+          tag_name: e.target.value,
+          user_id: this.props.currentUser.id
+        };
         this.setState({new_tags: updatedNewTags, saveText:"Save Note"});
       }
       e.target.value = "";
@@ -185,9 +179,10 @@ class NewNote extends React.Component{
     e.preventDefault();
     let { id, title, author_id, notebook_id } = this.state;
 
-    notebook_id = this.state.notebook_id
+    notebook_id = this.state.notebook_id;
 
     if(this.props.formType === 'new') {
+      notebook_id = this.props.currentNotebook.id;
       author_id = this.props.currentUser.id;
     }
 
@@ -239,8 +234,8 @@ class NewNote extends React.Component{
       delete newState[tag_name];
       this.setState({
         new_tags: newState,
-        saveText: "Save Note"})
-    }
+        saveText: "Save Note"});
+    };
   }
 
 
@@ -250,13 +245,26 @@ class NewNote extends React.Component{
       return <div></div>;
     }
 
-    const formTypeContainer = this.props.formType === "new" ? "form-parent-container new-form-container" : "form-parent-container";
+    const {
+      formType,
+      notebooks,
+      currentNotebook,
+      notebook_id } = this.props;
 
-    const selectedNotebook = this.props.notebooks[this.state.notebook_id];
-    const notebookTitle = selectedNotebook ? selectedNotebook.title : this.props.currentNotebook.title;
-    const currentNotebookId = this.state.notebook_id ? this.state.notebook_id : this.props.currentNotebook.id;
+    const {
+      isOpen,
+      saveText,
+      title,
+      editorState
+    } = this.state
 
-    let selectorClassName = this.props.formType === 'new' ?
+    const formTypeContainer = formType === "new" ? "form-parent-container new-form-container" : "form-parent-container";
+
+    const selectedNotebook = notebooks[this.state.notebook_id];
+    const notebookTitle = selectedNotebook ? selectedNotebook.title : currentNotebook.title;
+    const currentNotebookId = this.state.notebook_id ? this.state.notebook_id : currentNotebook.id;
+
+    let selectorClassName = formType === 'new' ?
       "new-note-selector" : "edit-note-selector";
 
     return(
@@ -267,9 +275,9 @@ class NewNote extends React.Component{
 
           <NotebookSelectModal
             selectorClassName={selectorClassName}
-            notebooks={ Object.values(this.props.notebooks) }
+            notebooks={ Object.values(notebooks) }
             currentNotebookId={currentNotebookId}
-            isOpen={this.state.isOpen}
+            isOpen={isOpen}
             changeNotebook={ this.changeNotebook } />
 
           <div className="fixed-main-controls">
@@ -277,7 +285,7 @@ class NewNote extends React.Component{
             <div className="cancel-back">
               <button className="button"
                 onClick={ (this.handleRedirect) }>Close Note</button>
-              <input className="button" type="submit" value={this.state.saveText} />
+              <input className="button" type="submit" value={saveText} />
             </div>
 
             <ul className="tags-div">
@@ -334,14 +342,15 @@ class NewNote extends React.Component{
               className="new-title"
               placeholder="Title your note"
               onChange={ this.update }
-              type="text" value={this.state.title}/>
+              type="text" value={title}/>
 
 
             <div className="draftEditor" onClick={ this.focus }>
               <Editor
+                spellCheck={true}
                 ref={(element) => { this.draftEditor = element; }}
                 placeholder="Just start typing..."
-                editorState={this.state.editorState}
+                editorState={editorState}
                 plugins={[emojiPlugin]}
                 onChange={this.onChange} />
             </div>
@@ -355,8 +364,3 @@ class NewNote extends React.Component{
 }
 
 export default NewNote;
-
-
-// <span className="button"><i className="fa fa-align-center" aria-hidden="true"></i></span>
-// <span className="button"><i className="fa fa-align-right" aria-hidden="true"></i></span>
-// <span className="button"><i className="fa fa-align-justify" aria-hidden="true"></i></span>

@@ -1,265 +1,36 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 User.destroy_all
 Note.destroy_all
 Notebook.destroy_all
 Tag.destroy_all
 Tagging.destroy_all
 
-# USERSei
-
-# harry_potter = User.create!(
-#   username: "boy_who_lived",
-#   email: "harryjpotter@hogwards.edu",
-#   password: "up_to_no_good"
-# )
-#
-# hermione_granger = User.create!(
-#   username: "know_it_all",
-#   email: "hermionejgranger@hogwards.edu",
-#   password: "iloveronweasley"
-# )
-#
-# ron_weasley = User.create!(
-#   username: "mediocre_ginger",
-#   email: "ronbweasley@hogwards.edu",
-#   password: "iloveronweasley"
-# )
-
 demouser = User.create!(
   username: "harry",
   email: "harry@gmail.com",
   password: "potter"
 )
-#NOTES
 
+Note.create!([
+  {title: "Voldemort Has Issues", body: "{\"entityMap\":{},\"blocks\":[{\"key\":\"9tfim\",\"text\":\"I know Voldemort is supposed to be the epitome of evil - he's responsible for the deaths of thousands of people including my parents. But people like Voldemort don't exist in a vacuum. He clearly has issues and I wonder how Tom Riddle became he who shall note be named...\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"c4ifo\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"ervb3\",\"text\":\"I wonder if Dumbledore knows more. He's definitely keeping something from me. I'll make sure to ask him next time I see him.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}", author_id: demouser.id, notebook_id: 1, plain_content: "I know Voldemort is supposed to be the epitome of evil - he's responsible for the deaths of thousands of people including my parents. But people like Voldemort don't exist in a vacuum. He clearly has issues and I wonder how Tom Riddle became he who shall note be named...\n\nI wonder if Dumbledore knows more. He's definitely keeping something from me. I'll make sure to ask him next time I see him."},
+  {title: "Polyjuice Potion", body: "{\"entityMap\":{},\"blocks\":[{\"key\":\"7gsip\",\"text\":\"Use:\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":4,\"style\":\"BOLD\"}],\"entityRanges\":[],\"data\":{}},{\"key\":\"4dut6\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"elc7d\",\"text\":\"Allows drinker to assume appearance of someone else for approximately one hour.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"3n2t5\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"43dbi\",\"text\":\"Recipe:\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":7,\"style\":\"BOLD\"}],\"entityRanges\":[],\"data\":{}},{\"key\":\"9ems6\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"3vcgq\",\"text\":\"fluxweed\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"d019v\",\"text\":\"knotgrass\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"8osli\",\"text\":\"lacewing flies\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"5fpai\",\"text\":\"leeches\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"5ja1d\",\"text\":\"powdered bicorn horn\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"og74\",\"text\":\"shredded boomslang skin\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"8jp8q\",\"text\":\"a bit of the individual to be impersonated (e.g. hair )\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"dbph2\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}", author_id: demouser.id, notebook_id: 2, plain_content: "Use:\n\nAllows drinker to assume appearance of someone else for approximately one hour.\n\nRecipe:\n\nfluxweed\nknotgrass\nlacewing flies\nleeches\npowdered bicorn horn\nshredded boomslang skin\na bit of the individual to be impersonated (e.g. hair )\n"},
+  {title: "I Hate Malfoy", body: "{\"entityMap\":{},\"blocks\":[{\"key\":\"d5tuj\",\"text\":\"I don't know how much longer I can deal with Malfoy. He's the bastion of privilege and knows it.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":62,\"length\":7,\"style\":\"UNDERLINE\"},{\"offset\":62,\"length\":7,\"style\":\"BOLD\"}],\"entityRanges\":[],\"data\":{}},{\"key\":\"5932l\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"bvphm\",\"text\":\"That being said, I could really say the same for a lot of Slytherin. Why do they put all of the the bullies in one house and pretend as if that's okay? Most schools wouldn't really foster this kind of behavior... If it were up to me, the anyone sorted into Slytherin should just automatically be dismissed from the school.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":85,\"length\":23,\"style\":\"BOLD\"}],\"entityRanges\":[],\"data\":{}}]}", author_id: demouser.id, notebook_id: 1, plain_content: "I don't know how much longer I can deal with Malfoy. He's the bastion of privilege and knows it.\n\nThat being said, I could really say the same for a lot of Slytherin. Why do they put all of the the bullies in one house and pretend as if that's okay? Most schools wouldn't really foster this kind of behavior... If it were up to me, the anyone sorted into Slytherin should just automatically be dismissed from the school."},
+  {title: "Amortentia (Love Potion)", body: "{\"entityMap\":{},\"blocks\":[{\"key\":\"fjjga\",\"text\":\"Use:\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":4,\"style\":\"BOLD\"}],\"entityRanges\":[],\"data\":{}},{\"key\":\"43n98\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"cunah\",\"text\":\"Love potion. Does not actually create love, more like obsession...\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"ajn4m\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"b016b\",\"text\":\"Recipe:\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":7,\"style\":\"BOLD\"}],\"entityRanges\":[],\"data\":{}},{\"key\":\"46d4m\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"b3jr\",\"text\":\"powdered golden cacao\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"b60go\",\"text\":\"goblin bile\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"7gko9\",\"text\":\"pixie dust\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"6p3b4\",\"text\":\"exuberant lavender\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"eat6m\",\"text\":\"boiled mandrake bark\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}", author_id: demouser.id, notebook_id: 2, plain_content: "Use:\n\nLove potion. Does not actually create love, more like obsession...\n\nRecipe:\n\npowdered golden cacao\ngoblin bile\npixie dust\nexuberant lavender\nboiled mandrake bark"},
+  {title: "Veritaserum (Truth Serum)", body: "{\"entityMap\":{},\"blocks\":[{\"key\":\"2ud9s\",\"text\":\"Use:\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":4,\"style\":\"BOLD\"}],\"entityRanges\":[],\"data\":{}},{\"key\":\"29k30\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"90t8f\",\"text\":\"Very powerful potion - three drops will force anyone to respond truthfully.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"2j5cu\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"98o92\",\"text\":\"Recipe:\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":7,\"style\":\"BOLD\"}],\"entityRanges\":[],\"data\":{}},{\"key\":\"1gpu1\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"d891s\",\"text\":\"juice of veritaroot\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"52lt2\",\"text\":\"three drops of pixie blood\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"7dm6r\",\"text\":\"vanilla extract\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"fvan6\",\"text\":\"unicorn tears\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"5rkoe\",\"text\":\"werewolf nail shavings\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}", author_id: demouser.id, notebook_id: 2, plain_content: "Use:\n\nVery powerful potion - three drops will force anyone to respond truthfully.\n\nRecipe:\n\njuice of veritaroot\nthree drops of pixie blood\nvanilla extract\nunicorn tears\nwerewolf nail shavings"},
+  {title: "Felix Felicis (Liquid Luck)", body: "{\"entityMap\":{},\"blocks\":[{\"key\":\"ffd1a\",\"text\":\"Use:\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":4,\"style\":\"BOLD\"}],\"entityRanges\":[],\"data\":{}},{\"key\":\"5h2io\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"66p2j\",\"text\":\"Grants user temporary good luck and fortune.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"239dk\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"67p6d\",\"text\":\"Recipe:\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":7,\"style\":\"BOLD\"}],\"entityRanges\":[],\"data\":{}},{\"key\":\"aa1m2\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"9f63r\",\"text\":\"1000 four-leaf clovers\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"cm3mk\",\"text\":\"hair of golden unicorn\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"4a5vi\",\"text\":\"magical gold dust\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"c5884\",\"text\":\"hair of leprechaun\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"4mebh\",\"text\":\"powdered ethereal pearls\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}", author_id: demouser.id, notebook_id: 2, plain_content: "Use:\n\nGrants user temporary good luck and fortune.\n\nRecipe:\n\n1000 four-leaf clovers\nhair of golden unicorn\nmagical gold dust\nhair of leprechaun\npowdered ethereal pearls"},
+  {title: "Sometimes I Find Ron Annoying", body: "{\"entityMap\":{},\"blocks\":[{\"key\":\"938hr\",\"text\":\"I know Ron is my best friend and everything, but sometimes I find him so so so annoying. First off, he doesn't know how to chew with his mouth closed. That's actually one of my earliest memories of him - Ron with chocolate frog legs sticking out of his mouth.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"3btpj\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"7ai8g\",\"text\":\"Another thing is he's always wallowing in his mediocrity. It's not my fault Hermione is a magical Einstein and I am infamous for my past (which I didn't choose, by the way. I'd much rather my parents be alive). \",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"6ibkv\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"dv5hv\",\"text\":\"Anyways, if he knew I wrote this he would be furious. So with all that being said - I love Ron and he's a good friend. But that doesn't mean I have to like everything about him.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}", author_id: demouser.id, notebook_id: 1, plain_content: "I know Ron is my best friend and everything, but sometimes I find him so so so annoying. First off, he doesn't know how to chew with his mouth closed. That's actually one of my earliest memories of him - Ron with chocolate frog legs sticking out of his mouth.\n\nAnother thing is he's always wallowing in his mediocrity. It's not my fault Hermione is a magical Einstein and I am infamous for my past (which I didn't choose, by the way. I'd much rather my parents be alive). \n\nAnyways, if he knew I wrote this he would be furious. So with all that being said - I love Ron and he's a good friend. But that doesn't mean I have to like everything about him."},
+  {title: "Who is Daniel Radcliffe?", body: "{\"entityMap\":{},\"blocks\":[{\"key\":\"aiajn\",\"text\":\"So the other day I was at the local pub and I overhear that my story has been leaked to the muggle world. Apparently a writer by the pseudonym \\\"JK Rowling\\\" has been writing a lose biography of my life since I was whisked away to the wizarding world.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"faea5\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"5d8tf\",\"text\":\"I inquired further and find out there's a whole move franchise based on my life and a boy named \\\"Daniel Radcliffe\\\" was cast as me. This is all very strange to hear. Next time I leave for a muggle city I'll be sure to do some research. I'd love to find out more about Mr. Radcliffe and if his likeness is true to my own. Same goes for whoever plays Ron and Hermione.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}", author_id: demouser.id, notebook_id: 1, plain_content: "So the other day I was at the local pub and I overhear that my story has been leaked to the muggle world. Apparently a writer by the pseudonym \"JK Rowling\" has been writing a lose biography of my life since I was whisked away to the wizarding world.\n\nI inquired further and find out there's a whole move franchise based on my life and a boy named \"Daniel Radcliffe\" was cast as me. This is all very strange to hear. Next time I leave for a muggle city I'll be sure to do some research. I'd love to find out more about Mr. Radcliffe and if his likeness is true to my own. Same goes for whoever plays Ron and Hermione."},
+  {title: "Letter to Hermione", body: "{\"entityMap\":{},\"blocks\":[{\"key\":\"8b77e\",\"text\":\"Dear Hermione,\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"27m6i\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"at54t\",\"text\":\"I know you're super busy being the fantastic Hermione Granger, so I thought I'd compose my thoughts here so you can read it whenever you have the time.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":45,\"length\":16,\"style\":\"BOLD\"},{\"offset\":45,\"length\":16,\"style\":\"ITALIC\"}],\"entityRanges\":[],\"data\":{}},{\"key\":\"9i35f\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"1ce7d\",\"text\":\"First off, thanks for being my friend. Seriously, I'm a pretty mediocre person - I'm not great at magic, I'm a  bit lazy, and I complain a lot. You on the other hand, are the opposite of that. There have been so many times that I would have literally died if it hadn't been for you.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":241,\"length\":10,\"style\":\"ITALIC\"}],\"entityRanges\":[],\"data\":{}},{\"key\":\"du721\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"cr8rr\",\"text\":\"On that note, I would like to apologize for not being better. It shouldn't be your responsibility to take care of us - Ron and I need to drag our weight a lot more.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"a0iru\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"colgs\",\"text\":\"Your friend,\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"687nu\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"262ke\",\"text\":\"Harry\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}", author_id: demouser.id, notebook_id: 4, plain_content: "Dear Hermione,\n\nI know you're super busy being the fantastic Hermione Granger, so I thought I'd compose my thoughts here so you can read it whenever you have the time.\n\nFirst off, thanks for being my friend. Seriously, I'm a pretty mediocre person - I'm not great at magic, I'm a  bit lazy, and I complain a lot. You on the other hand, are the opposite of that. There have been so many times that I would have literally died if it hadn't been for you.\n\nOn that note, I would like to apologize for not being better. It shouldn't be your responsibility to take care of us - Ron and I need to drag our weight a lot more.\n\nYour friend,\n\nHarry"},
+  {title: "Letter To Voldemort", body: "{\"entityMap\":{},\"blocks\":[{\"key\":\"5tmse\",\"text\":\"Dear Voldemort,\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"5dj59\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"8c8ks\",\"text\":\"Please stop killing and threatening my loved ones.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":6,\"style\":\"BOLD\"},{\"offset\":0,\"length\":6,\"style\":\"ITALIC\"},{\"offset\":0,\"length\":6,\"style\":\"UNDERLINE\"}],\"entityRanges\":[],\"data\":{}},{\"key\":\"d4kqr\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"5jef9\",\"text\":\"Thanks,\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"6vu4v\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"1d80g\",\"text\":\"Harry\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"e51to\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"9oaqb\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}", author_id: demouser.id, notebook_id: 4, plain_content: "Dear Voldemort,\n\nPlease stop killing and threatening my loved ones.\n\nThanks,\n\nHarry\n\n"},
+  {title: "Letter to Dumbledore", body: "{\"entityMap\":{},\"blocks\":[{\"key\":\"b6o1q\",\"text\":\"Dear Dumbledore,\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"488ve\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"7s6hg\",\"text\":\"Every time I try to write this letter, I freeze and can't get the right words out. \",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"4io4i\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"dc0t6\",\"text\":\"But I guess all I want to say is this: I'm sorry I wasn't better. And I'm sorry you had to make up for that.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"a8b7m\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"1kur6\",\"text\":\"Yours,\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"elgmo\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"3oqji\",\"text\":\"Harry\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}", author_id: demouser.id, notebook_id: 4, plain_content: "Dear Dumbledore,\n\nEvery time I try to write this letter, I freeze and can't get the right words out. \n\nBut I guess all I want to say is this: I'm sorry I wasn't better. And I'm sorry you had to make up for that.\n\nYours,\n\nHarry"},
+  {title: "Avada Kedavra", body: "{\"entityMap\":{},\"blocks\":[{\"key\":\"53i77\",\"text\":\"I've been reading up on Avada Kedavra and it's origins and had the thought: for every reaction, there is an equal and opposite reaction.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"ql7f\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"93q03\",\"text\":\"Here's what I know about the mechanics of Avada Kedavra (AK):\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"7td8l\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"d863k\",\"text\":\"Upon contact, Avada Kedavra is absorbed by the subject, where it alters the circulation of blood\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"3tdqs\",\"text\":\"Blood flow is altered using some sort of kinetic transformation that acts on iron\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"e3290\",\"text\":\"Abnormalities in blood flow cause the heart to seize, resulting in immediate death\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"8pm9u\",\"text\":\"AK takes about 100 ms to take effect from contact to cardiac arrest\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"8948k\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"2imj3\",\"text\":\"If I can somehow deconstruct this spell, I wonder if I can create a charm or ward to prevent it's function? For example, if I could devise a spell that could detect abnormalities in blood flow and correct them in real-time, could AK be stopped? Or if I could enchant the iron in one's blood to ignore magnetization perhaps AK will be rendered useless?\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"33td3\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}", author_id: demouser.id, notebook_id: 5, plain_content: "I've been reading up on Avada Kedavra and it's origins and had the thought: for every reaction, there is an equal and opposite reaction.\n\nHere's what I know about the mechanics of Avada Kedavra (AK):\n\nUpon contact, Avada Kedavra is absorbed by the subject, where it alters the circulation of blood\nBlood flow is altered using some sort of kinetic transformation that acts on iron\nAbnormalities in blood flow cause the heart to seize, resulting in immediate death\nAK takes about 100 ms to take effect from contact to cardiac arrest\n\nIf I can somehow deconstruct this spell, I wonder if I can create a charm or ward to prevent it's function? For example, if I could devise a spell that could detect abnormalities in blood flow and correct them in real-time, could AK be stopped? Or if I could enchant the iron in one's blood to ignore magnetization perhaps AK will be rendered useless?\n"},
+  {title: "Mom's Spell of Transfiguration", body: "{\"entityMap\":{},\"blocks\":[{\"key\":\"fhnkn\",\"text\":\"Mom was such an accomplished wizard. I was rifling through some old documents in Sirius' basement and found some of her work from Hogwarts. One particularly interesting tidbit I found described mom's variation of the spell of transfiguration. Instead of the regular incantation, she added some modifications that both shorten the spell casting duration and also optimize it's output. According to her, these changes can greatly increase the efficiency of the spell and also reduces risks of combustion and the inadvertent transfiguration of nearby objects and/or people.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}", author_id: demouser.id, notebook_id: 5, plain_content: "Mom was such an accomplished wizard. I was rifling through some old documents in Sirius' basement and found some of her work from Hogwarts. One particularly interesting tidbit I found described mom's variation of the spell of transfiguration. Instead of the regular incantation, she added some modifications that both shorten the spell casting duration and also optimize it's output. According to her, these changes can greatly increase the efficiency of the spell and also reduces risks of combustion and the inadvertent transfiguration of nearby objects and/or people."},
+  {title: "Thoughts on Muggle Life", body: "{\"entityMap\":{},\"blocks\":[{\"key\":\"7l5m1\",\"text\":\"It's been so long since I lived with the Dursley's I've forgotten what it's like to be a muggle. Sometimes I wonder if magic is just a crutch. Muggles get by just fine without it. Well, more than just fine. I've been reading up on the latest technological advances and things have changed so much since I left that cupboard. Apparently the \\\"internet\\\" has taken over the world and revolutionized the way muggles work, play, interact, and live their daily lives.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"bpfnm\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"cec2u\",\"text\":\"I wonder sometimes if I could be a muggle. If you think about it, there are just as many unhappy muggles as there are happy wizards. Magic doesn't seem to be a silver bullet for the common human ailments: loneliness, illness, evil...  If you think about it, how much does magic change human behavior? You think Voldemort is a bad seed? Check out news clippings from the muggle world and you'll find his equals.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"e0dlo\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"7loeq\",\"text\":\"Maybe I should take a muggle studies class. Or I guess I can just ask Hermione.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}", author_id: demouser.id, notebook_id: 3, plain_content: "It's been so long since I lived with the Dursley's I've forgotten what it's like to be a muggle. Sometimes I wonder if magic is just a crutch. Muggles get by just fine without it. Well, more than just fine. I've been reading up on the latest technological advances and things have changed so much since I left that cupboard. Apparently the \"internet\" has taken over the world and revolutionized the way muggles work, play, interact, and live their daily lives.\n\nI wonder sometimes if I could be a muggle. If you think about it, there are just as many unhappy muggles as there are happy wizards. Magic doesn't seem to be a silver bullet for the common human ailments: loneliness, illness, evil...  If you think about it, how much does magic change human behavior? You think Voldemort is a bad seed? Check out news clippings from the muggle world and you'll find his equals.\n\nMaybe I should take a muggle studies class. Or I guess I can just ask Hermione."}
+])
 
-
-def fake_title
-  Faker::HarryPotter.quote
-end
-
-def fake_paragraph
-  array = []
-  8.times do
-    array.push(Faker::HarryPotter.quote)
-  end
-  array.join(". ")
-end
-
-def fake_body_and_content
-  text_a = <<-TEXT
-{"entityMap":{},"blocks":[{"key":"8f43o","text":"
-  TEXT
-
-  text_a.strip!
-
-  text_b = <<-TEXT
-  ","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"29kho","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"eb70f","text":"
-  TEXT
-
-  text_b.strip!
-
-  text_c = <<-TEXT
-  ","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"45u84","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"e0gmu","text":"
-  TEXT
-
-  text_c.strip!
-
-  text_d = <<-TEXT
-  ","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}]}
-  TEXT
-
-  text_d.strip!
-
-  a = fake_paragraph
-  b = fake_paragraph
-  c = fake_paragraph
-
-  body = (text_a + a + text_b + b + text_c + c + text_d).strip
-  plain_content = [a, b, c].join("\n")
-
-  { body: body, plain_content: plain_content }
-end
-
-
-notebook1 = Notebook.create!(title: "Harry's Notes", author_id: demouser.id)
-notebook2 = Notebook.create!(title: "Harry's Bucket List", author_id: demouser.id)
-notebook3 = Notebook.create!(title: "Letters to Ma and Pa", author_id: demouser.id)
-notebook4 = Notebook.create!(title: "Magical Thoughts", author_id: demouser.id)
-notebook5 = Notebook.create!(title: "Harry's Bucket List", author_id: demouser.id)
-notebook6 = Notebook.create!(title: "Random Thoughts", author_id: demouser.id)
-notebook7 = Notebook.create!(title: "Potion Recipes", author_id: demouser.id)
-
-
-titles = ["Boggarts Lavendar Robes", "Fantastic Beasts", "Hand of Glory", "Why Is Ron So Annoying",
-  "Voldemort Has Issues", "Is Trump Like Voldemort?", "Things to Ask Dobby",
-  "Gift Ideas for Ginny", "Magical Job Search", "I Hate Malfoy", "New Years Resolutions",
-  "Befriending Aragog", "Reasons Why Slytherin Sucks", "Plans for our 5 Year Reunion", "Polyjuice Potion Recipe",
-  "How To Get Away With Magical Murder", "Gramp's Elemental Law of Transfiguration", "Dark Arts No-Nos",
-  "Why Do Muggles Exist?", "How to Cheat at Wizard Chess", "Witch Weekly Letters", "How Does Electricity Work?",
-  "Thoughts on Muggle Life", "Ingredients for Liquid Luck", "Where is MiddleEarth?", "Secret Places at Hogwarts", "Learning Parseltongue for Noobs",
-  "Headless Hunt", "Burrow Wronski Feint", "The Restricted Section", "Best Places for Chocolate Frogs", "Room of Requirement Passwords", "Are You a Witch or Not?",
-  "Cool Things To Do With Time-Turner", "Godric's Hollow Renovations", "Directions to the Shrieking Shack", "Things Magic Can't Solve",
-  "Who is JK Rowling?", "Who is Daniel Radcliffe?", "Where Does Magic Come From?", "Magical Secrets to Youth", "On Scar Removal", "The Most Powerful Magic of All",
-  "Quidditch Tournament Prep", "Tri-Wizard-Tournament Prep"]
-
-
-50.times do
-  new_title = Faker::HarryPotter.quote
-  titles.push(new_title) unless titles.include?(new_title)
-end
-
-titles.each do |title|
-  all_notebook_ids = Notebook.all.map { |note| note.id }
-
-  Note.create!(
-  author_id: demouser.id,
-  notebook_id: all_notebook_ids.sample,
-  title: title,
-  body: fake_body_and_content[:body],
-  plain_content: fake_body_and_content[:plain_content]
-  )
-
-end
-#
-# note_1 = Note.create!(
-#   author_id: demouser.id,
-#   notebook_id: notebook1.id,
-#   title: "Harry's Chamber of Secrets",
-#   body: fake_body
-# )
-#
-# note_2 = Note.create!(
-#   author_id: demouser.id,
-#   notebook_id: notebook1.id,
-#   title: "Notes to Sirius",
-#   body: fake_body
-# )
-
-def generate_tags(user_id)
-
-  all_note_ids = Note.all.map { |note| note.id }
-
-  tag_names = %w(
-    magic butterbeer everyone-hates-malfoy
-    muggle-lyfe dragons dumbledore snape voldemort
-    nagini ron-weasley boy-who-lived hermione-granger
-    tri-wizard-tournament patronus leviosAH quidditch
-    RIP-cedric i-miss-sirius
-  )
-
-  tag_names.each do |name|
-    new_tag = Tag.new(tag_name: name, user_id: user_id)
-    new_tag.note_ids = all_note_ids.sample((rand * 25).to_i + 1)
-    new_tag.save!
-  end
-
-end
-
-generate_tags(demouser.id)
-
-
-#
-# tag1 = Tag.new(tag_name: "magic", user_id: demouser.id)
-# tag1.note_ids = [note_8.id, note_7.id, note_6.id]
-# tag1.save!
-#
-# tag2 = Tag.new(tag_name: "dragons", user_id: demouser.id)
-# tag2.note_ids = [note_1.id, note_2.id, note_5.id]
-# tag2.save!
-#
-# tag3 = Tag.new(tag_name: "hogwarts", user_id: demouser.id)
-# tag3.note_ids = [note_4.id, note_1.id, note_8.id]
-# tag3.save!
-#
-# tag4 = Tag.new(tag_name: "dumbledore", user_id: demouser.id)
-# tag4.note_ids = [note_2.id, note_3.id, note_4.id]
-# tag4.save!
-#
-#
-
-#
-#
-#
-# 8.times do
-#   Note.create!(author_id: demouser.id, notebook_id: 1, title: fake_title, body: fake_body)
-# end
-
-#
-# note_3 = Note.create!(
-#   author_id: demouser.id,
-#   notebook_id: notebook1.id,
-#   title: "Hogwarts Reunion Planning",
-#   body: <<-TEXT
-#
-#   {\"entityMap\":{},\"blocks\":[{\"key\":\"bgqvf\",\"text\":\"Half-giant jinxes peg-leg gillywater broken glasses large black dog Great Hall. Nearly-Headless Nick now string them together, and answer me this, which creature would you be unwilling to kiss? Poltergeist sticking charm, troll umbrella stand flying cars golden locket Lily Potter. Pumpkin juice Trevor wave your wand out glass orbs, a Grim knitted hats. Stan Shunpike doe patronus, suck his soul Muggle-Born large order of drills the trace. Bred in captivity fell through the veil, quaffle blue flame ickle diddykins Aragog. Yer a wizard, Harry Doxycide the woes of Mrs. Weasley Goblet of Fire.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"cd1iq\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"7pfbp\",\"text\":\"Alohamora wand elf parchment, Wingardium Leviosa hippogriff, house dementors betrayal. Holly, Snape centaur portkey ghost Hermione spell bezoar Scabbers. Peruvian-Night-Powder werewolf, Dobby pear-tickle half-moon-glasses, Knight-Bus. Padfoot snargaluff seeker: Hagrid broomstick mischief managed. Snitch Fluffy rock-cake, 9 ¾ dress robes I must not tell lies. Mudbloods yew pumpkin juice phials Ravenclaw’s Diadem 10 galleons Thieves Downfall. Ministry-of-Magic mimubulus mimbletonia Pigwidgeon knut phoenix feather other minister Azkaban. Hedwig Daily Prophet treacle tart full-moon Ollivanders You-Know-Who cursed. Fawkes maze raw-steak Voldemort Goblin Wars snitch Forbidden forest grindylows wool socks.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"e9i0t\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"5pa25\",\"text\":\"Thestral dirigible plums, Viktor Krum hexed memory charm Animagus Invisibility Cloak three-headed Dog. Half-Blood Prince Invisibility Cloak cauldron cakes, hiya Harry! Basilisk venom Umbridge swiveling blue eye Levicorpus, nitwit blubber oddment tweak. Chasers Winky quills The Boy Who Lived bat spleens cupboard under the stairs flying motorcycle. Sirius Black Holyhead Harpies, you’ve got dirt on your nose. Floating candles Sir Cadogan The Sight three hoops disciplinary hearing. Grindlewald pig’s tail Sorcerer's Stone biting teacup. Side-along dragon-scale suits Filch 20 points, Mr. Potter.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}
-#
-#   TEXT
-# )
-#
-# note_4 = Note.create!(
-#   author_id: demouser.id,
-#   notebook_id: notebook1.id,
-#   title: "New Spell Ideas",
-#   body: <<-TEXT
-#
-#   {\"entityMap\":{},\"blocks\":[{\"key\":\"bgqvf\",\"text\":\"Half-giant jinxes peg-leg gillywater broken glasses large black dog Great Hall. Nearly-Headless Nick now string them together, and answer me this, which creature would you be unwilling to kiss? Poltergeist sticking charm, troll umbrella stand flying cars golden locket Lily Potter. Pumpkin juice Trevor wave your wand out glass orbs, a Grim knitted hats. Stan Shunpike doe patronus, suck his soul Muggle-Born large order of drills the trace. Bred in captivity fell through the veil, quaffle blue flame ickle diddykins Aragog. Yer a wizard, Harry Doxycide the woes of Mrs. Weasley Goblet of Fire.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"cd1iq\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"7pfbp\",\"text\":\"Alohamora wand elf parchment, Wingardium Leviosa hippogriff, house dementors betrayal. Holly, Snape centaur portkey ghost Hermione spell bezoar Scabbers. Peruvian-Night-Powder werewolf, Dobby pear-tickle half-moon-glasses, Knight-Bus. Padfoot snargaluff seeker: Hagrid broomstick mischief managed. Snitch Fluffy rock-cake, 9 ¾ dress robes I must not tell lies. Mudbloods yew pumpkin juice phials Ravenclaw’s Diadem 10 galleons Thieves Downfall. Ministry-of-Magic mimubulus mimbletonia Pigwidgeon knut phoenix feather other minister Azkaban. Hedwig Daily Prophet treacle tart full-moon Ollivanders You-Know-Who cursed. Fawkes maze raw-steak Voldemort Goblin Wars snitch Forbidden forest grindylows wool socks.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"e9i0t\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"5pa25\",\"text\":\"Thestral dirigible plums, Viktor Krum hexed memory charm Animagus Invisibility Cloak three-headed Dog. Half-Blood Prince Invisibility Cloak cauldron cakes, hiya Harry! Basilisk venom Umbridge swiveling blue eye Levicorpus, nitwit blubber oddment tweak. Chasers Winky quills The Boy Who Lived bat spleens cupboard under the stairs flying motorcycle. Sirius Black Holyhead Harpies, you’ve got dirt on your nose. Floating candles Sir Cadogan The Sight three hoops disciplinary hearing. Grindlewald pig’s tail Sorcerer's Stone biting teacup. Side-along dragon-scale suits Filch 20 points, Mr. Potter.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}
-#
-#   TEXT
-# )
-#
-# note_5 = Note.create!(
-#   author_id: demouser.id,
-#   notebook_id: notebook2.id,
-#   title: "Defeat Voldemort",
-#   body: <<-TEXT
-#
-#   {\"entityMap\":{},\"blocks\":[{\"key\":\"7la2m\",\"text\":\"Thestral dirigible plums, Viktor Krum hexed memory charm Animagus Invisibility Cloak three-headed Dog. Half-Blood Prince Invisibility Cloak cauldron cakes, hiya Harry! Basilisk venom Umbridge swiveling blue eye Levicorpus, nitwit blubber oddment tweak. Chasers Winky quills The Boy Who Lived bat spleens cupboard under the stairs flying motorcycle. Sirius Black Holyhead Harpies, you’ve got dirt on your nose. Floating candles Sir Cadogan The Sight three hoops disciplinary hearing. Grindlewald pig’s tail Sorcerer's Stone biting teacup. Side-along dragon-scale suits Filch 20 points, Mr. Potter.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"8t352\",\"text\":\"Squashy armchairs dirt on your nose brass scales crush the Sopophorous bean with flat side of silver dagger, releases juice better than cutting. Full moon Whomping Willow three turns should do it lemon drops. Locomotor trunks owl treats that will be 50 points, Mr. Potter. Witch Weekly, he will rise again and he will come for us, headmaster Erumpent horn. Fenrir Grayback horseless carriages ‘zis is a chance many would die for!\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"auorl\",\"text\":\"Alohamora wand elf parchment, Wingardium Leviosa hippogriff, house dementors betrayal. Holly, Snape centaur portkey ghost Hermione spell bezoar Scabbers. Peruvian-Night-Powder werewolf, Dobby pear-tickle half-moon-glasses, Knight-Bus. Padfoot snargaluff seeker: Hagrid broomstick mischief managed. Snitch Fluffy rock-cake, 9 ¾ dress robes I must not tell lies. Mudbloods yew pumpkin juice phials Ravenclaw’s Diadem 10 galleons Thieves Downfall. Ministry-of-Magic mimubulus mimbletonia Pigwidgeon knut phoenix feather other minister Azkaban. Hedwig Daily Prophet treacle tart full-moon Ollivanders You-Know-Who cursed. Fawkes maze raw-steak Voldemort Goblin Wars snitch Forbidden forest grindylows wool socks.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}
-#
-#
-#   TEXT
-# )
-#
-# note_6 = Note.create!(
-#   author_id: demouser.id,
-#   notebook_id: notebook2.id,
-#   title: "Write an Autobiography",
-#   body: <<-TEXT
-#
-#   {\"entityMap\":{},\"blocks\":[{\"key\":\"1fl0\",\"text\":\"Squashy armchairs dirt on your nose brass scales crush the Sopophorous bean with flat side of silver dagger, releases juice better than cutting. Full moon Whomping Willow three turns should do it lemon drops. Locomotor trunks owl treats that will be 50 points, Mr. Potter. Witch Weekly, he will rise again and he will come for us, headmaster Erumpent horn. Fenrir Grayback horseless carriages ‘zis is a chance many would die for!\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"4lmhf\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"e8dnl\",\"text\":\"Alohamora wand elf parchment, Wingardium Leviosa hippogriff, house dementors betrayal. Holly, Snape centaur portkey ghost Hermione spell bezoar Scabbers. Peruvian-Night-Powder werewolf, Dobby pear-tickle half-moon-glasses, Knight-Bus. Padfoot snargaluff seeker: Hagrid broomstick mischief managed. Snitch Fluffy rock-cake, 9 ¾ dress robes I must not tell lies. Mudbloods yew pumpkin juice phials Ravenclaw’s Diadem 10 galleons Thieves Downfall. Ministry-of-Magic mimubulus mimbletonia Pigwidgeon knut phoenix feather other minister Azkaban. Hedwig Daily Prophet treacle tart full-moon Ollivanders You-Know-Who cursed. Fawkes maze raw-steak Voldemort Goblin Wars snitch Forbidden forest grindylows wool socks.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"7kr96\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"3mqon\",\"text\":\"Prefect’s bathroom Trelawney veela squashy armchairs, SPEW: Gamp’s Elemental Law of Transfiguration. Magic Nagini bezoar, Hippogriffs Headless Hunt giant squid petrified. Beuxbatons flying half-blood revision schedule, Great Hall aurors Minerva McGonagall Polyjuice Potion. Restricted section the Burrow Wronski Feint gnomes, quidditch robes detention, chocolate frogs. Errol parchment knickerbocker glory Avada Kedavra Shell Cottage beaded bag portrait vulture-hat. Twin cores, Aragog crimson gargoyles, Room of Requirement counter-clockwise Shrieking Shack. Snivellus second floor bathrooms vanishing cabinet Wizard Chess, are you a witch or not?\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}
-#
-#   TEXT
-# )
-#
-# note_7 = Note.create!(
-#   author_id: demouser.id,
-#   notebook_id: notebook2.id,
-#   title: "Become Hogwarts Headmaster",
-#   body: <<-TEXT
-#
-#   {\"entityMap\":{},\"blocks\":[{\"key\":\"67d4j\",\"text\":\"Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"43eeh\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"85v7b\",\"text\":\"Half-giant jinxes peg-leg gillywater broken glasses large black dog Great Hall. Nearly-Headless Nick now string them together, and answer me this, which creature would you be unwilling to kiss? Poltergeist sticking charm, troll umbrella stand flying cars golden locket Lily Potter. Pumpkin juice Trevor wave your wand out glass orbs, a Grim knitted hats. Stan Shunpike doe patronus, suck his soul Muggle-Born large order of drills the trace. Bred in captivity fell through the veil, quaffle blue flame ickle diddykins Aragog. Yer a wizard, Harry Doxycide the woes of Mrs. Weasley Goblet of Fire.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"1s34h\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"4qfso\",\"text\":\"Boggarts lavender robes, Hermione Granger Fantastic Beasts and Where to Find Them. Bee in your bonnet Hand of Glory elder wand, spectacles House Cup Bertie Bott’s Every Flavor Beans Impedimenta. Stunning spells tap-dancing spider Slytherin’s Heir mewing kittens Remus Lupin. Palominos scarlet train black robes, Metamorphimagus Niffler dead easy second bedroom. Padma and Parvati Sorting Hat Minister of Magic blue turban remember my last.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}
-#
-#   TEXT
-# )
-#
-# note_8 = Note.create!(
-#
-#   author_id: demouser.id,
-#   notebook_id: notebook2.id,
-#   title: "Ride a Dragon",
-#   body: <<-TEXT
-#
-#   {\"entityMap\":{},\"blocks\":[{\"key\":\"pj5b\",\"text\":\"Red hair crookshanks bludger Marauder’s Map Prongs sunshine daisies butter mellow Ludo Bagman. Beaters gobbledegook N.E.W.T., Honeydukes eriseD inferi Wormtail. Mistletoe dungeons Parseltongue Eeylops Owl Emporium expecto patronum floo powder duel. Gillyweed portkey, keeper Godric’s Hollow telescope, splinched fire-whisky silver Leprechaun O.W.L. stroke the spine. Chalice Hungarian Horntail, catherine wheels Essence of Dittany Gringotts Harry Potter. Prophecies Yaxley green eyes Remembrall horcrux hand of the servant. Devil’s snare love potion Ravenclaw, Professor Sinistra time-turner steak and kidney pie. Cabbage Daily Prophet letters from no one Dervish and Banges leg.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"c5u6e\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"ajhpf\",\"text\":\"Boggarts lavender robes, Hermione Granger Fantastic Beasts and Where to Find Them. Bee in your bonnet Hand of Glory elder wand, spectacles House Cup Bertie Bott’s Every Flavor Beans Impedimenta. Stunning spells tap-dancing spider Slytherin’s Heir mewing kittens Remus Lupin. Palominos scarlet train black robes, Metamorphimagus Niffler dead easy second bedroom. Padma and Parvati Sorting Hat Minister of Magic blue turban remember my last.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"enehm\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"65r90\",\"text\":\"Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}
-#
-#   TEXT
-#
-# )
-#
-#
+Notebook.create!([
+  {title: "Harry's Thoughts", author_id: demouser.id},
+  {title: "Potion Recipes", author_id: demouser.id},
+  {title: "Musings on Muggles", author_id: demouser.id},
+  {title: "Letter Drafts", author_id: demouser.id},
+  {title: "Spell Ideas/Instructions", author_id: demouser.id}
+])

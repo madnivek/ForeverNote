@@ -10,7 +10,8 @@ class NoteIndex extends React.Component {
     this.state = {
       notes: this.props.notes,
       parsedNotes: [],
-      searchString: "",
+      bodySearchString: "",
+      titleSearchString: "",
       currentNotes: Object.values(this.props.notes)
     };
     this.updateSearchTitleBar = this.updateSearchTitleBar.bind(this);
@@ -19,10 +20,6 @@ class NoteIndex extends React.Component {
     this.filterNotesBySearch = this.filterNotesBySearch.bind(this);
 
   }
-
-  // componentWillReceiveProps(newProps){
-  //   this.currentNotes = this.state.parsedNotes;
-  // }
 
   filterNotes(type){
 
@@ -54,37 +51,41 @@ class NoteIndex extends React.Component {
   componentDidMount(){
     this.filterNotes(this.props.indexType);
   }
-  //
-  // shouldComponentUpdate(nextProps, nextState){
-  //   if(this.props.indexType === nextProps.indexType){
-  //     return false;
-  //   }
-  // }
 
   updateSearchTitleBar(e){
     e.preventDefault();
-    this.setState( {searchString: e.target.value} );
-    this.filterNotesBySearch(e.target.value, "title");
+    this.setState( {titleSearchString: e.target.value} );
   }
 
   updateSearchBodyBar(e){
     e.preventDefault();
-    this.setState( {searchString: e.target.value} );
-    this.filterNotesBySearch(e.target.value, "body");
+    this.setState( {bodySearchString: e.target.value} );
   }
 
-  filterNotesBySearch(searchString, field){
-    const criteria = field === "title" ? "title" : "body"
-    const regExp = new RegExp(searchString, "i");
+  componentDidUpdate(prevProps, prevState) {
+    const prevTitleStr = prevState.titleSearchString;
+    const prevBodyStr = prevState.bodySearchString;
+    const titleStr = this.state.titleSearchString;
+    const bodyStr = this.state.bodySearchString;
+    if(prevTitleStr !== titleStr || prevBodyStr !== bodyStr){
+      this.filterNotesBySearch();
+    }
+  }
 
+  filterNotesBySearch(){
+    const titleStr = this.state.titleSearchString;
+    const bodyStr = this.state.bodySearchString;
+    const titleRegExp = new RegExp(titleStr, "i");
+    const bodyRegExp = new RegExp(bodyStr, "i");
     const filter = note => {
-      // const titleIncludesString = note.title.includes(searchString);
-      // const bodyIncludesString = note.plain_content.includes(searchString);
-
-      if(searchString === "" || regExp.test(note[criteria])){
+      if(titleStr + bodyStr === ""){
         return true;
+      } else if( titleStr === ""){
+        return bodyRegExp.test(note.body);
+      } else if( bodyStr === "") {
+        return titleRegExp.test(note.title);
       } else {
-        return false;
+        return bodyRegExp.test(note.body) && titleRegExp.test(note.title);
       }
     };
 
@@ -94,20 +95,10 @@ class NoteIndex extends React.Component {
 
 
   componentWillReceiveProps(newProps){
-
     const currentLoc = this.props.location.pathname;
     const nextLoc = newProps.location.pathname;
-    // const nextLocIndex = nextLoc === '/notes';
-    // const nextLocNew = currentLoc === nextLoc;
     const hasCurrentNotebook = this.props.notebookId;
     const hasCurrentTag = this.props.tagId;
-    //
-    // if(nextLocIndex || (nextLocNew && hasCurrentNotebook)){
-    //   this.filterNotes(newProps);
-    //   if(nextLocIndex){
-    //     this.props.clearCurrentNotebook();
-    //   }
-    // }
 
     if(nextLoc === '/notes' && nextLoc !== currentLoc){
       this.props.setCurrentNotebook({});
@@ -120,6 +111,8 @@ class NoteIndex extends React.Component {
     } else {
       this.filterNotes();
     }
+
+    this.filterNotesBySearch();
   }
 
   render(){
@@ -162,14 +155,14 @@ class NoteIndex extends React.Component {
                 className = "search-input"
                 type="text"
                 placeholder="search by title..."
-                value={this.state.searchTerm}
+                value={this.state.titleSearchString}
                 onChange={ this.updateSearchTitleBar } />
 
               <input
                 className = "search-input"
                 type="text"
                 placeholder="search by body..."
-                value={this.state.searchTerm}
+                value={this.state.bodySearchString}
                 onChange={ this.updateSearchBodyBar } />
             </div>
           </div>

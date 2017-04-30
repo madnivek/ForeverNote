@@ -7,7 +7,7 @@ class TagIndex extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = { tags: this.props.tags, searchString: ""}
+    this.state = { tags: this.props.tags, searchString: ""};
     this.allTags = this.props.tags.slice();
     this.updateSearchBar = this.updateSearchBar.bind(this);
     this.filterTagsBySearch = this.filterTagsBySearch.bind(this);
@@ -24,9 +24,16 @@ class TagIndex extends React.Component {
   }
 
   filterTagsBySearch(searchString){
+    const regExp = new RegExp(searchString, "i");
+
     const filter = tag => {
-      return tag.tag_name.includes(searchString)
+      if(searchString === "" || regExp.test(tag.tag_name)){
+        return true;
+      } else {
+        return false;
+      }
     };
+
     const tags = this.allTags.filter(filter);
     this.setState({tags});
   }
@@ -52,8 +59,8 @@ class TagIndex extends React.Component {
         transitionEnter={false}
         transitionLeave={false}>
         <div className="main-container">
-          <section className="notebook-index-section">
-            <h2 className="notebook-index-header">TAGS</h2>
+          <section className="index-section">
+            <h2 className="index-header">TAGS</h2>
             <div className="search-container tags-search-container">
               <i className="fa fa-search" aria-hidden="true"></i>
               <input
@@ -66,7 +73,7 @@ class TagIndex extends React.Component {
 
             <ul className="note-index-list">
               <CSSTransitionGroup
-                transitionName="tag-search-transition"
+                transitionName="search-transition"
                 transitionEnterTimeout={800}
                 transitionLeaveTimeout={500}>
 
