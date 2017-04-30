@@ -134,7 +134,7 @@ class AuthForm extends React.Component{
       demoUserButton = <button
         className="button demo-login-button"
         onClick={ this.handleDemoLogin }
-        >Demo User Login!</button>
+        >Login as Harry Potter</button>
     }
 
     return(

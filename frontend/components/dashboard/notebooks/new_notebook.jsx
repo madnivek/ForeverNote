@@ -21,7 +21,6 @@ class NewNotebook extends React.Component {
       .then( () => hashHistory.push('/notebooks'))
   }
 
-  // .then( () => hashHistory.push('/notebooks'));
   render(){
     let formTitle = "Create Notebook"
     let buttonText = "Create"

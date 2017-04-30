@@ -8,38 +8,6 @@ import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import 'draft-js-emoji-plugin/lib/plugin.css';
 import editorStyles from './editorStyles.css';
 import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
-// import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
-// import 'draft-js-buttons-plugin/lib/plugin.css';
-// import {AlignBlockCenterButton} from 'draft-js-buttons';
-// import 'draft-js/dist/Draft.css';
-//
-// import createButtonsPlugin from 'draft-js-buttons';
-// const buttonsPlugin = createButtonsPlugin();
-//
-// import {
-//   ItalicButton,
-//   BoldButton,
-//   UnderlineButton,
-//   UnorderedListButton,
-//   OrderedListButton,
-//   BlockquoteButton,
-//   AlignBlockLeftButton,
-//   AlignBlockRightButton,
-//   AlignBlockCenterButton
-// } from 'draft-js-buttons';
-// //
-// const inlineToolbarPlugin = createInlineToolbarPlugin({
-//   structure: [
-//     BoldButton,
-//     ItalicButton,
-//     UnderlineButton,
-//     UnorderedListButton,
-//     OrderedListButton,
-//     BlockquoteButton
-//   ]
-// });
-// //
-// const { InlineToolbar } = inlineToolbarPlugin;
 
 const emojiPlugin = createEmojiPlugin();
 const { EmojiSuggestions } = emojiPlugin;
