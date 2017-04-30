@@ -34,7 +34,9 @@ class AuthForm extends React.Component{
   }
 
   componentWillReceiveProps(newProps){
-    if (this.props.location.pathname !== newProps.location.pathname){
+    const currentPath = this.props.location.pathname;
+    const newPath = this.props.location.pathname;
+    if (currentPath !== newPath){
       this.props.clearErrors();
       this.setState(this.default);
     }
@@ -85,52 +87,55 @@ class AuthForm extends React.Component{
       );
   }
 
+  renderLoader() {
+    return(
+      <div className="loader-container">
+        <div className="sk-folding-cube">
+          <div className="sk-cube1 sk-cube"></div>
+          <div className="sk-cube2 sk-cube"></div>
+          <div className="sk-cube4 sk-cube"></div>
+          <div className="sk-cube3 sk-cube"></div>
+        </div>
+      </div>
+    );
+  }
+
   render(){
 
     if(this.loader){
-      return(
-        <div className="loader-container">
-          <div className="sk-folding-cube">
-            <div className="sk-cube1 sk-cube"></div>
-            <div className="sk-cube2 sk-cube"></div>
-            <div className="sk-cube4 sk-cube"></div>
-            <div className="sk-cube3 sk-cube"></div>
-          </div>
-        </div>
-      );
+      return this.renderLoader();
     }
 
     let formTitle = "Sign Up";
-
     let altLink =
-    <p>Have an account?
-      <br/><br/>
-      <Link to='/login' className='alt-path-link'>Click here to login.</Link>
-    </p>
+      <p>Have an account?
+        <br/><br/>
+        <Link to='/login' className='alt-path-link'>Click here to login.</Link>
+      </p>;
 
     let demoUserButton = ""
-    let emailInput = <input
-      className="form-text-input"
-      onChange={ this.update('email') }
-      type="input"
-      placeholder="Email"
-      value={ this.state.email } />;
+    let emailInput =
+      <input
+        className="form-text-input"
+        onChange={ this.update('email') }
+        type="input"
+        placeholder="Email"
+        value={ this.state.email } />;
 
 
     if(this.props.formType === "login"){
       formTitle = "Login";
       emailInput = "";
+      altLink = <p><Link
+        to='/signup'
+        className='alt-path-link'
+        >Create Account</Link></p>
 
-      altLink = <p><Link to='/signup' className='alt-path-link'>Create Account</Link></p>
-
-      demoUserButton = <button className="button demo-login-button" onClick={ this.handleDemoLogin }>Demo User Login!</button>
-
+      demoUserButton = <button
+        className="button demo-login-button"
+        onClick={ this.handleDemoLogin }
+        >Demo User Login!</button>
     }
-
-    // <video className="splash-video" loop="loop" autoPlay="autoplay">
-    //   <source className="webm" type="video/webm" src="https://cdn1.evernote.com/evernote.com/video/homepage/homepage-hero-video.webm"/>
-    //   <source className="mp4" type="video/mp4" src="https://cdn1.evernote.com/evernote.com/video/homepage/homepage-hero-video.mp4"/>
-    // </video>
 
     return(
       <div className="auth-form-parent">

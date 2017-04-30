@@ -36,16 +36,18 @@ class NavButton extends React.Component {
   }
 
   render(){
-
+    
     const buttonAction = this.props.buttonName === "LOGOUT" ? this.handleLogout : this.handleRedirect;
 
     return (
       <li>
-        <div className="nav-bar-button" onClick={ buttonAction } onMouseOver={ this.handleMouseOver } onMouseOut={ this.handleMouseOut } >
-
-          <img className="nav-button-img" src={ this.state.imgSrc }  />
-          <p className="pop-up-text">{this.props.buttonName}</p>
-
+        <div
+          className="nav-bar-button"
+          onClick={ buttonAction }
+          onMouseOver={ this.handleMouseOver }
+          onMouseOut={ this.handleMouseOut }>
+            <img className="nav-button-img" src={ this.state.imgSrc }  />
+            <p className="pop-up-text">{this.props.buttonName}</p>
         </div>
       </li>
     );
