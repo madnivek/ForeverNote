@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Open+Sans|Scope+One" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <script type="text/javascript">
       <% if logged_in? %>
@@ -25,13 +27,11 @@
         NOTEBOOKS: "<%= image_path("NOTEBOOKS.png") %>",
         NOTES: "<%= image_path("NOTES.png") %>",
         TAGS: "<%= image_path("TAGS.png") %>",
-        SEARCH: "<%= image_path("SEARCH.png") %>",
         LOGOUT_HOV: "<%= image_path("logout_hov.png") %>",
         NEW_HOV: "<%= image_path("NEW_HOV.png") %>",
         NOTEBOOKS_HOV: "<%= image_path("NOTEBOOKS_HOV.png") %>",
         NOTES_HOV: "<%= image_path("NOTES_HOV.png") %>",
         TAGS_HOV: "<%= image_path("TAGS_HOV.png") %>",
-        SEARCH_HOV: "<%= image_path("SEARCH_HOV.png") %>",
         LOGO: "<%= image_path("LOGO.png") %>",
         LOGO_LARGE: "<%= image_path("LOGO_large.png") %>"
       }
