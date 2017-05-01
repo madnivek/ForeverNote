@@ -75,6 +75,32 @@ The Search feature has been implemented for searching notes by title or body, an
 
 The search was baked right into the tag and note index, which allowed for a quick and useful auto-complete feature.
 
+Search function in note index component:
+
+```javascript
+  filterNotesBySearch(){
+    const titleStr = this.state.titleSearchString;
+    const bodyStr = this.state.bodySearchString;
+    const titleRegExp = new RegExp(titleStr, "i");
+    const bodyRegExp = new RegExp(bodyStr, "i");
+    const filter = note => {
+      if(titleStr + bodyStr === ""){
+        return true;
+      } else if( titleStr === ""){
+        return bodyRegExp.test(note.body);
+      } else if( bodyStr === "") {
+        return titleRegExp.test(note.title);
+      } else {
+        return bodyRegExp.test(note.body) && titleRegExp.test(note.title);
+      }
+    };
+
+    const currentNotes = this.currentNotes.filter(filter);
+    this.setState({currentNotes});
+  }
+
+  ```
+
 ## Future Directions for the Project
 
 Although I am happy with the current features of ForeverNote, there is always more to be done. I plan on working on the following features in the future:

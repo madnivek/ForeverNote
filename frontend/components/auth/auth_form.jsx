@@ -35,8 +35,9 @@ class AuthForm extends React.Component{
 
   componentWillReceiveProps(newProps){
     const currentPath = this.props.location.pathname;
-    const newPath = this.props.location.pathname;
+    const newPath = newProps.location.pathname;
     if (currentPath !== newPath){
+      debugger
       this.props.clearErrors();
       this.setState(this.default);
     }
@@ -53,8 +54,8 @@ class AuthForm extends React.Component{
             .then( () => this.props.fetchTags())
             .then( () => this.props.fetchTaggings())
             .then( () => {
-              hashHistory.push('/');
               this.props.clearErrors();
+              hashHistory.push('/');
             });
         },
         () => {
