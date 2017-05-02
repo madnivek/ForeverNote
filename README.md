@@ -59,6 +59,11 @@ ForeverNote is a full-stack web application that takes inspiration from Evernote
   }
   ```
 
+  Demo:
+  ![Image of Demo]
+  (https:/github.com/madnivek/forevernote/docs/gif/notebook-demo.gif)
+
+
 ### Tags
 
 Tags were implementing using a `tag` and `taggings` table. The tags table includes a `tag_name` and timestamps columns.

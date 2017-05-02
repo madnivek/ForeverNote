@@ -19,8 +19,7 @@ class NoteIndexItem extends React.Component {
     this.setState({modalIsOpen: true});
   }
 
-  closeModal(e){
-    e.stopPropagation();
+  closeModal(){
     this.setState({modalIsOpen: false});
   }
 
