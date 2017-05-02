@@ -46,12 +46,12 @@ class NoteIndexItem extends React.Component {
         <h1>This note will be deleted. Are you sure?</h1>
         <div>
           <i
-            className="fa fa-check-circle"
-            onClick={ this.handleDelete(this.props.note.id) }
-            aria-hidden="true"></i>
-          <i
             className="fa fa-times-circle"
             onClick={ this.closeModal }
+            aria-hidden="true"></i>
+          <i
+            className="fa fa-check-circle"
+            onClick={ this.handleDelete(this.props.note.id) }
             aria-hidden="true"></i>
         </div>
       </div>

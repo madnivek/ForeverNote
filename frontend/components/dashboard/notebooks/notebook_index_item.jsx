@@ -60,12 +60,12 @@ class NotebookIndexItem extends React.Component {
         <h1>This notebook and its notes will be deleted. Are you sure?</h1>
         <div>
           <i
-            className="fa fa-check-circle"
-            onClick={ this.deleteNotebook(this.props.notebook.id) }
-            aria-hidden="true"></i>
-          <i
             className="fa fa-times-circle"
             onClick={ this.closeModal }
+            aria-hidden="true"></i>
+          <i
+            className="fa fa-check-circle"
+            onClick={ this.deleteNotebook(this.props.notebook.id) }
             aria-hidden="true"></i>
         </div>
       </div>

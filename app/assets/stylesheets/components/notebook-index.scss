@@ -31,10 +31,6 @@ $ever-grey: #dedede;
   color:grey;
 }
 
-.index-item:first-child {
-  padding-top: 10px;
-}
-
 .index-item {
   position: relative;
   display: flex;
@@ -107,5 +103,7 @@ $ever-grey: #dedede;
 }
 
 .notebook-del-modal{
-  top:1px;
+  top:0px;
+  height: 32px;
+  width: 436.36px;
 }
