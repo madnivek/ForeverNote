@@ -104,5 +104,9 @@ $ever-grey: #dedede;
 
 .notebook-del-modal{
   top:0px;
-  width: 100%;
+  width: 101%;
+  i:last-child{
+    padding-left:0px;
+    margin-right:30px;
+  }
 }
