@@ -22,6 +22,7 @@
     "lodash": "^4.17.4",
     "react": "^15.5.4",
     "react-addons-shallow-compare": "^15.5.2",
+    "react-click-outside": "^2.3.0",
     "react-dom": "^15.5.4",
     "react-modal": "^1.7.7",
     "react-redux": "^5.0.4",
