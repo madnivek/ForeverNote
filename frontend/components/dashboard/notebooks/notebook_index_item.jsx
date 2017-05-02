@@ -7,7 +7,7 @@ import { withRouter } from 'react-router';
 class NotebookIndexItem extends React.Component {
   constructor(props){
     super(props);
-    this.state = {modalIsOpen: false}
+    this.state = {modalIsOpen: false};
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.redirectToNote = this.redirectToNote.bind(this);
@@ -17,12 +17,12 @@ class NotebookIndexItem extends React.Component {
 
   openModal(e){
     e.stopPropagation();
-    this.setState({modalIsOpen: true})
+    this.setState({modalIsOpen: true});
   }
 
   closeModal(e){
     e.stopPropagation();
-    this.setState({modalIsOpen: false})
+    this.setState({modalIsOpen: false});
   }
 
   redirectToNote(id){
@@ -36,8 +36,7 @@ class NotebookIndexItem extends React.Component {
   deleteNotebook(id){
     return e => {
       e.preventDefault();
-      e.stopPropagation();
-      this.closeModal();
+      this.closeModal(e);
       this.props.deleteNotebook(id)
       .then( () => hashHistory.push('/notebooks'));
     };
@@ -47,8 +46,8 @@ class NotebookIndexItem extends React.Component {
     return e => {
       e.stopPropagation();
       hashHistory.push(`/notebooks/edit/${id}`);
-    }
-  };
+    };
+  }
 
 
 
@@ -72,16 +71,26 @@ class NotebookIndexItem extends React.Component {
     }
 
     return(
-      <li onClick={ this.redirectToNote(this.props.notebook.id) } className="index-item">
-        <h3 className="notebook-item-header between-borders">{this.props.notebook.title}</h3>
+      <li
+        onClick={ this.redirectToNote(this.props.notebook.id) }
+        className="index-item">
+        <h3 className="notebook-item-header between-borders">
+          {this.props.notebook.title}
+        </h3>
         <div>
-          <i className="fa fa-pencil-square-o inverse-button" aria-hidden="true" onClick={ this.goToEdit( this.props.notebook.id ) } />
-          <i className="fa fa-trash inverse-button" aria-hidden="true" onClick={ this.openModal } />
+          <i
+            className="fa fa-pencil-square-o inverse-button"
+            aria-hidden="true"
+            onClick={ this.goToEdit( this.props.notebook.id ) } />
+          <i
+            className="fa fa-trash inverse-button"
+            aria-hidden="true"
+            onClick={ this.openModal } />
         </div>
         { deleteModal }
       </li>
     );
   }
-};
+}
 
 export default withRouter(NotebookIndexItem);

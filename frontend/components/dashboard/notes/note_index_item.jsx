@@ -1,13 +1,12 @@
 import React from 'react';
 import { convertFromRaw } from 'draft-js';
 import { hashHistory, withRouter } from 'react-router';
-import ConfirmDeleteModal from '../confirm_delete_modal';
 
 class NoteIndexItem extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = {modalIsOpen: false}
+    this.state = {modalIsOpen: false};
     this.getNote = this.getNote.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.openModal = this.openModal.bind(this);
@@ -19,7 +18,8 @@ class NoteIndexItem extends React.Component {
     this.setState({modalIsOpen: true});
   }
 
-  closeModal(){
+  closeModal(e){
+    e.stopPropagation();
     this.setState({modalIsOpen: false});
   }
 
@@ -30,8 +30,7 @@ class NoteIndexItem extends React.Component {
   handleDelete(id) {
     return e => {
       e.preventDefault();
-      e.stopPropagation();
-      this.closeModal();
+      this.closeModal(e);
       this.props.deleteNote(id)
       .then( () => this.props.fetchTaggings());
     };
@@ -57,7 +56,9 @@ class NoteIndexItem extends React.Component {
     }
 
     return(
-      <li className="note-index-item" onClick={ () => this.getNote(this.props.note.id) }>
+      <li
+        className="note-index-item"
+        onClick={ () => this.getNote(this.props.note.id) }>
         <div>
           <h3 className="note-item-header">{ this.props.note.title }</h3>
           <p

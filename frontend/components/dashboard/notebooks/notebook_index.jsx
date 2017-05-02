@@ -54,7 +54,10 @@ class NotebookIndex extends React.Component {
     let addNotebookButton;
     const location = this.props.router.getCurrentLocation().pathname;
     if(location === "/notebooks"){
-      addNotebookButton = <Link to='/notebooks/new'><i className="fa fa-plus-circle add-notebook" aria-hidden="true" /></Link>;
+      addNotebookButton =
+        <Link to='/notebooks/new'>
+          <i className="fa fa-plus-circle add-notebook" aria-hidden="true" />
+        </Link>;
     }
 
     return(
@@ -68,7 +71,10 @@ class NotebookIndex extends React.Component {
         <div className="loader"></div>
         <div className="main-container">
           <section className="index-section">
-            <div className="index-header"><h2>NOTEBOOKS</h2>{ addNotebookButton }</div>
+            <div className="index-header">
+              <h2>NOTEBOOKS</h2>
+              { addNotebookButton }
+            </div>
             <div className="search-container tags-search-container">
               <i className="fa fa-search" aria-hidden="true"></i>
               <input
