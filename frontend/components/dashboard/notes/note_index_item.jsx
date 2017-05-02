@@ -37,7 +37,7 @@ class NoteIndexItem extends React.Component {
   }
 
   render() {
-    let deleteModal;
+    let deleteModal = <div className="delete-modal-empty"></div>
     if(this.state.modalIsOpen){
       deleteModal =
       <div className="confirm-delete-modal">

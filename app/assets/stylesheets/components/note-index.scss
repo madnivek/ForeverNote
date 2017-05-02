@@ -130,6 +130,13 @@ $ever-grey: #dedede;
 
 //DELETE MODALS
 
+.delete-modal-empty {
+  position:absolute;
+  left:-1000px;
+  width:1000px;
+}
+
+
 .confirm-delete-modal {
   display:flex;
   justify-content: space-between;
@@ -143,7 +150,9 @@ $ever-grey: #dedede;
   height:35px;
   padding-left: 10px;
   font-size:13px;
+  transition: left, 500ms, ease-in;
 }
+
 
 .confirm-delete-modal i {
   font-size:24px;
