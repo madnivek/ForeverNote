@@ -2,7 +2,6 @@ import React from 'react';
 import NoteIndexItem from "./note_index_item";
 import NavBarContainer from '../nav/nav_bar_container';
 import * as SelectorUtil from '../../../util/selector_util';
-import shallowCompare from 'react-addons-shallow-compare';
 
 class NoteIndex extends React.Component {
   constructor(props){
@@ -20,6 +19,8 @@ class NoteIndex extends React.Component {
     this.filterNotesBySearch = this.filterNotesBySearch.bind(this);
 
   }
+
+
 
   filterNotes(type){
 
@@ -132,6 +133,8 @@ class NoteIndex extends React.Component {
         return(
           <NoteIndexItem
             key={note.id}
+            closeModal={this.closeModal}
+            openModal={this.openModal}
             fetchTaggings={this.props.fetchTaggings}
             note={note}
             deleteNote={ this.props.deleteNote }
@@ -175,5 +178,5 @@ class NoteIndex extends React.Component {
     );
   }
 }
-
+    // <ConfirmDeleteModal modalIsOpen={this.state.modalIsOpen} closeModal={this.closeModal} />
 export default NoteIndex;

@@ -31,7 +31,7 @@ $ever-grey: #dedede;
   display: block;
   padding-top: 10px;
   padding-bottom: 10px;
-  
+
   color: grey;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -126,4 +126,38 @@ $ever-grey: #dedede;
   background: transparent;
   cursor: pointer;
   font-size: 18px;
+}
+
+//DELETE MODALS
+
+.confirm-delete-modal {
+  display:flex;
+  justify-content: space-between;
+  position:absolute;
+  align-items: center;
+  left:0px;
+  z-index: 2000;
+  background: #393d41;
+  color: white;
+  width:100%;
+  height:35px;
+  padding-left: 10px;
+  font-size:13px;
+}
+
+.confirm-delete-modal i {
+  font-size:24px;
+}
+
+.confirm-delete-modal i:first-child:hover {
+  color:$ever-green;
+}
+
+.confirm-delete-modal i:last-child {
+  margin-right:20px;
+  margin-left:10px;
+}
+
+.confirm-delete-modal i:last-child:hover {
+  color:red;
 }
