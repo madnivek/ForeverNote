@@ -60,7 +60,8 @@ ForeverNote is a full-stack web application that takes inspiration from Evernote
   ```
 
   Demo:
-  ![Image of Demo] (https://github.com/madnivek/ForeverNote/blob/master/docs/gif/notebook-demo.gif)
+  
+  ![notebook-demo](https://github.com/madnivek/ForeverNote/blob/master/docs/gif/notebook-demo.gif)
 
 
 ### Tags
