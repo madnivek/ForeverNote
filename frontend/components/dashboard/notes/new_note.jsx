@@ -1,17 +1,8 @@
 import React from 'react';
-import { convertToRaw, RichUtils, Draft} from 'draft-js';
+import { convertToRaw, RichUtils, Draft, Editor} from 'draft-js';
 import { hashHistory } from 'react-router';
-import Editor from 'draft-js-plugins-editor';
-import createEmojiPlugin from 'draft-js-emoji-plugin';
 import NotebookSelectModal from './notebook_select_modal';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
-import 'draft-js-emoji-plugin/lib/plugin.css';
-import editorStyles from './editorStyles.css';
-import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
-
-const emojiPlugin = createEmojiPlugin();
-const { EmojiSuggestions } = emojiPlugin;
-
 
 class NewNote extends React.Component{
   constructor(props){
@@ -143,38 +134,54 @@ class NewNote extends React.Component{
   }
 
   submitNote(e){
-
     e.preventDefault();
-    let { id, title, author_id, notebook_id } = this.state;
+    let {
+      id,
+      title,
+      author_id,
+      notebook_id,
+      deleted_tags,
+      new_tags,
+      editorState } = this.state;
 
-    notebook_id = this.state.notebook_id;
+    const {
+      currentNotebook,
+      currentUser,
+      formType,
+      setCurrentNotebook,
+      setCurrentTag,
+      fetchTags,
+      fetchTaggings,
+      processForm } = this.props;
 
-    if(this.props.formType === 'new') {
-      notebook_id = this.props.currentNotebook.id;
-      author_id = this.props.currentUser.id;
+    notebook_id = notebook_id || currentNotebook.id;
+
+    if(formType === 'new') {
+      author_id = currentUser.id;
     }
 
-    const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
-    const plainContent = this.state.editorState.getCurrentContent().getPlainText()
+    const rawContent = convertToRaw(editorState.getCurrentContent());
+    const plainContent = editorState.getCurrentContent().getPlainText()
 
     const rawContentString = JSON.stringify(rawContent);
     const note = {
       id,
       title,
       plain_content: plainContent,
-      deleted_tags: this.state.deleted_tags,
-      newTags: this.state.new_tags,
-      author_id: this.props.currentUser.id ,
-      notebook_id , body:
-      rawContentString };
+      deleted_tags,
+      newTags: new_tags,
+      author_id: currentUser.id ,
+      notebook_id,
+      body: rawContentString
+    };
 
-    this.props.processForm(note)
-      .then( () => this.props.fetchTags())
-      .then( () => this.props.fetchTaggings())
+    processForm(note)
+      .then( () => fetchTags())
+      .then( () => fetchTaggings())
       .then( () => {
-        if(this.props.formType === 'new'){
-          this.props.setCurrentNotebook({});
-          this.props.setCurrentTag({});
+        if(formType === 'new'){
+          setCurrentNotebook({});
+          setCurrentTag({});
           hashHistory.push(`/notes`);
         } else {
           hashHistory.push(`/notes/${note.id}`);
@@ -319,10 +326,8 @@ class NewNote extends React.Component{
                 ref={(element) => { this.draftEditor = element; }}
                 placeholder="Just start typing..."
                 editorState={editorState}
-                plugins={[emojiPlugin]}
                 onChange={this.onChange} />
             </div>
-            <EmojiSuggestions />
           </div>
 
         </form>

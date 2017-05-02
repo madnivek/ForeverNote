@@ -37,7 +37,6 @@ class AuthForm extends React.Component{
     const currentPath = this.props.location.pathname;
     const newPath = newProps.location.pathname;
     if (currentPath !== newPath){
-      debugger
       this.props.clearErrors();
       this.setState(this.default);
     }

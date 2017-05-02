@@ -20,8 +20,6 @@ class NoteIndex extends React.Component {
 
   }
 
-
-
   filterNotes(type){
 
     const notes = this.props.notes;
@@ -178,5 +176,5 @@ class NoteIndex extends React.Component {
     );
   }
 }
-    // <ConfirmDeleteModal modalIsOpen={this.state.modalIsOpen} closeModal={this.closeModal} />
+
 export default NoteIndex;

@@ -1,4 +1,5 @@
 export const getNotesByTag = (notes, taggings, tagId) => {
+  if(Object.keys(taggings).length === 0){ return []; }
   const noteIdArray = taggings.tagsToNotes[tagId];
   let noteArray = [];
   if(noteIdArray !== undefined){
@@ -13,8 +14,8 @@ export const getNotesByTag = (notes, taggings, tagId) => {
 };
 
 export const getTagsByNote = (tags, taggings, noteId) => {
-  
-  if(!taggings.notesToTags) { return; }
+
+  if(!taggings.notesToTags) { return []; }
 
   const tagIdArray = taggings.notesToTags[noteId];
   let tagArray = [];

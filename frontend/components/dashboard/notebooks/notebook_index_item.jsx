@@ -38,6 +38,8 @@ class NotebookIndexItem extends React.Component {
       e.preventDefault();
       this.closeModal(e);
       this.props.deleteNotebook(id)
+      .then( () => this.props.fetchNotes("all"))
+      .then( () => this.props.fetchTaggings())
       .then( () => hashHistory.push('/notebooks'));
     };
   }

@@ -47,6 +47,7 @@ class NotebookIndex extends React.Component {
           deleteNotebook={ this.props.deleteNotebook }
           setCurrentTag={this.props.setCurrentTag}
           setCurrentNotebook={ this.props.setCurrentNotebook }
+          fetchTaggings={this.props.fetchTaggings}
           fetchNotes={ this.props.fetchNotes} />
       );
     });
