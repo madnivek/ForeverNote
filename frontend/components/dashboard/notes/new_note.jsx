@@ -3,6 +3,7 @@ import { convertToRaw, RichUtils, Draft, Editor} from 'draft-js';
 import { hashHistory } from 'react-router';
 import NotebookSelectModal from './notebook_select_modal';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import editorStyles from './editorStyles.css';
 
 class NewNote extends React.Component{
   constructor(props){
