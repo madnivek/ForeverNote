@@ -80,7 +80,7 @@ The Search feature has been implemented for searching notes by title or body, an
 
 The search was baked right into the tag and note index, which allowed for a quick and useful auto-complete feature.
 
-Search function in note index component:
+Search function in tag index component:
 
 ```javascript
 
@@ -99,7 +99,7 @@ Search function in note index component:
 
 ```
 
-  Demo:
+  Search Demo:
 
   ![search-demo](https://github.com/madnivek/ForeverNote/blob/master/docs/gif/search-demo.gif)
 

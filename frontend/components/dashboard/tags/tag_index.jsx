@@ -26,10 +26,12 @@ class TagIndex extends React.Component {
   filterTagsBySearch(searchString){
     const regExp = new RegExp(searchString, "i");
 
+    //Test matches using case-insensitive regular expression
+    //Empty search bar returns all tags
     const filter = tag => {
       return searchString === "" || regExp.test(tag.tag_name);
     };
-    
+
     const tags = this.allTags.filter(filter);
     this.setState({tags});
   }
