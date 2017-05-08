@@ -83,28 +83,21 @@ The search was baked right into the tag and note index, which allowed for a quic
 Search function in note index component:
 
 ```javascript
-  filterNotesBySearch(){
-    const titleStr = this.state.titleSearchString;
-    const bodyStr = this.state.bodySearchString;
-    const titleRegExp = new RegExp(titleStr, "i");
-    const bodyRegExp = new RegExp(bodyStr, "i");
-    const filter = note => {
-      if(titleStr + bodyStr === ""){
-        return true;
-      } else if( titleStr === ""){
-        return bodyRegExp.test(note.body);
-      } else if( bodyStr === "") {
-        return titleRegExp.test(note.title);
-      } else {
-        return bodyRegExp.test(note.body) && titleRegExp.test(note.title);
-      }
+
+  filterTagsBySearch(searchString){
+    //Test matches using case-insensitive regular expression
+    const regExp = new RegExp(searchString, "i");
+
+    //Empty search query returns all tags
+    const filter = tag => {
+      return searchString === "" || regExp.test(tag.tag_name);
     };
 
-    const currentNotes = this.currentNotes.filter(filter);
-    this.setState({currentNotes});
+    const tags = this.allTags.filter(filter);
+    this.setState({tags});
   }
 
-  ```
+```
 
   Demo:
 

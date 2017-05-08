@@ -27,13 +27,9 @@ class TagIndex extends React.Component {
     const regExp = new RegExp(searchString, "i");
 
     const filter = tag => {
-      if(searchString === "" || regExp.test(tag.tag_name)){
-        return true;
-      } else {
-        return false;
-      }
+      return searchString === "" || regExp.test(tag.tag_name);
     };
-
+    
     const tags = this.allTags.filter(filter);
     this.setState({tags});
   }
