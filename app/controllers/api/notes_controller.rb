@@ -43,6 +43,7 @@ class Api::NotesController < ApplicationController
     end
 
     if @note.update(note_params)
+      @note.touch(:updated_at)
       if params[:note][:newTags]
         create_tags(params[:note][:newTags].values)
       end

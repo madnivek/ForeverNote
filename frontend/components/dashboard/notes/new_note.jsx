@@ -153,6 +153,7 @@ class NewNote extends React.Component{
       setCurrentTag,
       fetchTags,
       fetchTaggings,
+      fetchNotes,
       processForm } = this.props;
 
     notebook_id = notebook_id || currentNotebook.id;

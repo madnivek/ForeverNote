@@ -1,7 +1,7 @@
 import React from 'react';
 import { convertFromRaw } from 'draft-js';
 import { hashHistory, withRouter } from 'react-router';
-
+import dateToString from '../../../util/date_handler';
 class NoteIndexItem extends React.Component {
 
   constructor(props){
@@ -55,15 +55,21 @@ class NoteIndexItem extends React.Component {
       </div>
     }
 
+    const date = new Date(this.props.note.updated_at);
+    const dateStr = dateToString(date);
+
     return(
+
       <li
         className="note-index-item"
         onClick={ () => this.getNote(this.props.note.id) }>
         <div>
           <h3 className="note-item-header">{ this.props.note.title }</h3>
+          <p>{dateStr}</p>
           <p
             className="note-item-body between-borders">
             { this.props.note.plain_content }
+
           </p>
         </div>
         <nav className="note-item-nav">
