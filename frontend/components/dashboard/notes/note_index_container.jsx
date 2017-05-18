@@ -10,7 +10,7 @@ import { fetchTags, fetchTaggings } from '../../../actions/tag_actions';
 const mapStateToProps = ({ notes_slice, notebooks_slice, tags_slice, session }, ownProps) => {
   let indexType = "main";
   let header = "NOTES";
-  
+
   if (ownProps.params.notebookId){
     indexType = "notebook";
   } else if(ownProps.params.tagId) {

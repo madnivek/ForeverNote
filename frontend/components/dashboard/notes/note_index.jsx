@@ -2,6 +2,7 @@ import React from 'react';
 import NoteIndexItem from "./note_index_item";
 import NavBarContainer from '../nav/nav_bar_container';
 import * as SelectorUtil from '../../../util/selector_util';
+import { sortByDate } from '../../../util/date_handler';
 
 class NoteIndex extends React.Component {
   constructor(props){
@@ -125,7 +126,9 @@ class NoteIndex extends React.Component {
       headerClassName = "note-index-header notebooks-header";
     }
 
-    const notes = this.state.currentNotes.map ( note => {
+    const sortedNotes = sortByDate(this.state.currentNotes);
+
+    const notes = sortedNotes.map ( note => {
 
       if(note) {
         return(

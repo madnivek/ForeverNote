@@ -1,7 +1,7 @@
 import React from 'react';
 import { convertFromRaw } from 'draft-js';
 import { hashHistory, withRouter } from 'react-router';
-import dateToString from '../../../util/date_handler';
+import {dateToString} from '../../../util/date_handler';
 class NoteIndexItem extends React.Component {
 
   constructor(props){

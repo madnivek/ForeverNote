@@ -1,4 +1,4 @@
-const dateToString = date => {
+export const dateToString = date => {
   let string;
   const minutesSinceUpdate = Math.floor((Date.now() - date) / 1000 / 60);
   const hoursSinceUpdate = Math.floor(minutesSinceUpdate/60);
@@ -20,4 +20,14 @@ const dateToString = date => {
   return string;
 };
 
-export default dateToString;
+const sortCallback = (a, b) => {
+  const dateA = new Date(a.updated_at);
+  const dateB = new Date(b.updated_at);
+  if(dateA < dateB) return 1;
+  return -1;
+};
+
+export const sortByDate = notes => {
+  const notesDup = notes.slice();
+  return notesDup.sort(sortCallback);
+};
