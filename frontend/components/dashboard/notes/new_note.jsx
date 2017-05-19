@@ -128,7 +128,7 @@ class NewNote extends React.Component{
           tag_name: e.target.value,
           user_id: this.props.currentUser.id
         };
-        this.setState({new_tags: updatedNewTags, saveText:"Save Note"});
+        this.setState({new_tags: updatedNewTags, saveText:"Save Note", isOpen: false});
       }
       e.target.value = "";
     }
