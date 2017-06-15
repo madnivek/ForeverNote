@@ -56,6 +56,7 @@ $ever-grey: #dedede;
   position: relative;
   display: flex;
   padding-bottom: 10px;
+  height: 26px;
 }
 
 .rich-text-nav button {
@@ -64,6 +65,9 @@ $ever-grey: #dedede;
 }
 
 .rich-text-nav span:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
   padding-top: 5px;
   padding-right: 20px;
   border-right: 1px solid $ever-grey;

@@ -4,7 +4,7 @@ import { fetchNote, updateNote, createNote, fetchNotes } from '../../../actions/
 import { setCurrentNotebook } from '../../../actions/notebook_actions';
 import { convertFromRaw, EditorState } from 'draft-js';
 import { createEditorStateWithText } from 'draft-js-plugins-editor';
-import NewNote from './new_note';
+import Note from './note';
 import { getTagsByNote } from '../../../util/selector_util'
 import { setCurrentTag, createTag, fetchTags, fetchTaggings } from '../../../actions/tag_actions'
 
@@ -73,4 +73,4 @@ const mapDispatchToProps = ( dispatch, ownProps ) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewNote);
+export default connect(mapStateToProps, mapDispatchToProps)(Note);

@@ -62,6 +62,17 @@ $ever-grey: #dedede;
   color: white;
 }
 
+.pop-up-text:before{
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  height: 0;
+  width: 0;
+  border: 5px solid transparent;
+  border-right-color: rgba(0,0,0,0.7);
+  content: "";
+}
+
 .nav-bar-button:hover .pop-up-text, .nav-bar-button{
   display: block;
   cursor:pointer;

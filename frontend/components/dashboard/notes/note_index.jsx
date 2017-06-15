@@ -107,7 +107,7 @@ class NoteIndex extends React.Component {
     } else if (hasCurrentNotebook) {
       this.filterNotes("notebook");
     } else if(hasCurrentTag) {
-      this.filterNotes("tag")
+      this.filterNotes("tag");
     } else {
       this.filterNotes();
     }
@@ -144,8 +144,7 @@ class NoteIndex extends React.Component {
       }
     });
 
-    const numNotes = `${notes.length.toString()} notes`
-
+    const numNotes = `${notes.length.toString()} notes`;
 
     return(
       <div className="main-container">
