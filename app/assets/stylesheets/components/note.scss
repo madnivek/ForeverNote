@@ -237,13 +237,45 @@ $ever-grey: #dedede;
   transition: width, 500ms, ease-in;
 }
 
+.tags-div li:last-child {
+  position: relative;
+
+  span {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    bottom: 30px;
+    font-size: 12px;
+    background: $ever-green;
+    color: white;
+    padding: 3px;
+    white-space: nowrap;
+    border-radius: 3px;
+  }
+
+  span:before {
+    position: absolute;
+    bottom: -7.5px;
+    left: calc(50% - 7.5px);
+    content: "";
+    height:0;
+    width: 0;
+    border: 5px solid transparent;
+    border-top-color: $ever-green;
+  }
+}
+
+.tags-div input:focus + span {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.5s, opacity 0.5s;
+}
+
 .tags-div input::-webkit-input-placeholder {
   text-align: center;
 }
 
-.tags-div input:focus::-webkit-input-placeholder {
-  color: white;
-}
 
 .tag-show-item {
   cursor: default;

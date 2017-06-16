@@ -65,7 +65,10 @@ class Note extends React.Component{
   }
 
   update(e){
-    this.setState({ title: e.target.value, isOpen: false, saveText: "Save Note" });
+    this.setState({
+      title: e.target.value,
+      isOpen: false,
+      saveText: "Save Note" });
   }
 
   toggleModal(e){
@@ -101,7 +104,10 @@ class Note extends React.Component{
         <li key={tag.tag_name}>
           <span  className="tag-show-item new-tag">
             { tag.tag_name }
-            <i className="fa fa-minus-circle" aria-hidden="true" onClick={ this.deleteNewTag(tag.tag_name)} />
+            <i
+              className="fa fa-minus-circle"
+              aria-hidden="true"
+              onClick={ this.deleteNewTag(tag.tag_name)} />
           </span>
         </li>
       );
@@ -127,7 +133,10 @@ class Note extends React.Component{
           tag_name: e.target.value,
           user_id: this.props.currentUser.id
         };
-        this.setState({new_tags: updatedNewTags, saveText:"Save Note", isOpen: false});
+        this.setState({
+          new_tags: updatedNewTags,
+          saveText:"Save Note", 
+          isOpen: false});
       }
       e.target.value = "";
     }
@@ -214,7 +223,6 @@ class Note extends React.Component{
     };
   }
 
-
   render(){
 
     if(this.props.formType === "none"){
@@ -245,7 +253,6 @@ class Note extends React.Component{
 
     return(
       <div className={formTypeContainer} >
-
 
         <form className='form' onSubmit={ this.submitNote }>
 
@@ -306,11 +313,17 @@ class Note extends React.Component{
 
                   { this.generateTagList() }
 
-              <li><input onKeyPress={ this.enterTag } type="text" placeholder="+" /></li>
+              <li><input
+                onKeyPress={ this.enterTag }
+                onFocus={ this.toggleOnTagPrompt }
+                onBlur={ this.toggleOffTagPrompt }
+                type="text"
+                placeholder="+" />
+                <span>hit enter to add tag</span>
+              </li>
+
             </ul>
           </div>
-
-
 
           <div className="title-and-content">
             <textarea
