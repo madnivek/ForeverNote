@@ -2,6 +2,7 @@ import React from 'react';
 import { convertToRaw, RichUtils, Draft, Editor} from 'draft-js';
 import { hashHistory } from 'react-router';
 import NotebookSelectModal from './notebook_select_modal';
+import RichTextMenu from './rich-text-menu';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class Note extends React.Component{
@@ -16,8 +17,6 @@ class Note extends React.Component{
 
     this.submitNote = this.submitNote.bind(this);
     this.update = this.update.bind(this);
-    this._toggleInlineStyle = this._toggleInlineStyle.bind(this);
-    this._toggleBlockType = this._toggleBlockType.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.changeNotebook = this.changeNotebook.bind(this);
     this.handleRedirect = this.handleRedirect.bind(this);
@@ -38,30 +37,6 @@ class Note extends React.Component{
     } else {
       hashHistory.push('/notes');
     }
-  }
-
-  _toggleInlineStyle(inlineStyle) {
-    return (e) => {
-      e.preventDefault();
-      this.onChange(
-        RichUtils.toggleInlineStyle(
-          this.state.editorState,
-          inlineStyle
-        )
-      );
-    };
-  }
-
-  _toggleBlockType(blockType) {
-    return (e) => {
-      e.preventDefault();
-      this.onChange(
-        RichUtils.toggleBlockType(
-          this.state.editorState,
-          blockType
-        )
-      );
-    };
   }
 
   update(e){
@@ -135,7 +110,7 @@ class Note extends React.Component{
         };
         this.setState({
           new_tags: updatedNewTags,
-          saveText:"Save Note", 
+          saveText:"Save Note",
           isOpen: false});
       }
       e.target.value = "";
@@ -273,41 +248,12 @@ class Note extends React.Component{
 
             <ul className="tags-div">
 
-              <li><nav className="rich-text-nav">
-
-                <span onClick={ this.toggleModal } className="button">
-                  <i className="fa fa-book" aria-hidden="true"></i>
-                  { notebookTitle }
-                </span>
-
-                <span onMouseDown={ this._toggleInlineStyle("BOLD") }
-                  className="button"><i className="fa fa-bold" aria-hidden="true"></i></span>
-
-                <span onMouseDown={ this._toggleInlineStyle("ITALIC") }
-                  className="button"><i className="fa fa-italic"
-                  aria-hidden="true"></i></span>
-
-                <span onMouseDown={ this._toggleInlineStyle("UNDERLINE") }
-                  className="button"><i className="fa fa-underline"
-                  aria-hidden="true"></i></span>
-
-                <span onMouseDown={ this._toggleInlineStyle("STRIKETHROUGH") }
-                  className="button"><i className="fa fa-strikethrough"
-                  aria-hidden="true"></i></span>
-
-                <span onMouseDown={ this._toggleBlockType("unordered-list-item") }
-                  className="button"><i className="fa fa-list"
-                  aria-hidden="true"></i></span>
-
-                <span onMouseDown={ this._toggleBlockType("ordered-list-item") }
-                  className="button"><i className="fa fa-list-ol"
-                  aria-hidden="true"></i></span>
-
-                <span onMouseDown={ this._toggleBlockType("blockquote") }
-                  className="button"><i className="fa fa-square-o"
-                  aria-hidden="true"></i></span>
-
-              </nav></li>
+              <RichTextMenu
+                editorState={ this.state.editorState }
+                notebookTitle={ notebookTitle }
+                toggleModal={ this.toggleModal }
+                onChange={ this.onChange }
+                />
 
               <li><span><i className="fa fa-tags" aria-hidden="true"></i></span></li>
 
@@ -315,8 +261,6 @@ class Note extends React.Component{
 
               <li><input
                 onKeyPress={ this.enterTag }
-                onFocus={ this.toggleOnTagPrompt }
-                onBlur={ this.toggleOffTagPrompt }
                 type="text"
                 placeholder="+" />
                 <span>hit enter to add tag</span>
