@@ -223,9 +223,8 @@ $ever-grey: #dedede;
 .tags-div input {
   margin-left: 5px;
   font-size: 12px;
-  color:white;
   width: 15px;
-  transition: width, 500ms, ease-in;
+  transition: width, 500ms;
   outline:none;
   border: 1px solid $ever-grey;
   border-radius: 2px;
@@ -234,7 +233,7 @@ $ever-grey: #dedede;
 .tags-div input:focus {
   width: 100px;
   color:black;
-  transition: width, 500ms, ease-in;
+  transition: width, 500ms;
 }
 
 .tags-div li:last-child {
